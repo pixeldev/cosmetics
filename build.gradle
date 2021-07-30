@@ -1,0 +1,21 @@
+subprojects {
+	apply plugin: 'java-library'
+
+	group 'me.pixeldev.ecosmetics'
+	version '0.1.0'
+
+	compileJava {
+		options.compilerArgs << "-parameters"
+		sourceCompatibility = 8
+		targetCompatibility = 8
+	}
+
+	repositories {
+		mavenLocal()
+		maven { url 'https://repo.codemc.io/repository/nms/' }
+		maven { url 'https://repo.unnamed.team/repository/unnamed-releases/' }
+		maven { url 'https://repo.unnamed.team/repository/unnamed-snapshots/' }
+		maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+		mavenCentral()
+	}
+}

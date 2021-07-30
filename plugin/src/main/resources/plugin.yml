@@ -1,0 +1,5 @@
+name: ElectronCosmetics
+author: PixelDev
+description: Private cosmetics to ElectronMC
+version: 0.1.0
+main: me.pixeldev.ecosmetics.plugin.CosmeticsPlugin

@@ -1,0 +1,24 @@
+plugins {
+	id "com.github.johnrengelman.shadow" version "7.0.0"
+}
+
+shadowJar {
+	def path = 'me.pixeldev.ecosmetics.libs'
+
+	relocate 'me.pixeldev.alya', "${path}.alya"
+	relocate 'team.unnamed.gui', "${path}.gui"
+	relocate 'me.yushust.inject', "${path}.inject"
+	relocate 'me.fixeddev.commandflow', "${path}.commandflow"
+	relocate 'me.yushust.message', "${path}.message"
+	relocate 'team.unnamed.validate', "${path}.validate"
+	relocate 'net.kyori.text', "${path}.validate"
+	relocate 'javax.inject', "${path}.inject"
+}
+
+dependencies {
+	api project(':electron-cosmetics-api')
+
+	annotationProcessor 'me.pixeldev.alya:bukkit:1.2.0-SNAPSHOT'
+
+	compileOnly "org.spigotmc:spigot:1.16.5-R0.1-SNAPSHOT"
+}
