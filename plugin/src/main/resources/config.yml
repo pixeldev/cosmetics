@@ -1,0 +1,12 @@
+pets:
+  minime:
+    skin: "VIEWER"
+    permission: "cosmetics.pets.minime"
+    armor:
+      chestplate:
+        type: "LEATHER_CHESTPLATE"
+        color: "15; 236; 32"
+      leggings:
+        type: "DIAMOND_LEGGINGS"
+      boots:
+        type: "GOLD_BOOTS"
