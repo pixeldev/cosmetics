@@ -1,14 +1,15 @@
 package me.pixeldev.ecosmetics.plugin;
 
 import me.pixeldev.alya.bukkit.BukkitBasePlugin;
+import me.pixeldev.ecosmetics.plugin.module.MainModule;
 
 import me.yushust.inject.Module;
 
-public class CosmeticsPlugin extends BukkitBasePlugin {
+public final class CosmeticsPlugin extends BukkitBasePlugin {
 
 	@Override
 	public Module getMainModule() {
-		return null;
+		return new MainModule(this);
 	}
 
 }

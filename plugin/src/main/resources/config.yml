@@ -1,11 +1,30 @@
-pets:
-  minime:
-    skin: "VIEWER"
-    permission: "cosmetics.pets.minime"
+cosmetics:
+  permission-format: "cosmetics.%category%.%identifier%"
+
+miniatures:
+  type: "MINIATURES"
+  astronaut:
+    name: "&3Astronauta"
+    skin: "URL"
+    skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
     armor:
       chestplate:
         type: "LEATHER_CHESTPLATE"
-        color: "15; 236; 32"
+        color: "LIGHT_GRAY"
+      leggings:
+        type: "LEATHER_CHESTPLATE"
+        color: "LIGHT_GRAY"
+      boots:
+        type: "LEATHER_CHESTPLATE"
+        color: "LIGHT_GRAY"
+
+  minime:
+    name: "&eMini yo"
+    skin: "VIEWER"
+    armor:
+      chestplate:
+        type: "LEATHER_CHESTPLATE"
+        color: "0;0;204"
       leggings:
         type: "DIAMOND_LEGGINGS"
       boots:

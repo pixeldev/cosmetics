@@ -2,7 +2,6 @@ package me.pixeldev.ecosmetics.api.item;
 
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 
-import me.pixeldev.alya.api.yaml.YamlFileConfiguration;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -30,6 +29,6 @@ public interface ItemParser {
 	 * @return A not null instance of the {@link Set} containing all the parsed items
 	 * or empty if nothing was parsed.
 	 */
-	Set<ItemStack> parseAllFromSection(YamlFileConfiguration section);
+	Set<ItemStack> parseAllFromSection(YamlConfigurationSection section);
 
 }
