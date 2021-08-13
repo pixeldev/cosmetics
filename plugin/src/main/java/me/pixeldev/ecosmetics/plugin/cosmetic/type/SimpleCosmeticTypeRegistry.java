@@ -50,7 +50,7 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 			parsedTypes.put(sectionKey, parsedType);
 		}
 
-		registeredTypes.compute(category, (key, value) -> parsedTypes);
+		registeredTypes.put(category, parsedTypes);
 	}
 
 	@Override
