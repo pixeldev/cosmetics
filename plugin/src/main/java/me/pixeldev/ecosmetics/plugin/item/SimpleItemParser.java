@@ -8,6 +8,7 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+
 import team.unnamed.gui.core.item.LeatherArmorColor;
 
 import java.util.HashSet;

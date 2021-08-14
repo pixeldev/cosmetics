@@ -15,7 +15,8 @@ subprojects {
 		maven { url 'https://repo.codemc.io/repository/nms/' }
 		maven { url 'https://repo.unnamed.team/repository/unnamed-releases/' }
 		maven { url 'https://repo.unnamed.team/repository/unnamed-snapshots/' }
-		maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+		maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+		maven { url 'https://repo.md-5.net/content/groups/public/' }
 		mavenCentral()
 	}
 }

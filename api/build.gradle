@@ -2,5 +2,12 @@ dependencies {
 	api 'me.pixeldev.alya:bukkit:1.2.0-SNAPSHOT'
 	api 'me.pixeldev.alya:gson:1.2.0-SNAPSHOT'
 
+	api ('LibsDisguises:LibsDisguises:9.5.2') {
+		exclude group: 'org.spigotmc'
+		exclude group: 'com.comphenix.protocol'
+	}
+
+	api 'xyz.xenondevs:particle:1.6.4'
+
 	compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
 }

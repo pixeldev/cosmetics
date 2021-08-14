@@ -1,13 +1,33 @@
 cosmetics:
   permission-format: "cosmetics.%category%.%identifier%"
 
+morphs:
+  type: "MORPHS"
+  enderman:
+    icon: "ENDERMAN_EGG"
+    name: "&dEnderman"
+    entity: "ENDERMAN"
+    hand: "GRASS_BLOCK"
+
+effects:
+  type: "EFFECTS"
+  demon-rings:
+    icon: "REDSTONE"
+    name: "&cAnillos del demonio"
+    animation: "RINGS"
+    effect: "REDSTONE"
+
 miniatures:
   type: "MINIATURES"
   astronaut:
     name: "&3Astronauta"
     skin: "URL"
     skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
-    armor:
+    properties:
+      invisible: false
+      arms: true
+    equipment:
+      hand: "NETHER_STAR"
       chestplate:
         type: "LEATHER_CHESTPLATE"
         color: "LIGHT_GRAY"
@@ -21,7 +41,8 @@ miniatures:
   minime:
     name: "&eMini yo"
     skin: "VIEWER"
-    armor:
+    equipment:
+      hand: "FLINT"
       chestplate:
         type: "LEATHER_CHESTPLATE"
         color: "0;0;204"
