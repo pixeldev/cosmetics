@@ -14,6 +14,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.ViewerSkinProvider;
 import me.pixeldev.ecosmetics.plugin.loader.CommandLoader;
 import me.pixeldev.ecosmetics.plugin.loader.CosmeticTypeLoader;
 
+import me.pixeldev.ecosmetics.plugin.loader.PetShowerLoader;
 import me.yushust.inject.AbstractModule;
 
 public final class StructureModule extends AbstractModule {
@@ -24,6 +25,7 @@ public final class StructureModule extends AbstractModule {
 			.to(CosmeticTypeLoader.class)
 			.to(ServerTickEventLoader.class)
 			.to(CommandLoader.class)
+			.to(PetShowerLoader.class)
 			.to(AutoListenerLoader.class);
 
 		bind(Gson.class).toInstance(new GsonBuilder()
