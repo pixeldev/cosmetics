@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
-import org.bukkit.Bukkit;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+
 import org.bukkit.Location;
 
 import xyz.xenondevs.particle.ParticleBuilder;
@@ -17,11 +18,12 @@ public class CirclePetParticleAnimation
 		0, 0.25, 0.43, 0.5, 0.43, 0.25, 0, -0.25, -0.43, -0.5, -0.43, -0.25
 	};
 
-	public CirclePetParticleAnimation(float incrementX, float incrementY, float incrementZ,
+	public CirclePetParticleAnimation(PetCosmetic.Spectators spectators,
+																		float incrementX, float incrementY, float incrementZ,
 																		int goalTicks, Location baseLocation,
 																		ParticleEffect particleEffect) {
 		super(
-			incrementX, incrementY, incrementZ,
+			spectators, incrementX, incrementY, incrementZ,
 			goalTicks, baseLocation,
 			particleEffect
 		);
@@ -42,10 +44,13 @@ public class CirclePetParticleAnimation
 				double incrementX = ADDING_X_VALUES[i];
 				double incrementZ = ADDING_Z_VALUES[i];
 
+
 				particleBuilder.setLocation(baseLocation
 					.clone()
 					.add(incrementX, 0, incrementZ)
-				).display(Bukkit.getOnlinePlayers());
+				);
+
+				spectators.consumeAsPlayers(particleBuilder::display);
 			}
 		}
 	}

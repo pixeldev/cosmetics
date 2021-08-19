@@ -39,7 +39,7 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 		entityId = -1;
 
 		followerPetAnimation = new PlayerFollowerPetAnimation(getOwner(), actualLocation);
-		particleAnimation = CosmeticPetParticleAnimation.of(actualLocation, type);
+		particleAnimation = CosmeticPetParticleAnimation.of(actualLocation, spectators, type);
 		movementAnimation = new DefaultMovementAnimation(actualLocation);
 	}
 

@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
-import org.bukkit.Bukkit;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+
 import org.bukkit.Location;
 
 import xyz.xenondevs.particle.ParticleBuilder;
@@ -9,11 +10,12 @@ import xyz.xenondevs.particle.ParticleEffect;
 public class NormalPetParticleAnimation
 	extends AbstractPetParticleAnimation {
 
-	public NormalPetParticleAnimation(float incrementX, float incrementY, float incrementZ,
+	public NormalPetParticleAnimation(PetCosmetic.Spectators spectators,
+																		float incrementX, float incrementY, float incrementZ,
 																		int goalTicks, Location baseLocation,
 																		ParticleEffect particleEffect) {
 		super(
-			incrementX, incrementY, incrementZ,
+			spectators, incrementX, incrementY, incrementZ,
 			goalTicks, baseLocation,
 			particleEffect
 		);
@@ -21,12 +23,13 @@ public class NormalPetParticleAnimation
 
 	@Override
 	public void run() {
-		new ParticleBuilder(particleEffect)
+		ParticleBuilder particleBuilder = new ParticleBuilder(particleEffect)
 			.setLocation(baseLocation.clone().add(0, incrementY, 0))
 			.setOffset(incrementX, 0.0F, incrementZ)
 			.setSpeed(0)
-			.setAmount(1)
-			.display(Bukkit.getOnlinePlayers());
+			.setAmount(1);
+
+		spectators.consumeAsPlayers(particleBuilder::display);
 	}
 
 }

@@ -1,11 +1,15 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
+import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+
 import org.bukkit.Location;
 
 import xyz.xenondevs.particle.ParticleEffect;
 
 abstract class AbstractPetParticleAnimation
 	implements CosmeticPetParticleAnimation {
+
+	protected final PetCosmetic.Spectators spectators;
 
 	protected float incrementX;
 	protected float incrementY;
@@ -16,9 +20,11 @@ abstract class AbstractPetParticleAnimation
 
 	protected int currentTicks;
 
-	public AbstractPetParticleAnimation(float incrementX, float incrementY, float incrementZ,
+	public AbstractPetParticleAnimation(PetCosmetic.Spectators spectators,
+																			float incrementX, float incrementY, float incrementZ,
 																			int goalTicks, Location baseLocation,
 																			ParticleEffect particleEffect) {
+		this.spectators = spectators;
 		this.incrementX = incrementX;
 		this.incrementY = incrementY;
 		this.incrementZ = incrementZ;
