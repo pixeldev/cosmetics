@@ -10,7 +10,7 @@ public interface CosmeticType {
 
 	String getPermission();
 
-	String getConfigurationIdentifier();
+	String getIdentifier();
 
 	Material getMenuIcon();
 

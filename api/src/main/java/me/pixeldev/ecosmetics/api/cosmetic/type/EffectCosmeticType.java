@@ -1,8 +1,7 @@
-package me.pixeldev.ecosmetics.plugin.cosmetic.type;
+package me.pixeldev.ecosmetics.api.cosmetic.type;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.EffectAnimationType;
-import me.pixeldev.ecosmetics.api.cosmetic.type.AbstractCosmeticType;
 
 import org.bukkit.Material;
 

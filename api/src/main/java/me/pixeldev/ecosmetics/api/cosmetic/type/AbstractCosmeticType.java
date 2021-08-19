@@ -9,16 +9,16 @@ public abstract class AbstractCosmeticType
 
 	private final String name;
 	private final String permission;
-	private final String configurationIdentifier;
+	private final String identifier;
 	private final Material menuIcon;
 	private final CosmeticCategory category;
 
 	public AbstractCosmeticType(String name, String permission,
-															String configurationIdentifier,
+															String identifier,
 															Material menuIcon, CosmeticCategory category) {
 		this.name = name;
 		this.permission = permission;
-		this.configurationIdentifier = configurationIdentifier;
+		this.identifier = identifier;
 		this.menuIcon = menuIcon;
 		this.category = category;
 	}
@@ -34,8 +34,8 @@ public abstract class AbstractCosmeticType
 	}
 
 	@Override
-	public String getConfigurationIdentifier() {
-		return configurationIdentifier;
+	public String getIdentifier() {
+		return identifier;
 	}
 
 	@Override

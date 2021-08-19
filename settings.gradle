@@ -1,7 +1,8 @@
 rootProject.name = 'electron-cosmetics'
 
 [
-		'api', 'plugin'
+	'api', 'plugin',
+	'adapter-1_8_R3'
 ].forEach {
 	include it
 	findProject(":$it")?.name = "electron-cosmetics-$it"

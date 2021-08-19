@@ -4,6 +4,8 @@ import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
 
+import java.util.Map;
+
 public interface CosmeticTypeRegistry {
 
 	/**
@@ -25,5 +27,11 @@ public interface CosmeticTypeRegistry {
 	 * @return A nullable instance of the {@link CosmeticType} found.
 	 */
 	CosmeticType getCosmeticType(CosmeticCategory category, String typeKey);
+
+	/**
+	 * @param category Category of the finding types.
+	 * @return An instance of the found types for the given category.
+	 */
+	Map<String, CosmeticType> getAllTypesFor(CosmeticCategory category);
 
 }

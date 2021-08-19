@@ -1,9 +1,8 @@
-package me.pixeldev.ecosmetics.plugin.cosmetic.type;
+package me.pixeldev.ecosmetics.api.cosmetic.type;
 
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
-import me.pixeldev.ecosmetics.api.cosmetic.type.AbstractCosmeticType;
 
 import org.bukkit.Material;
 

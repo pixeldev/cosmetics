@@ -23,6 +23,13 @@ miniatures:
     name: "&3Astronauta"
     skin: "URL"
     skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
+    particle-animation:
+      type: "NORMAL"
+      effect: "CLOUD"
+      ticks: 10
+      x: 0.0
+      y: 0.0
+      z: 0.0
     properties:
       invisible: false
       arms: true
@@ -32,21 +39,32 @@ miniatures:
         type: "LEATHER_CHESTPLATE"
         color: "LIGHT_GRAY"
       leggings:
-        type: "LEATHER_CHESTPLATE"
+        type: "LEATHER_LEGGINGS"
         color: "LIGHT_GRAY"
       boots:
-        type: "LEATHER_CHESTPLATE"
+        type: "LEATHER_BOOTS"
         color: "LIGHT_GRAY"
-
   minime:
     name: "&eMini yo"
     skin: "VIEWER"
+    particle-animation:
+      type: "CIRCLE"
+      effect: "FLAME"
+      ticks: 5
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    properties:
+      invisible: false
+      arms: true
     equipment:
-      hand: "FLINT"
+      hand: "BLAZE_ROD"
       chestplate:
         type: "LEATHER_CHESTPLATE"
-        color: "0;0;204"
+        color: "LIGHT_BLUE"
       leggings:
-        type: "DIAMOND_LEGGINGS"
+        type: "LEATHER_LEGGINGS"
+        color: "LIGHT_GRAY"
       boots:
-        type: "GOLD_BOOTS"
+        type: "LEATHER_BOOTS"
+        color: "LIGHT_GRAY"

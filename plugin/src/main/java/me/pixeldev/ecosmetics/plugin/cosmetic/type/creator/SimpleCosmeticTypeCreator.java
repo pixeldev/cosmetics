@@ -1,11 +1,13 @@
-package me.pixeldev.ecosmetics.plugin.cosmetic.type;
+package me.pixeldev.ecosmetics.plugin.cosmetic.type.creator;
 
+import com.google.common.collect.ImmutableMap;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.EffectAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.permission.CosmeticPermissionFormatter;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderCreator;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
@@ -13,15 +15,28 @@ import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
 import me.pixeldev.ecosmetics.api.util.LoggerUtil;
+import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 
 import xyz.xenondevs.particle.ParticleEffect;
 
 import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
+
+	private static final Map<String, Integer> EQUIPMENT_SECTIONS = ImmutableMap
+		.<String, Integer>builder()
+		.put("chestplate", 3)
+		.put("leggings", 2)
+		.put("boots", 1)
+		.build();
 
 	@Inject private SkinProviderCreator skinProviderCreator;
 	@Inject private CosmeticPermissionFormatter permissionFormatter;
@@ -38,8 +53,8 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 		if (menuIcon == null && category != CosmeticCategory.MINIATURES) {
 			LoggerUtil.warn(
 				"Cannot parse cosmetic type '"
-				+ sectionKey +
-				"' because cannot found the menu icon."
+					+ sectionKey +
+					"' because cannot found the menu icon."
 			);
 			return null;
 		}
@@ -79,6 +94,22 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					return null;
 				}
 
+				Map<Integer, ItemStack> equipment = new HashMap<>();
+
+				for (Map.Entry<String, Integer> equipmentEntry : EQUIPMENT_SECTIONS.entrySet()) {
+					String equipmentSectionKey = equipmentEntry.getKey();
+					int equipmentSlot = equipmentEntry.getValue();
+
+					YamlConfigurationSection currentEquipmentSection = equipmentSection
+						.getSection(equipmentSectionKey);
+
+					if (currentEquipmentSection == null) {
+						continue;
+					}
+
+					equipment.put(equipmentSlot, itemParser.parseFromSection(currentEquipmentSection));
+				}
+
 				YamlConfigurationSection propertiesSection = section.getSection("properties");
 				boolean invisible = false;
 				boolean arms = false;
@@ -88,11 +119,54 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					arms = propertiesSection.getBoolean("arms");
 				}
 
+				YamlConfigurationSection particleAnimationSection = section.getSection("particle-animation");
+
+				if (particleAnimationSection == null) {
+					LoggerUtil.warn("Cannot found particle animation section for '" + sectionKey + "'");
+					return null;
+				}
+
+				String animationKey = particleAnimationSection.getString("type");
+
+				if (animationKey == null) {
+					LoggerUtil.warn("Particle animation in '" + sectionKey + "' cannot be null.");
+					return null;
+				}
+
+				PetParticleAnimationType animationType = PetParticleAnimationType.getByName(animationKey);
+
+				if (animationType == null) {
+					LoggerUtil.warn(
+						"Cannot found a valid animation type of '"
+							+ animationKey + "' in '" + sectionKey + "'."
+					);
+					return null;
+				}
+
+				ParticleEffect particleEffect;
+
+				try {
+					particleEffect = ParticleEffect.valueOf(particleAnimationSection.getString("effect"));
+				} catch (IllegalArgumentException e) {
+					LoggerUtil.warn(
+						"Cannot get particle type for '" + sectionKey + "' check the name."
+					);
+					return null;
+				}
+
+				float incrementX = particleAnimationSection.getFloat("x");
+				float incrementY = particleAnimationSection.getFloat("y");
+				float incrementZ = particleAnimationSection.getFloat("z");
+				int goalTicks = particleAnimationSection.getInt("ticks");
+
 				return new PetCosmeticType(
 					name, permission, sectionKey, menuIcon, category,
-					itemParser.parseAllFromSection(equipmentSection),
-					skinProvider, Material.getMaterial(equipmentSection.getString("hand")),
-					invisible, arms
+					equipment, skinProvider,
+					Material.getMaterial(equipmentSection.getString("hand")),
+					invisible, arms,
+					particleEffect, animationType,
+					incrementX, incrementY, incrementZ,
+					goalTicks
 				);
 			}
 			case EFFECTS: {
@@ -143,7 +217,9 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					Material.getMaterial(section.getString("hand"))
 				);
 			}
-			default: return null;
+			default:
+				return null;
 		}
 	}
+
 }

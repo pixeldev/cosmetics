@@ -15,8 +15,14 @@ shadowJar {
 	relocate 'javax.inject', "${path}.inject"
 }
 
+build.finalizedBy shadowJar
+
 dependencies {
 	api project(':electron-cosmetics-api')
+
+	['1_8_R3'].forEach {
+		runtimeOnly project(":electron-cosmetics-adapter-$it")
+	}
 
 	annotationProcessor 'me.pixeldev.alya:bukkit:1.2.0-SNAPSHOT'
 

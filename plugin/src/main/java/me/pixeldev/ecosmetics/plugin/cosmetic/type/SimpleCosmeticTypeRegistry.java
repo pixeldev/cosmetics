@@ -37,16 +37,21 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 
 		Map<String, CosmeticType> parsedTypes = new HashMap<>();
 		for (String sectionKey : section.getKeys(false)) {
+			if (sectionKey.equals("type")) {
+				continue;
+			}
+
+			YamlConfigurationSection currentSection = section.getSection(sectionKey);
+
 			CosmeticType parsedType = cosmeticTypeCreator.createFromSection(
-				category,
-				sectionKey,
-				section.getSection(sectionKey)
+				category, sectionKey, currentSection
 			);
 
 			if (parsedType == null) {
 				continue;
 			}
 
+			System.out.println("Adding parsed type, id: " + sectionKey + " type: " + parsedType);
 			parsedTypes.put(sectionKey, parsedType);
 		}
 
@@ -62,9 +67,12 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 
 	@Override
 	public CosmeticType getCosmeticType(CosmeticCategory category, String typeKey) {
-		Map<String, CosmeticType> types = registeredTypes.get(category);
+		return getAllTypesFor(category).get(typeKey);
+	}
 
-		return types.get(typeKey);
+	@Override
+	public Map<String, CosmeticType> getAllTypesFor(CosmeticCategory category) {
+		return registeredTypes.get(category);
 	}
 
 }
