@@ -5,6 +5,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityManager;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
 import net.minecraft.server.v1_8_R3.*;
 
@@ -25,6 +26,7 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 
 	@Inject private PacketSender packetSender;
 	@Inject private PetEntityManager petEntityManager;
+	@Inject private CosmeticUserService userService;
 
 	@Override
 	public void teleport(PetCosmetic petCosmetic, Location location) {
@@ -96,6 +98,8 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 
 		if (spectators.addSpectator(viewer)) {
 			packetSender.sendPackets(viewer, packets.toArray(new Object[0]));
+			userService.getUserByPlayerSync(viewer)
+				.ifPresent(user -> user.addRenderedMiniature(petCosmetic));
 		}
 	}
 
@@ -113,7 +117,7 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 	@Override
 	public void destroy(Player viewer, PetCosmetic petCosmetic) {
 		destroy(
-			petCosmetic.getSpectators(),
+			petCosmetic.getSpectators(), petCosmetic,
 			new PacketPlayOutEntityDestroy(petCosmetic.getEntityId()),
 			viewer
 		);
@@ -127,15 +131,18 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 		);
 
 		spectators.consumeAsPlayers(player ->
-			destroy(spectators, entityDestroyPacket, player)
+			destroy(spectators, petCosmetic, entityDestroyPacket, player)
 		);
 	}
 
 	private void destroy(PetCosmetic.Spectators spectators,
+											 PetCosmetic petCosmetic,
 											 PacketPlayOutEntityDestroy entityDestroyPacket,
 											 Player viewer) {
 		if (spectators.removeSpectator(viewer)) {
 			packetSender.sendPacket(viewer, entityDestroyPacket);
+			userService.getUserByPlayerSync(viewer)
+				.ifPresent(user -> user.removeRenderedMiniature(petCosmetic));
 		}
 	}
 

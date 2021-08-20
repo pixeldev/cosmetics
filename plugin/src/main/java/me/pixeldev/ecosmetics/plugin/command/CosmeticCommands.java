@@ -35,13 +35,13 @@ public class CosmeticCommands implements CommandClass {
 		}
 
 		if (category == CosmeticCategory.MINIATURES) {
-			userService.getUserOrCreate(sender)
-				.subscribe(user -> {
+			userService.getUserByPlayer(sender)
+				.subscribe(userOptional -> userOptional.ifPresent(user -> {
 					PetCosmetic petCosmetic = new PetCosmetic(sender, (PetCosmeticType) cosmeticType);
 
 					entityHandler.spawn(sender, petCosmetic);
 					user.setCurrentCosmetic(petCosmetic);
-				})
+				}))
 				.query();
 		}
 	}

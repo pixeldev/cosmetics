@@ -6,9 +6,12 @@ import me.pixeldev.alya.storage.universal.internal.meta.Cached;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 
+import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Cached
@@ -21,11 +24,13 @@ public final class CosmeticUser implements Model {
 	private CosmeticCategory currentCategory;
 	private String currentTypeKey;
 
+	private final transient Set<UUID> renderedMiniatures;
 	private transient Cosmetic<?> currentCosmetic;
 
 	private CosmeticUser(UUID uuid, String username) {
 		this.uuid = uuid;
 		this.username = username;
+		renderedMiniatures = new HashSet<>();
 	}
 
 	@Override
@@ -69,6 +74,18 @@ public final class CosmeticUser implements Model {
 
 	public void setCurrentTypeKey(String currentTypeKey) {
 		this.currentTypeKey = currentTypeKey;
+	}
+
+	public Set<UUID> getRenderedMiniatures() {
+		return renderedMiniatures;
+	}
+
+	public boolean addRenderedMiniature(Cosmetic<PetCosmeticType> cosmetic) {
+		return renderedMiniatures.add(cosmetic.getOwner());
+	}
+
+	public boolean removeRenderedMiniature(Cosmetic<PetCosmeticType> cosmetic) {
+		return renderedMiniatures.remove(cosmetic.getOwner());
 	}
 
 	@Override

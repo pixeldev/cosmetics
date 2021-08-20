@@ -24,8 +24,8 @@ public class PlayerJoinListener implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		userService.getUserByPlayer(player)
-			.subscribe(userOptional -> userOptional.ifPresent(user -> {
+		userService.getUserOrCreate(player)
+			.subscribe(user -> {
 				CosmeticCategory cosmeticCategory = user.getCurrentCategory();
 
 				if (cosmeticCategory == null) {
@@ -45,7 +45,7 @@ public class PlayerJoinListener implements Listener {
 				user.setCurrentCosmetic(cosmeticCreator.create(
 					cosmeticCategory, player, cosmeticType
 				));
-			}))
+			})
 			.query();
 	}
 
