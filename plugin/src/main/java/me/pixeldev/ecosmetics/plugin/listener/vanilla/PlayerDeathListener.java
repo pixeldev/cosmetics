@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.plugin.listener.vanilla;
 
 import me.pixeldev.alya.api.auto.AutoListener;
+import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
@@ -26,6 +27,12 @@ public class PlayerDeathListener implements Listener {
 		Player player = event.getEntity();
 		userService.getUserByPlayerSync(player)
 			.ifPresent(user -> {
+				Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
+
+				if (currentCosmetic != null) {
+					petEntityHandler.destroy(player, (PetCosmetic) currentCosmetic);
+				}
+
 				for (UUID renderedMiniature : user.getRenderedMiniatures()) {
 					Optional<CosmeticUser> renderedMiniatureOwnerOptional
 						= userService.getUserByIdSync(renderedMiniature);
