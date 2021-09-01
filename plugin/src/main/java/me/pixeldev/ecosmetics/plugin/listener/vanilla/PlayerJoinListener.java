@@ -26,6 +26,10 @@ public class PlayerJoinListener implements Listener {
 		Player player = event.getPlayer();
 		userService.getUserOrCreate(player)
 			.subscribe(user -> {
+				if (user == null) {
+					return;
+				}
+
 				CosmeticCategory cosmeticCategory = user.getCurrentCategory();
 
 				if (cosmeticCategory == null) {

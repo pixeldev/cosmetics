@@ -3,9 +3,7 @@ package me.pixeldev.ecosmetics.api.cosmetic;
 import java.util.Locale;
 
 public enum CosmeticCategory {
-	EFFECTS, MORPHS, MINIATURES
-
-	;
+	EFFECTS, MORPHS, MINIATURES;
 
 	public static CosmeticCategory getByName(String name) {
 		try {

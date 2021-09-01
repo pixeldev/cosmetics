@@ -11,6 +11,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.properties.PetCosmeticAuthorizer;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
 import net.kyori.text.TranslatableComponent;
@@ -35,14 +36,16 @@ public class CosmeticCommands implements CommandClass {
 		}
 
 		if (category == CosmeticCategory.MINIATURES) {
-			userService.getUserByPlayer(sender)
-				.subscribe(userOptional -> userOptional.ifPresent(user -> {
-					PetCosmetic petCosmetic = new PetCosmetic(sender, (PetCosmeticType) cosmeticType);
+			CosmeticUser cosmeticUser = userService.getUserByPlayer(sender);
 
-					entityHandler.spawn(sender, petCosmetic);
-					user.setCurrentCosmetic(petCosmetic);
-				}))
-				.query();
+			if (cosmeticUser == null) {
+				return;
+			}
+
+			PetCosmetic petCosmetic = new PetCosmetic(sender, (PetCosmeticType) cosmeticType);
+
+			entityHandler.spawn(sender, petCosmetic);
+			cosmeticUser.setCurrentCosmetic(petCosmetic);
 		}
 	}
 

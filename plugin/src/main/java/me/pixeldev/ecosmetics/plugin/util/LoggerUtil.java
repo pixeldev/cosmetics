@@ -1,4 +1,4 @@
-package me.pixeldev.ecosmetics.api.util;
+package me.pixeldev.ecosmetics.plugin.util;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

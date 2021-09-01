@@ -29,6 +29,11 @@ public class PetAnimationListener implements Listener {
 
 		for (CosmeticUser cosmeticUser : userService.getAllCachedUsers()) {
 			Cosmetic<?> cosmetic = cosmeticUser.getCurrentCosmetic();
+
+			if (cosmetic == null) {
+				continue;
+			}
+
 			CosmeticCategory category = cosmetic.getCategory();
 
 			if (category == CosmeticCategory.MINIATURES) {

@@ -7,10 +7,10 @@ import java.util.UUID;
 
 public interface Cosmetic<T extends CosmeticType> {
 
-    UUID getOwner();
+	UUID getOwner();
 
-    CosmeticCategory getCategory();
+	CosmeticCategory getCategory();
 
-    T getType();
+	T getType();
 
 }

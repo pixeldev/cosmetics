@@ -4,7 +4,6 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityManager;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
 public class SimplePetEntityManager implements PetEntityManager {
@@ -12,8 +11,8 @@ public class SimplePetEntityManager implements PetEntityManager {
 	private final Map<Integer, UUID> headByEntityIds = new HashMap<>();
 
 	@Override
-	public Optional<UUID> getOwnerByEntity(int entityId) {
-		return Optional.ofNullable(headByEntityIds.get(entityId));
+	public UUID getOwnerByEntity(int entityId) {
+		return headByEntityIds.get(entityId);
 	}
 
 	@Override

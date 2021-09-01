@@ -5,8 +5,8 @@ import me.pixeldev.alya.storage.universal.Model;
 import me.pixeldev.alya.storage.universal.internal.meta.Cached;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
-
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -80,12 +80,12 @@ public final class CosmeticUser implements Model {
 		return renderedMiniatures;
 	}
 
-	public boolean addRenderedMiniature(Cosmetic<PetCosmeticType> cosmetic) {
-		return renderedMiniatures.add(cosmetic.getOwner());
+	public void addRenderedMiniature(Cosmetic<PetCosmeticType> cosmetic) {
+		renderedMiniatures.add(cosmetic.getOwner());
 	}
 
-	public boolean removeRenderedMiniature(Cosmetic<PetCosmeticType> cosmetic) {
-		return renderedMiniatures.remove(cosmetic.getOwner());
+	public void removeRenderedMiniature(Cosmetic<PetCosmeticType> cosmetic) {
+		renderedMiniatures.remove(cosmetic.getOwner());
 	}
 
 	@Override

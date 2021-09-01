@@ -5,6 +5,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityManager;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
 import net.minecraft.server.v1_8_R3.*;
@@ -39,6 +40,12 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 
 	@Override
 	public void spawn(Player viewer, PetCosmetic petCosmetic) {
+		CosmeticUser cosmeticUser = userService.getUserByPlayer(viewer);
+
+		if (cosmeticUser == null) {
+			return;
+		}
+
 		PetCosmetic.Spectators spectators = petCosmetic.getSpectators();
 
 		if (spectators.isSpectating(viewer)) {
@@ -98,8 +105,7 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 
 		if (spectators.addSpectator(viewer)) {
 			packetSender.sendPackets(viewer, packets.toArray(new Object[0]));
-			userService.getUserByPlayerSync(viewer)
-				.ifPresent(user -> user.addRenderedMiniature(petCosmetic));
+			cosmeticUser.addRenderedMiniature(petCosmetic);
 		}
 	}
 
@@ -140,9 +146,12 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 											 PacketPlayOutEntityDestroy entityDestroyPacket,
 											 Player viewer) {
 		if (spectators.removeSpectator(viewer)) {
-			packetSender.sendPacket(viewer, entityDestroyPacket);
-			userService.getUserByPlayerSync(viewer)
-				.ifPresent(user -> user.removeRenderedMiniature(petCosmetic));
+			CosmeticUser cosmeticUser = userService.getUserByPlayer(viewer);
+
+			if (cosmeticUser != null) {
+				packetSender.sendPacket(viewer, entityDestroyPacket);
+				cosmeticUser.removeRenderedMiniature(petCosmetic);
+			}
 		}
 	}
 
@@ -194,7 +203,8 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 					return false;
 				}
 			});
-		} catch (IOException ignored) {}
+		} catch (IOException ignored) {
+		}
 
 		spectators.consumeAsPlayers(player ->
 			packetSender.sendPacket(player, teleportPacket)

@@ -29,31 +29,34 @@ public class SimpleCosmeticUserService implements CosmeticUserService {
 	}
 
 	@Override
-	public Optional<CosmeticUser> getUserByIdSync(UUID uuid) {
+	public CosmeticUser getUserById(UUID uuid) {
 		try {
-			return findService.findSync(uuid.toString(), true);
+			return findService.findSync(uuid.toString(), false)
+				.orElse(null);
 		} catch (Exception ignored) {
-			return Optional.empty();
+			return null;
 		}
 	}
 
 	@Override
-	public Observable<Optional<CosmeticUser>> getUserById(UUID uuid) {
-		return findService.find(uuid.toString(), true);
-	}
-
-	@Override
 	public CosmeticUser getUserOrCreateSync(Player player) {
-		return getUserByIdSync(player.getUniqueId()).orElseGet(() -> {
-			CosmeticUser newUser = CosmeticUser.of(player);
+		UUID playerId = player.getUniqueId();
+		CosmeticUser cosmeticUser = getUserById(playerId);
+
+		if (cosmeticUser == null) {
+			cosmeticUser = CosmeticUser.of(player);
 
 			try {
-				uploadService.uploadSync(newUser, false);
-				return newUser;
-			} catch (Exception ignored) {
+				uploadService.uploadSync(cosmeticUser, false);
+			} catch (Exception e) {
+				e.printStackTrace();
 				return null;
 			}
-		});
+
+			return cosmeticUser;
+		}
+
+		return cosmeticUser;
 	}
 
 	@Override

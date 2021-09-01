@@ -14,7 +14,8 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
-import me.pixeldev.ecosmetics.api.util.LoggerUtil;
+import me.pixeldev.ecosmetics.plugin.util.Enums;
+import me.pixeldev.ecosmetics.plugin.util.LoggerUtil;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
@@ -133,24 +134,19 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					return null;
 				}
 
-				PetParticleAnimationType animationType = PetParticleAnimationType.getByName(animationKey);
+				PetParticleAnimationType animationType = Enums.valueOf(
+					PetParticleAnimationType.class, animationKey
+				);
 
 				if (animationType == null) {
-					LoggerUtil.warn(
-						"Cannot found a valid animation type of '"
-							+ animationKey + "' in '" + sectionKey + "'."
-					);
 					return null;
 				}
 
-				ParticleEffect particleEffect;
+				ParticleEffect particleEffect = Enums.valueOf(
+					ParticleEffect.class, particleAnimationSection.getString("effect")
+				);
 
-				try {
-					particleEffect = ParticleEffect.valueOf(particleAnimationSection.getString("effect"));
-				} catch (IllegalArgumentException e) {
-					LoggerUtil.warn(
-						"Cannot get particle type for '" + sectionKey + "' check the name."
-					);
+				if (particleEffect == null) {
 					return null;
 				}
 
@@ -170,27 +166,15 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				);
 			}
 			case EFFECTS: {
-				ParticleEffect particleEffect;
-
-				try {
-					particleEffect = ParticleEffect.valueOf(section.getString("effect"));
-				} catch (IllegalArgumentException e) {
-					LoggerUtil.warn(
-						"Cannot get particle type for '" + sectionKey + "' check the name."
-					);
-					return null;
-				}
-
-				EffectAnimationType animationType = EffectAnimationType.getByName(
-					section.getString("animation")
+				ParticleEffect particleEffect = Enums.valueOf(
+					ParticleEffect.class, section.getString("effect")
 				);
 
-				if (animationType == null) {
-					LoggerUtil.warn(
-						"Cannot get particle animation type for '"
-							+ sectionKey +
-							"' check the name."
-					);
+				EffectAnimationType animationType = Enums.valueOf(
+					EffectAnimationType.class, section.getString("animation")
+				);
+
+				if (particleEffect == null || animationType == null) {
 					return null;
 				}
 
@@ -200,14 +184,9 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				);
 			}
 			case MORPHS: {
-				EntityType entityType;
+				EntityType entityType = Enums.valueOf(EntityType.class, section.getString("entity"));
 
-				try {
-					entityType = EntityType.valueOf(section.getString("entity"));
-				} catch (IllegalArgumentException e) {
-					LoggerUtil.warn(
-						"Cannot get particle type for '" + sectionKey + "' check the name."
-					);
+				if (entityType == null) {
 					return null;
 				}
 

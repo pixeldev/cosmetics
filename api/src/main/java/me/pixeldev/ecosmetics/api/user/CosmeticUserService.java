@@ -1,25 +1,20 @@
 package me.pixeldev.ecosmetics.api.user;
 
 import me.pixeldev.alya.jdk.concurrent.observer.Observable;
+
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface CosmeticUserService {
 
 	List<CosmeticUser> getAllCachedUsers();
 
-	Optional<CosmeticUser> getUserByIdSync(UUID uuid);
+	@Nullable CosmeticUser getUserById(UUID uuid);
 
-	default Optional<CosmeticUser> getUserByPlayerSync(Player player) {
-		return getUserByIdSync(player.getUniqueId());
-	}
-
-	Observable<Optional<CosmeticUser>> getUserById(UUID uuid);
-
-	default Observable<Optional<CosmeticUser>> getUserByPlayer(Player player) {
+	default @Nullable CosmeticUser getUserByPlayer(Player player) {
 		return getUserById(player.getUniqueId());
 	}
 

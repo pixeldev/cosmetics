@@ -2,7 +2,7 @@ package me.pixeldev.ecosmetics.plugin.item;
 
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
-import me.pixeldev.ecosmetics.api.util.LoggerUtil;
+import me.pixeldev.ecosmetics.plugin.util.LoggerUtil;
 
 import org.bukkit.Color;
 import org.bukkit.Material;

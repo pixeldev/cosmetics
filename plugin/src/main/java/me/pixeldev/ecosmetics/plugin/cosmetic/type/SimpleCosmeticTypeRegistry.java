@@ -6,7 +6,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
-import me.pixeldev.ecosmetics.api.util.LoggerUtil;
+import me.pixeldev.ecosmetics.plugin.util.LoggerUtil;
 
 import javax.inject.Inject;
 import java.util.HashMap;
