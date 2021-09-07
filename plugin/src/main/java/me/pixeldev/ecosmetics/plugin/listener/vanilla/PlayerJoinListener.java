@@ -1,6 +1,6 @@
 package me.pixeldev.ecosmetics.plugin.listener.vanilla;
 
-import me.pixeldev.alya.api.auto.AutoListener;
+import me.pixeldev.alya.api.auto.listener.AutoListener;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCreator;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;

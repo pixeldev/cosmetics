@@ -1,6 +1,6 @@
 package me.pixeldev.ecosmetics.plugin.listener.cosmetic;
 
-import me.pixeldev.alya.api.auto.AutoListener;
+import me.pixeldev.alya.api.auto.listener.AutoListener;
 import me.pixeldev.alya.bukkit.tick.ServerTickCause;
 import me.pixeldev.alya.bukkit.tick.ServerTickEvent;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
