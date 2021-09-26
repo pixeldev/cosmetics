@@ -3,6 +3,7 @@ package me.pixeldev.alya.bukkit.loader;
 public class AutoCommandLoader implements me.pixeldev.alya.api.loader.Loader {
 
   @javax.inject.Inject private me.pixeldev.ecosmetics.plugin.command.CosmeticCommands cosmeticcommands;
+  @javax.inject.Inject private me.pixeldev.ecosmetics.plugin.command.part.CosmeticPartModule cosmeticpartmodule;
 
   @javax.inject.Inject private org.bukkit.plugin.Plugin plugin;
   @javax.inject.Inject private me.yushust.inject.Injector injector;
@@ -22,6 +23,7 @@ public class AutoCommandLoader implements me.pixeldev.alya.api.loader.Loader {
       new me.fixeddev.commandflow.annotated.builder.AnnotatedCommandBuilderImpl(partInjector),
       (clazz, parent) -> injector.getInstance(clazz)
     );
+    partInjector.install(cosmeticpartmodule);
 
     commandManager.registerCommands(builder.fromClass(cosmeticcommands));
   }

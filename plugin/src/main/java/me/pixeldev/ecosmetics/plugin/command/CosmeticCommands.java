@@ -26,7 +26,7 @@ import javax.inject.Inject;
 public class CosmeticCommands implements CommandClass {
 
 	@Inject private CosmeticUserService userService;
-	@Inject private PetEntityHandler entityHandler;
+	@Inject private PetEntityHandler petEntityHandler;
 	@Inject private PetCosmeticAuthorizer petCosmeticAuthorizer;
 
 	@Command(names = "get")
@@ -46,8 +46,8 @@ public class CosmeticCommands implements CommandClass {
 
 			PetCosmetic petCosmetic = new PetCosmetic(sender, (PetCosmeticType) cosmeticType);
 
-			entityHandler.spawn(sender, petCosmetic);
 			cosmeticUser.setCurrentCosmetic(petCosmetic);
+			petEntityHandler.create(petCosmetic);
 		}
 	}
 

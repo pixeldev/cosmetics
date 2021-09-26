@@ -51,7 +51,6 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 				continue;
 			}
 
-			System.out.println("Adding parsed type, id: " + sectionKey + " type: " + parsedType);
 			parsedTypes.put(sectionKey, parsedType);
 		}
 

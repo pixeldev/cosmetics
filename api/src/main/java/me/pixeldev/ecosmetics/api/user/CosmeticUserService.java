@@ -1,6 +1,6 @@
 package me.pixeldev.ecosmetics.api.user;
 
-import me.pixeldev.alya.jdk.concurrent.observer.Observable;
+import me.pixeldev.alya.jdk.concurrent.AsyncResponse;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
@@ -20,8 +20,8 @@ public interface CosmeticUserService {
 
 	CosmeticUser getUserOrCreateSync(Player player);
 
-	Observable<CosmeticUser> getUserOrCreate(Player player);
+	AsyncResponse<CosmeticUser> getUserOrCreate(Player player);
 
-	Observable<CosmeticUser> saveUser(Player player);
+	AsyncResponse<CosmeticUser> saveUser(Player player);
 
 }

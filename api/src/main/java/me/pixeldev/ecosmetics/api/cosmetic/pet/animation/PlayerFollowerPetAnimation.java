@@ -1,19 +1,19 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.UUID;
+import java.lang.ref.WeakReference;
 
 public final class PlayerFollowerPetAnimation
 	implements CosmeticPetAnimation {
 
-	private final UUID ownerId;
+	private final WeakReference<Player> ownerReference;
 	private Location baseLocation;
 
-	public PlayerFollowerPetAnimation(UUID ownerId, Location baseLocation) {
-		this.ownerId = ownerId;
+	public PlayerFollowerPetAnimation(WeakReference<Player> ownerReference,
+																		Location baseLocation) {
+		this.ownerReference = ownerReference;
 		this.baseLocation = baseLocation;
 	}
 
@@ -24,14 +24,25 @@ public final class PlayerFollowerPetAnimation
 
 	@Override
 	public void run() {
-		Player player = Bukkit.getPlayer(ownerId);
+		Player player = ownerReference.get();
+
+		if (player == null) {
+			return;
+		}
+
 		Location ownerLocation = player.getLocation();
 
+		double z = ownerLocation.getZ() - baseLocation.getZ();
+		double x = ownerLocation.getX() - baseLocation.getX();
+
+		if (z == 0 && x == 0) { //to avoid NaN values if the player joined looking up.
+			return;
+		}
+
 		double y = ownerLocation.getY() + 1.5;
-		float angle = (float) Math.toDegrees(Math.atan2(
-			ownerLocation.getZ() - baseLocation.getZ(),
-			ownerLocation.getX() - baseLocation.getX())
-		) - 90F;
+		double tan = Math.atan2(z, x);
+		double degrees = Math.toDegrees(tan);
+		float angle = (float) degrees - 90F;
 
 		/* we need to assign the view angle to get a correct camera */
 		baseLocation.setYaw(angle);

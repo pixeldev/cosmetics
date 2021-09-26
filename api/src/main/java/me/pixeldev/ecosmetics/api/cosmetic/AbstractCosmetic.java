@@ -2,24 +2,32 @@ package me.pixeldev.ecosmetics.api.cosmetic;
 
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 
-import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
+import java.lang.ref.WeakReference;
 import java.util.UUID;
 
 public abstract class AbstractCosmetic<T extends CosmeticType>
 	implements Cosmetic<T> {
 
-	protected final UUID owner;
+	protected final WeakReference<Player> ownerReference;
+	protected final UUID ownerId;
 	protected final T type;
 
-	protected AbstractCosmetic(UUID owner, T type) {
-		this.owner = owner;
+	protected AbstractCosmetic(Player owner, T type) {
+		this.ownerReference = new WeakReference<>(owner);
+		this.ownerId = owner.getUniqueId();
 		this.type = type;
 	}
 
 	@Override
-	public UUID getOwner() {
-		return owner;
+	public Player getPlayer() {
+		return ownerReference.get();
+	}
+
+	@Override
+	public UUID getOwnerId() {
+		return ownerId;
 	}
 
 	@Override
