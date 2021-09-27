@@ -1,5 +1,7 @@
 cosmetics:
   permission-format: "cosmetics.%category%.%identifier%"
+  denied-regions:
+    - "world"
 
 morphs:
   type: "MORPHS"

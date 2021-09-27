@@ -6,20 +6,15 @@ import org.bukkit.entity.Player;
 import java.lang.ref.WeakReference;
 
 public final class PlayerFollowerPetAnimation
-	implements CosmeticPetAnimation {
+	implements Runnable {
 
 	private final WeakReference<Player> ownerReference;
-	private Location baseLocation;
+	private final Location baseLocation;
 
 	public PlayerFollowerPetAnimation(WeakReference<Player> ownerReference,
 																		Location baseLocation) {
 		this.ownerReference = ownerReference;
 		this.baseLocation = baseLocation;
-	}
-
-	@Override
-	public void changeBaseLocation(Location location) {
-		baseLocation = location;
 	}
 
 	@Override

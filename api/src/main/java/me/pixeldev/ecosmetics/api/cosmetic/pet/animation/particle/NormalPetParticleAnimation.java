@@ -1,6 +1,6 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
-import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 
 import org.bukkit.Location;
 
@@ -10,7 +10,7 @@ import xyz.xenondevs.particle.ParticleEffect;
 public class NormalPetParticleAnimation
 	extends AbstractPetParticleAnimation {
 
-	public NormalPetParticleAnimation(PetCosmetic.Spectators spectators,
+	public NormalPetParticleAnimation(CosmeticSpectators spectators,
 																		float incrementX, float incrementY, float incrementZ,
 																		int goalTicks, Location baseLocation,
 																		ParticleEffect particleEffect) {

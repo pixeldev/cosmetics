@@ -1,6 +1,6 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
-import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 
 import org.bukkit.Location;
 
@@ -18,7 +18,7 @@ public class CirclePetParticleAnimation
 		0, 0.25, 0.43, 0.5, 0.43, 0.25, 0, -0.25, -0.43, -0.5, -0.43, -0.25
 	};
 
-	public CirclePetParticleAnimation(PetCosmetic.Spectators spectators,
+	public CirclePetParticleAnimation(CosmeticSpectators spectators,
 																		float incrementX, float incrementY, float incrementZ,
 																		int goalTicks, Location baseLocation,
 																		ParticleEffect particleEffect) {

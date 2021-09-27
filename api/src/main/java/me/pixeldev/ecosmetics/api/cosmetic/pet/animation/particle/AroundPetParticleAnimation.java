@@ -1,6 +1,6 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
-import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 
 import org.bukkit.Location;
 
@@ -12,7 +12,7 @@ public class AroundPetParticleAnimation
 
 	private int counter;
 
-	public AroundPetParticleAnimation(PetCosmetic.Spectators spectators,
+	public AroundPetParticleAnimation(CosmeticSpectators spectators,
 																		float incrementX, float incrementY, float incrementZ,
 																		int goalTicks, Location baseLocation,
 																		ParticleEffect particleEffect) {

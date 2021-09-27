@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.v1_8_R3.pet;
 
 import me.pixeldev.alya.versions.v1_8_R3.packet.Packets;
+import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 
@@ -53,7 +54,7 @@ public class SimplePetEntityHandler implements PetEntityHandler {
 		trackerManager.unbindEntry(petCosmetic);
 	}
 
-	private void sendPacketTeleport(PetCosmetic.Spectators spectators, int entityId,
+	private void sendPacketTeleport(CosmeticSpectators spectators, int entityId,
 																	double x, double y, double z,
 																	float yaw, float pitch) {
 		PacketPlayOutEntityTeleport teleportPacket = new PacketPlayOutEntityTeleport();

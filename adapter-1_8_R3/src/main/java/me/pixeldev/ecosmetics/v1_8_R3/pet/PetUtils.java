@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.v1_8_R3.pet;
 
 import me.pixeldev.alya.versions.v1_8_R3.packet.Packets;
+import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 
@@ -33,7 +34,7 @@ public final class PetUtils {
 	}
 
 	public static void spawn(PetCosmetic petCosmetic, Player viewer) {
-		PetCosmetic.Spectators spectators = petCosmetic.getSpectators();
+		CosmeticSpectators spectators = petCosmetic.getSpectators();
 
 		if (spectators.isSpectating(viewer)) {
 			return;
@@ -87,7 +88,7 @@ public final class PetUtils {
 		}
 	}
 
-	public static void destroy(PetCosmetic.Spectators spectators,
+	public static void destroy(CosmeticSpectators spectators,
 														 PacketPlayOutEntityDestroy entityDestroyPacket,
 														 Player viewer) {
 		if (spectators.removeSpectator(viewer)) {

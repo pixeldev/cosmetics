@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
 public enum PetParticleAnimationType {
+
 	NORMAL, CIRCLE, AROUND
 
 	;

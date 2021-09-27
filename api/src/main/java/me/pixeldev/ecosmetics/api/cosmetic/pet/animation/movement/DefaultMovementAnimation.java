@@ -5,18 +5,13 @@ import org.bukkit.Location;
 public class DefaultMovementAnimation
 	implements CosmeticPetMovementAnimation {
 
-	private Location baseLocation;
+	private final Location baseLocation;
 
 	private int counter = 0;
 	private boolean directionChanged = true;
 
 	public DefaultMovementAnimation(Location baseLocation) {
 		this.baseLocation = baseLocation;
-	}
-
-	@Override
-	public void changeBaseLocation(Location location) {
-		baseLocation = location;
 	}
 
 	@Override
@@ -38,31 +33,6 @@ public class DefaultMovementAnimation
 				directionChanged = true;
 			}
 		}
-	}
-
-	@Override
-	public double getX() {
-		return baseLocation.getX();
-	}
-
-	@Override
-	public double getY() {
-		return baseLocation.getY();
-	}
-
-	@Override
-	public double getZ() {
-		return baseLocation.getZ();
-	}
-
-	@Override
-	public float getYaw() {
-		return baseLocation.getYaw();
-	}
-
-	@Override
-	public float getPitch() {
-		return baseLocation.getPitch();
 	}
 
 }
