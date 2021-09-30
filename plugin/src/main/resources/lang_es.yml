@@ -24,3 +24,6 @@ cosmetic:
   handler:
     success-equip: "&e¡Se ha equipado correctamente el cosmético!"
     success-unequip: "&e¡Has desequipado correctamente tu cosmético!"
+    already-equiped: "&c¡Ya tienes equipado este cosmético!"
+    no-cosmetic-equiped: "&cNo tienes ningún cosmético equipado."
+    success-cleared: "&e¡Tu cosmético ha sido removido correctamente!"

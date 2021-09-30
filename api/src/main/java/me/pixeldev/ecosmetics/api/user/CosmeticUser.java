@@ -50,6 +50,13 @@ public final class CosmeticUser implements Model {
 	}
 
 	public void setCurrentCosmetic(Cosmetic<?> currentCosmetic) {
+		if (currentCosmetic == null) {
+			this.currentCosmetic = null;
+			this.currentCategory = null;
+			this.currentTypeKey = null;
+			return;
+		}
+
 		this.currentCosmetic = currentCosmetic;
 		this.currentCategory = currentCosmetic.getCategory();
 		this.currentTypeKey = currentCosmetic.getType().getIdentifier();

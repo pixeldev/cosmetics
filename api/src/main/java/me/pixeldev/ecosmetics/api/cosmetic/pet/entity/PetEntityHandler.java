@@ -11,14 +11,14 @@ import org.bukkit.entity.Player;
  */
 public interface PetEntityHandler {
 
-    void create(PetCosmetic petCosmetic);
+	void create(PetCosmetic petCosmetic);
 
-    void spawn(Player viewer, PetCosmetic petCosmetic);
+	void spawn(Player viewer, PetCosmetic petCosmetic);
 
-    void displayAnimation(PetCosmetic petCosmetic);
+	void displayAnimation(PetCosmetic petCosmetic);
 
-    void destroy(Player viewer, PetCosmetic petCosmetic);
+	void destroy(Player viewer, PetCosmetic petCosmetic);
 
-    void destroy(PetCosmetic petCosmetic);
+	void destroy(PetCosmetic petCosmetic);
 
 }

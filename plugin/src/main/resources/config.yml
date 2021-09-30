@@ -23,6 +23,16 @@ effects:
           first: "CYAN"
           second: "WHITE"
           third: "DARK_BLUE"
+  sakuwings:
+    icon: "REDSTONE"
+    name: "&cAlas de hielo"
+    animations:
+      1:
+        animation: "WINGS"
+        colors:
+          first: "235;38;156"
+          second: "240;137;197"
+          third: "WHITE"
 
 miniatures:
   type: "MINIATURES"

@@ -5,6 +5,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 
+import me.pixeldev.ecosmetics.v1_8_R3.track.EntityTrackerManager;
 import net.minecraft.server.v1_8_R3.*;
 
 import org.bukkit.Location;
@@ -15,7 +16,7 @@ import java.io.IOException;
 
 public class SimplePetEntityHandler implements PetEntityHandler {
 
-	@Inject private PetEntityTrackerManager trackerManager;
+	@Inject private EntityTrackerManager<PetCosmetic> trackerManager;
 
 	@Override
 	public void create(PetCosmetic petCosmetic) {

@@ -69,7 +69,7 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 			.append("\n");
 
 		for (String sectionKey : KNOWN_SECTIONS) {
-			details.append("Parsing section ").append(sectionKey).append("\n\n");
+			details.append("\nParsing section ").append(sectionKey).append("\n\n");
 			registerFromConfigurationSection(configuration.getSection(sectionKey), details);
 		}
 
