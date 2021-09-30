@@ -5,7 +5,7 @@ import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
-import me.pixeldev.ecosmetics.api.cosmetic.effect.EffectAnimationType;
+import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.permission.CosmeticPermissionFormatter;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
@@ -14,12 +14,13 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
+import me.pixeldev.ecosmetics.api.util.ColorUtils;
 import me.pixeldev.ecosmetics.plugin.util.Enums;
-import me.pixeldev.ecosmetics.plugin.util.LoggerUtil;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
@@ -27,8 +28,9 @@ import org.bukkit.inventory.ItemStack;
 import xyz.xenondevs.particle.ParticleEffect;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+import static me.pixeldev.ecosmetics.api.util.ColorUtils.parseFromString;
 
 public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 
@@ -46,17 +48,16 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 	@Override
 	public CosmeticType createFromSection(CosmeticCategory category,
 																				String sectionKey,
-																				YamlConfigurationSection section) {
+																				YamlConfigurationSection section,
+																				StringBuilder details) {
 		String name = section.getString("name");
 		String permission = permissionFormatter.format(category, sectionKey);
 		Material menuIcon = Material.getMaterial(section.getString("icon"));
 
 		if (menuIcon == null && category != CosmeticCategory.MINIATURES) {
-			LoggerUtil.warn(
-				"Cannot parse cosmetic type '"
-					+ sectionKey +
-					"' because cannot found the menu icon."
-			);
+			details.append("Cannot parse cosmetic type '")
+				.append(sectionKey).append("' because hasn't been set the menu icon.")
+				.append("\n");
 			return null;
 		}
 
@@ -69,11 +70,9 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				SkinProvider skinProvider;
 
 				if (skinProviderType == null) {
-					LoggerUtil.warn(
-						"Cannot create a skin provider type from cosmetic '"
-							+ sectionKey +
-							"' using a default one."
-					);
+					details.append("Cannot create a skin provider type from cosmetic '")
+						.append(sectionKey).append("' using a default one.")
+						.append("\n");
 
 					skinProvider = SkinProvider.urlProvider(
 						"beb588b21a6f98ad1ff4e085c552dcb050efc9cab427f46048f18fc803475f7"
@@ -87,11 +86,9 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				YamlConfigurationSection equipmentSection = section.getSection("equipment");
 
 				if (equipmentSection == null) {
-					LoggerUtil.warn(
-						"Cannot create cosmetic type from '"
-							+ sectionKey +
-							"' because MINIATURES must have an equipment section."
-					);
+					details.append("Cannot create cosmetic type from '")
+						.append(sectionKey).append("' because MINIATURES must have an equipment section.")
+						.append("\n");
 					return null;
 				}
 
@@ -123,30 +120,44 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				YamlConfigurationSection particleAnimationSection = section.getSection("particle-animation");
 
 				if (particleAnimationSection == null) {
-					LoggerUtil.warn("Cannot found particle animation section for '" + sectionKey + "'");
+					details.append("Cannot found particle animation section for '")
+						.append(sectionKey).append("'").append("\n");
 					return null;
 				}
 
 				String animationKey = particleAnimationSection.getString("type");
 
 				if (animationKey == null) {
-					LoggerUtil.warn("Particle animation in '" + sectionKey + "' cannot be null.");
+					details.append("Particle animation in '")
+						.append(sectionKey).append("' cannot be null.")
+						.append("\n");
 					return null;
 				}
 
-				PetParticleAnimationType animationType = Enums.valueOf(
-					PetParticleAnimationType.class, animationKey
-				);
+				PetParticleAnimationType animationType = Enums.valueOf(PetParticleAnimationType.class, animationKey);
 
 				if (animationType == null) {
+					details.append("Cannot parse animation type for '")
+						.append(sectionKey).append("'")
+						.append("\n");
 					return null;
 				}
 
-				ParticleEffect particleEffect = Enums.valueOf(
-					ParticleEffect.class, particleAnimationSection.getString("effect")
-				);
+				String particleEffectKey = particleAnimationSection.getString("effect");
+
+				if (particleEffectKey == null) {
+					details.append("Particle effect in '")
+						.append(sectionKey).append("' cannot be null.")
+						.append("\n");
+					return null;
+				}
+
+				ParticleEffect particleEffect = Enums.valueOf(ParticleEffect.class, particleEffectKey);
 
 				if (particleEffect == null) {
+					details.append("Cannot parse effect type for '")
+						.append(sectionKey).append("'")
+						.append("\n");
 					return null;
 				}
 
@@ -166,21 +177,99 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				);
 			}
 			case EFFECTS: {
-				ParticleEffect particleEffect = Enums.valueOf(
-					ParticleEffect.class, section.getString("effect")
-				);
+				YamlConfigurationSection animationsSection = section.getSection("animations");
 
-				EffectAnimationType animationType = Enums.valueOf(
-					EffectAnimationType.class, section.getString("animation")
-				);
+				if (animationsSection == null) {
+					details.append("Cannot parse type '").append(sectionKey)
+						.append("' because animations hasn't been set.")
+						.append("\n");
+					return null;
+				}
 
-				if (particleEffect == null || animationType == null) {
+				Set<String> animationKeys = animationsSection.getKeys(false);
+				Set<EffectCosmeticType.Data> animationTypes = new HashSet<>();
+
+				for (String animationKey : animationKeys) {
+					YamlConfigurationSection animationSection = animationsSection.getSection(animationKey);
+					String animationTypeKey = animationSection.getString("animation");
+
+					if (animationTypeKey == null) {
+						details.append("Animation type in '").append(sectionKey)
+							.append("' animation: '").append(animationKey).append("' cannot be null.")
+							.append("\n");
+						continue;
+					}
+
+					EffectAnimationType animationType = Enums.valueOf(
+						EffectAnimationType.class, animationTypeKey
+					);
+
+					if (animationType == null) {
+						details.append("Cannot parse animation for '").append(sectionKey)
+							.append("' given value: '").append(animationTypeKey).append("'")
+							.append(" animation: '").append(animationKey)
+							.append("\n");
+						continue;
+					}
+
+					ParticleEffect effectType = null;
+					if (animationType.isCustomEffect()) {
+						String effectTypeKey = animationSection.getString("effect");
+
+						if (effectTypeKey == null) {
+							details.append("Effect type in '").append(sectionKey)
+								.append("' animation: '").append(animationKey).append("' cannot be null.")
+								.append("\n");
+							continue;
+						}
+
+						effectType = Enums.valueOf(ParticleEffect.class, effectTypeKey);
+
+						if (effectType == null) {
+							details.append("Cannot parse effect for '").append(sectionKey)
+								.append("' given value: '").append(animationTypeKey).append("'")
+								.append("\n");
+							continue;
+						}
+					}
+
+					if (animationType == EffectAnimationType.WINGS) {
+						YamlConfigurationSection colorsSection = animationSection.getSection("colors");
+
+						if (colorsSection == null) {
+							details.append("Cannot parse animation for '").append(sectionKey)
+								.append("' because the animation type is 'wings' and there aren't colors section")
+								.append("\n");
+							continue;
+						}
+
+						Color firstColor = parseFromString(colorsSection.getString("first"));
+						Color secondColor = parseFromString(colorsSection.getString("second"));
+						Color thirColor = parseFromString(colorsSection.getString("third"));
+
+						if (firstColor == null || secondColor == null || thirColor == null) {
+							details.append("Cannot parse any of colors for '").append(sectionKey)
+								.append("' in wings animation, check values and try again.")
+								.append("\n");
+							continue;
+						}
+
+						animationTypes.add(new EffectCosmeticType.WingsData(
+							effectType, animationType,
+							firstColor, secondColor, thirColor
+						));
+					} else {
+						animationTypes.add(new EffectCosmeticType.Data(effectType, animationType));
+					}
+				}
+
+				if (animationTypes.isEmpty()) {
 					return null;
 				}
 
 				return new EffectCosmeticType(
 					name, permission, sectionKey, menuIcon, category,
-					animationType, particleEffect
+					animationTypes
 				);
 			}
 			case MORPHS: {

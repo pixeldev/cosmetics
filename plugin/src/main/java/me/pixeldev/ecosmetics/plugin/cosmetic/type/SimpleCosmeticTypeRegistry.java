@@ -6,7 +6,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
-import me.pixeldev.ecosmetics.plugin.util.LoggerUtil;
+import me.pixeldev.ecosmetics.api.util.LoggerUtil;
 
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -25,12 +25,13 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 	@Inject private CosmeticTypeCreator cosmeticTypeCreator;
 
 	@Override
-	public void registerFromConfigurationSection(YamlConfigurationSection section) {
+	public void registerFromConfigurationSection(YamlConfigurationSection section, StringBuilder details) {
 		String categoryKey = section.getString("type");
 		CosmeticCategory category = CosmeticCategory.getByName(categoryKey);
 
 		if (category == null) {
-			LoggerUtil.warn("Cannot found a valid category. Input: '" + categoryKey + "'");
+			details.append("Cannot found a valid category. Input: '")
+				.append(categoryKey).append("'").append("\n");
 
 			return;
 		}
@@ -44,12 +45,15 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 			YamlConfigurationSection currentSection = section.getSection(sectionKey);
 
 			CosmeticType parsedType = cosmeticTypeCreator.createFromSection(
-				category, sectionKey, currentSection
+				category, sectionKey, currentSection, details
 			);
 
 			if (parsedType == null) {
 				continue;
 			}
+
+			details.append("Successfully added type '").append(sectionKey)
+				.append("'").append("\n");
 
 			parsedTypes.put(sectionKey, parsedType);
 		}
@@ -59,9 +63,19 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 
 	@Override
 	public void registerFromAllKnownSections() {
+		StringBuilder details = new StringBuilder();
+		details.append("\n=========================")
+			.append("\nCOSMETIC PARSING DETAILS:")
+			.append("\n");
+
 		for (String sectionKey : KNOWN_SECTIONS) {
-			registerFromConfigurationSection(configuration.getSection(sectionKey));
+			details.append("Parsing section ").append(sectionKey).append("\n\n");
+			registerFromConfigurationSection(configuration.getSection(sectionKey), details);
 		}
+
+		details.append("=========================");
+
+		LoggerUtil.info(details.toString());
 	}
 
 	@Override

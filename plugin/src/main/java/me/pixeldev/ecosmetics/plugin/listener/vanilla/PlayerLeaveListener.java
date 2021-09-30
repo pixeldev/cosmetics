@@ -2,6 +2,7 @@ package me.pixeldev.ecosmetics.plugin.listener.vanilla;
 
 import me.pixeldev.alya.api.auto.listener.AutoListener;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
+import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
@@ -19,9 +20,8 @@ import javax.inject.Inject;
 @AutoListener
 public class PlayerLeaveListener implements Listener {
 
-	@Inject private Plugin plugin;
+	@Inject private CosmeticHandler cosmeticHandler;
 	@Inject private CosmeticUserService userService;
-	@Inject private PetEntityHandler petEntityHandler;
 
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event) {
@@ -34,13 +34,7 @@ public class PlayerLeaveListener implements Listener {
 					return;
 				}
 
-				if (cosmeticUser.getCurrentCategory() == CosmeticCategory.MINIATURES) {
-					Bukkit.getScheduler().runTaskLater(
-						plugin,
-						() -> petEntityHandler.destroy((PetCosmetic) cosmeticUser.getCurrentCosmetic()),
-						1
-					);
-				}
+				cosmeticHandler.unequipCosmetic(cosmeticUser);
 			});
 	}
 

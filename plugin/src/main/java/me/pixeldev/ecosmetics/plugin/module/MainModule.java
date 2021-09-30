@@ -2,6 +2,7 @@ package me.pixeldev.ecosmetics.plugin.module;
 
 import me.pixeldev.alya.api.yaml.YamlFileConfiguration;
 import me.pixeldev.alya.bukkit.config.BukkitYamlFileConfiguration;
+import me.pixeldev.alya.bukkit.translation.MessageModule;
 import me.pixeldev.alya.storage.universal.inject.UniversalModelModule;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.plugin.CosmeticsPlugin;
@@ -32,6 +33,7 @@ public final class MainModule extends AbstractModule {
 
 		install(
 			new CosmeticsModule(), new StructureModule(),
+			new MessageModule(),
 			new MessageConfigurationModule(),
 			new UniversalModelModule<>(
 				CosmeticUser.class,

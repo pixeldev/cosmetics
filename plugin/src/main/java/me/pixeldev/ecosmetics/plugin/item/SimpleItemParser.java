@@ -2,14 +2,13 @@ package me.pixeldev.ecosmetics.plugin.item;
 
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
-import me.pixeldev.ecosmetics.plugin.util.LoggerUtil;
+import me.pixeldev.ecosmetics.api.util.ColorUtils;
+import me.pixeldev.ecosmetics.api.util.LoggerUtil;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
-import team.unnamed.gui.core.item.LeatherArmorColor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,22 +30,10 @@ public class SimpleItemParser implements ItemParser {
 
 		if (colorKey != null) {
 			LeatherArmorMeta armorMeta = (LeatherArmorMeta) itemStack.getItemMeta();
+			Color color = ColorUtils.parseFromString(colorKey);
 
-			try {
-				LeatherArmorColor armorColor = LeatherArmorColor.valueOf(colorKey);
-
-				armorMeta.setColor(Color.fromRGB(
-					armorColor.getRed(),
-					armorColor.getGreen(),
-					armorColor.getBlue()
-				));
-			} catch (IllegalArgumentException ignored) {
-				String[] rgbColors = colorKey.split(";");
-				armorMeta.setColor(Color.fromRGB(
-					Integer.parseInt(rgbColors[0]),
-					Integer.parseInt(rgbColors[1]),
-					Integer.parseInt(rgbColors[2])
-				));
+			if (color != null) {
+				armorMeta.setColor(color);
 			}
 
 			itemStack.setItemMeta(armorMeta);

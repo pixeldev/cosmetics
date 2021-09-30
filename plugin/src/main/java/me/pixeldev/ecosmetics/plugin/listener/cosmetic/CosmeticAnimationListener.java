@@ -5,6 +5,7 @@ import me.pixeldev.alya.bukkit.tick.ServerTickCause;
 import me.pixeldev.alya.bukkit.tick.ServerTickEvent;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
+import me.pixeldev.ecosmetics.api.cosmetic.effect.EffectCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
@@ -16,7 +17,7 @@ import org.bukkit.event.Listener;
 import javax.inject.Inject;
 
 @AutoListener
-public class PetAnimationListener implements Listener {
+public class CosmeticAnimationListener implements Listener {
 
 	@Inject private CosmeticUserService userService;
 	@Inject private PetEntityHandler petEntityHandler;
@@ -36,11 +37,20 @@ public class PetAnimationListener implements Listener {
 
 			CosmeticCategory category = cosmetic.getCategory();
 
-			if (category == CosmeticCategory.MINIATURES) {
-				PetCosmetic petCosmetic = (PetCosmetic) cosmetic;
+			switch (category) {
+				case MINIATURES: {
+					PetCosmetic petCosmetic = (PetCosmetic) cosmetic;
 
-				petCosmetic.run();
-				petEntityHandler.displayAnimation(petCosmetic);
+					petCosmetic.run();
+					petEntityHandler.displayAnimation(petCosmetic);
+					break;
+				}
+				case EFFECTS: {
+					EffectCosmetic effectCosmetic = (EffectCosmetic) cosmetic;
+
+					effectCosmetic.run();
+					break;
+				}
 			}
 		}
 	}

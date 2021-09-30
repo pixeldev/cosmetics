@@ -17,6 +17,7 @@ public interface CosmeticTypeCreator {
 	 */
 	CosmeticType createFromSection(CosmeticCategory category,
 																 String sectionKey,
-																 YamlConfigurationSection section);
+																 YamlConfigurationSection section,
+																 StringBuilder details);
 
 }

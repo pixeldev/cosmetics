@@ -1,12 +1,14 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation;
 
+import me.pixeldev.ecosmetics.api.cosmetic.animation.CosmeticAnimation;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.lang.ref.WeakReference;
 
 public final class PlayerFollowerPetAnimation
-	implements Runnable {
+	implements CosmeticAnimation {
 
 	private final WeakReference<Player> ownerReference;
 	private final Location baseLocation;

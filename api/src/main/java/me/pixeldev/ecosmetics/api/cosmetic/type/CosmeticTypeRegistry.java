@@ -14,7 +14,7 @@ public interface CosmeticTypeRegistry {
 	 * returns.
 	 * @param section Section to read from config.
 	 */
-	void registerFromConfigurationSection(YamlConfigurationSection section);
+	void registerFromConfigurationSection(YamlConfigurationSection section, StringBuilder details);
 
 	/**
 	 * Read and load all the types from default section.

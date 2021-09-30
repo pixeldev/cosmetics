@@ -13,11 +13,16 @@ morphs:
 
 effects:
   type: "EFFECTS"
-  demon-rings:
+  wings:
     icon: "REDSTONE"
-    name: "&cAnillos del demonio"
-    animation: "RINGS"
-    effect: "REDSTONE"
+    name: "&cAlas de hielo"
+    animations:
+      1:
+        animation: "WINGS"
+        colors:
+          first: "CYAN"
+          second: "WHITE"
+          third: "DARK_BLUE"
 
 miniatures:
   type: "MINIATURES"
