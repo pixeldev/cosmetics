@@ -101,10 +101,13 @@ public class WingsEffectAnimation
 
 				ParticleData finalColor = color;
 
-				spectators.consumeAsPlayers(spectator -> effect.display(
-					target, 0, 0, 0,
-					0, 1, finalColor, spectator
-				));
+				spectators.consumeAsPlayers(spectator -> {
+					effect.display(
+						target, 0, 0, 0,
+						0, 1, finalColor, spectator
+					);
+					System.out.println("Showing to " + spectator.getName());
+				});
 
 				x += SPACE;
 			}

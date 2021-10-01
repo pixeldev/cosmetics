@@ -23,6 +23,7 @@ public class EffectEntityTrackerEntry
 
 	@Override
 	protected void show(EntityPlayer player) {
+		System.out.println("Adding spectator " + player.getName());
 		effectCosmetic.getSpectators().addSpectator(
 			player.getBukkitEntity()
 		);
@@ -30,6 +31,7 @@ public class EffectEntityTrackerEntry
 
 	@Override
 	protected void hide(EntityPlayer player) {
+		System.out.println("Removing spectator " + player.getName());
 		effectCosmetic.getSpectators().removeSpectator(
 			player.getBukkitEntity()
 		);

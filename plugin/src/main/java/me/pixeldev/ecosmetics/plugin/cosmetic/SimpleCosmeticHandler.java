@@ -45,7 +45,7 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 			return;
 		}
 
-		Bukkit.getScheduler().runTaskLater(plugin, runnable, 1);
+		Bukkit.getScheduler().runTaskLater(plugin, runnable, 2);
 	}
 
 	@Override
