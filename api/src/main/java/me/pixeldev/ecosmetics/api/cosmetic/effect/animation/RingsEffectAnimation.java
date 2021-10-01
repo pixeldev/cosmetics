@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
 public class RingsEffectAnimation
 	extends AbstractEffectCosmeticAnimation {
 
-	private static double INTERVAL = (2 * Math.PI) / 100;
+	private static final double INTERVAL = (2 * Math.PI) / 100;
 
 	private float step;
 
@@ -36,7 +36,7 @@ public class RingsEffectAnimation
 			double angle = step * INTERVAL + toAdd;
 			Vector vector = new Vector(
 				Math.cos(angle),
-				1,
+				0,
 				Math.sin(angle)
 			);
 
@@ -46,10 +46,10 @@ public class RingsEffectAnimation
 				VectorUtils.rotateAroundAxisZ(vector, 90);
 			}
 
-			Location location = player.getLocation().add(vector);
+			Location location = player.getLocation().add(vector).add(0, 1, 0);
 			spectators.consumeAsPlayers(spectator -> effect.display(
 				location, 0, 0, 0,
-				1, 128,
+				0, 1,
 				null, spectator
 			));
 		}

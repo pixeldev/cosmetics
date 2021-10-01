@@ -1,28 +1,26 @@
 package me.pixeldev.ecosmetics.api.cosmetic;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.UUID;
+import java.lang.ref.WeakReference;
+import java.util.*;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
 
 public final class CosmeticSpectators {
 
-	private final Set<UUID> spectators = new HashSet<>();
+	private final Map<UUID, WeakReference<Player>> spectators = new HashMap<>();
 
 	public boolean addSpectator(Player who) {
-		return spectators.add(who.getUniqueId());
+		return spectators.put(who.getUniqueId(), new WeakReference<>(who)) == null;
 	}
 
 	public boolean removeSpectator(Player who) {
-		return spectators.remove(who.getUniqueId());
+		return spectators.remove(who.getUniqueId()) != null;
 	}
 
 	public boolean isSpectating(Player who) {
-		return spectators.contains(who.getUniqueId());
+		return spectators.containsKey(who.getUniqueId());
 	}
 
 	/**
@@ -34,18 +32,21 @@ public final class CosmeticSpectators {
 	 */
 	public void consumeAsPlayers(Consumer<Player> consumer) {
 		/* using the iterator to remove while iterating */
-		Iterator<UUID> iterator = spectators.iterator();
+		Iterator<Map.Entry<UUID, WeakReference<Player>>> iterator
+			= spectators.entrySet().iterator();;
 
 		while (iterator.hasNext()) {
-			Player current = Bukkit.getPlayer(iterator.next());
+			Entry<UUID, WeakReference<Player>> entry = iterator.next();
+			UUID id = entry.getKey();
+			Player player = entry.getValue().get();
 
-			if (current == null) {
+			if (player == null) {
 				//player has left server, we need to remove from spectators.
-				iterator.remove();
+				spectators.remove(id);
 				continue;
 			}
 
-			consumer.accept(current);
+			consumer.accept(player);
 		}
 	}
 

@@ -22,7 +22,6 @@ public class EntityTrackerManager<T extends Cosmetic<?>> {
 			entry
 		);
 		entries.put(cosmetic.getOwnerId(), entry);
-		System.out.println("Bound entry " + entry);
 	}
 
 	public void unbindEntry(T cosmetic) {
@@ -32,7 +31,6 @@ public class EntityTrackerManager<T extends Cosmetic<?>> {
 			return;
 		}
 
-		System.out.println("Removed entry " + entry);
 		EntityTrackerAccessor.removeEntry(
 			cosmetic.getPlayer().getWorld(),
 			entry
