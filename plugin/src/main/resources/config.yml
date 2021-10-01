@@ -62,6 +62,41 @@ effects:
       1:
         animation: "AROUND"
         effect: "VILLAGER_HAPPY"
+  flamecompanion:
+    icon: "BLAZE_ROD"
+    name: "&bFlamas acompañantes"
+    animations:
+      1:
+        animation: "COMPANION"
+        effect: "FLAME"
+  flamebean:
+    icon: "BLAZE_ROD"
+    name: "&bFlama beam"
+    animations:
+      1:
+        animation: "BEAM"
+        effect: "FLAME"
+  flamechains:
+    icon: "BLAZE_ROD"
+    name: "&bCadenas de fuego"
+    animations:
+      1:
+        animation: "CHAINS"
+        effect: "FLAME"
+  flamefeet:
+    icon: "BLAZE_ROD"
+    name: "&bPies de fuego"
+    animations:
+      1:
+        animation: "FEET"
+        effect: "FLAME"
+  flamehalo:
+    icon: "BLAZE_ROD"
+    name: "&bHalo de fuego"
+    animations:
+      1:
+        animation: "HALO"
+        effect: "FLAME"
 
 miniatures:
   type: "MINIATURES"

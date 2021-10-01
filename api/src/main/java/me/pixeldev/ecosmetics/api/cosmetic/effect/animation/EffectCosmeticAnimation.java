@@ -58,6 +58,36 @@ public interface EffectCosmeticAnimation
 					);
 					break;
 				}
+				case COMPANION: {
+					animation = new CompanionEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case BEAM: {
+					animation = new BeamEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case CHAINS: {
+					animation = new ChainsEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case FEET: {
+					animation = new FeetEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case HALO: {
+					animation = new HaloEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
 				default:
 					animation = null;
 					break;

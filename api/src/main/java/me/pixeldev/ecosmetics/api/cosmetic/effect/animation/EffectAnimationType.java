@@ -8,6 +8,11 @@ public enum EffectAnimationType {
 	MUSIC(false),
 	RINGS,
 	WAVES,
+	COMPANION,
+	BEAM,
+	CHAINS,
+	FEET,
+	HALO,
 	WINGS(false)
 
 	;
