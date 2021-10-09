@@ -1,5 +1,10 @@
 package me.pixeldev.ecosmetics.plugin.cosmetic;
 
+import com.sk89q.worldguard.bukkit.WGBukkit;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+
+import me.pixeldev.alya.api.yaml.YamlFileConfiguration;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
@@ -17,10 +22,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import javax.inject.Inject;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SimpleCosmeticHandler implements CosmeticHandler {
 
 	@Inject private Plugin plugin;
+	@Inject private YamlFileConfiguration config;
 	@Inject private PetEntityHandler petEntityHandler;
 	@Inject private EffectHandler effectHandler;
 
@@ -49,7 +57,7 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 	}
 
 	@Override
-	public boolean unequipCosmetic(CosmeticUser user) {
+	public boolean unequipCosmetic(CosmeticUser user, boolean removeFromUser) {
 		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
 		Runnable runnable = null;
 
@@ -68,7 +76,10 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 			return false;
 		}
 
-		user.setCurrentCosmetic(null);
+		if (removeFromUser) {
+			user.setCurrentCosmetic(null);
+		}
+
 		Bukkit.getScheduler().runTaskLater(plugin, runnable, 1);
 		return true;
 	}
@@ -85,16 +96,34 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 	}
 
 	@Override
-	public Cosmetic<?> create(CosmeticCategory category, Player owner, CosmeticType cosmeticType) {
+	public boolean canBeEquipped(Player player) {
+		Set<String> deniedRegions = new HashSet<>(config.getStringList(
+			"cosmetics.denied-regions"
+		));
+
+		ApplicableRegionSet regions = WGBukkit.getRegionManager(player.getWorld())
+			.getApplicableRegions(player.getLocation());
+
+		for (ProtectedRegion region : regions.getRegions()) {
+			if (deniedRegions.contains(region.getId())) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	@Override
+	public Cosmetic<?> create(CosmeticUser owner, CosmeticCategory category, CosmeticType cosmeticType) {
 		switch (category) {
 			case MINIATURES: {
-				return new PetCosmetic(owner, (PetCosmeticType) cosmeticType);
+				return new PetCosmetic(owner.getPlayerReference(), (PetCosmeticType) cosmeticType);
 			}
 			case MORPHS: {
 
 			}
 			case EFFECTS: {
-				return new EffectCosmetic(owner, (EffectCosmeticType) cosmeticType);
+				return new EffectCosmetic(owner.getPlayerReference(), (EffectCosmeticType) cosmeticType);
 			}
 			default: return null;
 		}
