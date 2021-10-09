@@ -1,7 +1,7 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
-import me.pixeldev.ecosmetics.api.cosmetic.animation.CosmeticAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.CosmeticPetAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 
 import org.bukkit.Location;
@@ -9,9 +9,7 @@ import org.bukkit.Location;
 import xyz.xenondevs.particle.ParticleEffect;
 
 public interface CosmeticPetParticleAnimation
-	extends CosmeticAnimation {
-
-	void changeParticle(ParticleEffect particleEffect);
+	extends CosmeticPetAnimation {
 
 	static CosmeticPetParticleAnimation of(Location baseLocation,
 																				 CosmeticSpectators spectators,

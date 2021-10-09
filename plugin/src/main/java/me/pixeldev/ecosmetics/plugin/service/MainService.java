@@ -9,6 +9,7 @@ import java.util.Set;
 public final class MainService implements Service {
 
 	@Inject private Set<Loader> loaders;
+	@Inject private CosmeticUserService userService;
 
 	@Override
 	public void start() {
@@ -17,7 +18,7 @@ public final class MainService implements Service {
 
 	@Override
 	public void stop() {
-
+		userService.stop();
 	}
 
 }

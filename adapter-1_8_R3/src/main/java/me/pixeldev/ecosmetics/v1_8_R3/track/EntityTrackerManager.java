@@ -3,6 +3,7 @@ package me.pixeldev.ecosmetics.v1_8_R3.track;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 
 import net.minecraft.server.v1_8_R3.EntityTrackerEntry;
+import org.bukkit.Bukkit;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class EntityTrackerManager<T extends Cosmetic<?>> {
 
 	public void bindEntry(T cosmetic, EntityTrackerEntry entry) {
 		EntityTrackerAccessor.addEntry(
-			cosmetic.getPlayer().getWorld(),
+			Bukkit.getWorld(cosmetic.getWorldName()),
 			entry
 		);
 		entries.put(cosmetic.getOwnerId(), entry);
@@ -32,7 +33,7 @@ public class EntityTrackerManager<T extends Cosmetic<?>> {
 		}
 
 		EntityTrackerAccessor.removeEntry(
-			cosmetic.getPlayer().getWorld(),
+			Bukkit.getWorld(cosmetic.getWorldName()),
 			entry
 		);
 	}

@@ -1,17 +1,17 @@
 package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement;
 
+import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.AbstractCosmeticPetAnimation;
+
 import org.bukkit.Location;
 
 public class DefaultMovementAnimation
-	implements CosmeticPetMovementAnimation {
-
-	private final Location baseLocation;
+	extends AbstractCosmeticPetAnimation {
 
 	private int counter = 0;
 	private boolean directionChanged = true;
 
 	public DefaultMovementAnimation(Location baseLocation) {
-		this.baseLocation = baseLocation;
+		super(baseLocation);
 	}
 
 	@Override

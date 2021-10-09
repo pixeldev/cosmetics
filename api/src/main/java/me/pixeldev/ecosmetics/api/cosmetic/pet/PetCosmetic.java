@@ -3,8 +3,8 @@ package me.pixeldev.ecosmetics.api.cosmetic.pet;
 import me.pixeldev.ecosmetics.api.cosmetic.AbstractCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
-import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.PlayerFollowerPetAnimation;
-import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.CosmeticPetMovementAnimation;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.CosmeticPetAnimation;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.PlayerFollowerPetAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.DefaultMovementAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.CosmeticPetParticleAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
@@ -20,11 +20,11 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 	// used to assign the corresponding entity id.
 	private int entityId;
 
-	private final Location actualLocation;
+	private Location actualLocation;
 
 	private final PlayerFollowerPetAnimation followerPetAnimation;
 	private final CosmeticPetParticleAnimation particleAnimation;
-	private final CosmeticPetMovementAnimation movementAnimation;
+	private final CosmeticPetAnimation movementAnimation;
 
 	public PetCosmetic(Player owner, PetCosmeticType type) {
 		super(owner, type);
@@ -56,6 +56,13 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 
 	public Location getActualLocation() {
 		return actualLocation;
+	}
+
+	public void setActualLocation(Location location) {
+		actualLocation = location;
+		followerPetAnimation.changeBaseLocation(location);
+		particleAnimation.changeBaseLocation(location);
+		movementAnimation.changeBaseLocation(location);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
-package me.pixeldev.ecosmetics.api.cosmetic.pet.animation;
+package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement;
 
-import me.pixeldev.ecosmetics.api.cosmetic.animation.CosmeticAnimation;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.AbstractCosmeticPetAnimation;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -8,15 +8,14 @@ import org.bukkit.entity.Player;
 import java.lang.ref.WeakReference;
 
 public final class PlayerFollowerPetAnimation
-	implements CosmeticAnimation {
+	extends AbstractCosmeticPetAnimation {
 
 	private final WeakReference<Player> ownerReference;
-	private final Location baseLocation;
 
 	public PlayerFollowerPetAnimation(WeakReference<Player> ownerReference,
 																		Location baseLocation) {
+		super(baseLocation);
 		this.ownerReference = ownerReference;
-		this.baseLocation = baseLocation;
 	}
 
 	@Override

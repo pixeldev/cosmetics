@@ -34,8 +34,8 @@ abstract class AbstractPetParticleAnimation
 	}
 
 	@Override
-	public void changeParticle(ParticleEffect particleEffect) {
-		this.particleEffect = particleEffect;
+	public void changeBaseLocation(Location location) {
+		baseLocation = location;
 	}
 
 }
