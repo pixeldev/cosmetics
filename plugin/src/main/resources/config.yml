@@ -97,6 +97,83 @@ effects:
       1:
         animation: "HALO"
         effect: "FLAME"
+  flameorbit:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "ORBIT"
+        effect: "FLAME"
+  flameoverhead:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "OVERHEAD"
+        effect: "FLAME"
+  flamepoint:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "POINT"
+        effect: "FLAME"
+  flamepopper:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "POPPER"
+        effect: "FLAME"
+  flamenormal:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "NORMAL"
+        effect: "FLAME"
+  flamepulse:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "PULSE"
+        effect: "FIREWORKS_SPARK"
+  flamequad:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "QUAD_HELIX"
+        effect: "FLAME"
+  flameatom:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "ATOM"
+        effect: "FLAME"
+  flamesphere:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "SPHERE"
+        effect: "FLAME"
+  flamespin:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "SPIN"
+        effect: "FLAME"
+  flamewhirl:
+    icon: "BLAZE_ROD"
+    name: "&bÓrbita de fuego"
+    animations:
+      1:
+        animation: "WHIRL"
+        effect: "FIREWORKS_SPARK"
 
 miniatures:
   type: "MINIATURES"

@@ -88,6 +88,72 @@ public interface EffectCosmeticAnimation
 					);
 					break;
 				}
+				case NORMAL: {
+					animation = new NormalEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case ORBIT: {
+					animation = new OrbitEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case POINT: {
+					animation = new PointEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case OVERHEAD: {
+					animation = new OverheadEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case POPPER: {
+					animation = new PopperEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case PULSE: {
+					animation = new PulseEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case QUAD_HELIX: {
+					animation = new QuadHelixEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case ATOM: {
+					animation = new AtomEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case SPHERE: {
+					animation = new SphereEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case SPIN: {
+					animation = new SpinEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
+				case WHIRL: {
+					animation = new WhirlEffectAnimation(
+						ownerReference, spectators, particleEffect
+					);
+					break;
+				}
 				default:
 					animation = null;
 					break;

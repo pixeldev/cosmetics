@@ -13,6 +13,17 @@ public enum EffectAnimationType {
 	CHAINS,
 	FEET,
 	HALO,
+	ORBIT,
+	OVERHEAD,
+	POINT,
+	POPPER,
+	NORMAL,
+	PULSE,
+	QUAD_HELIX,
+	ATOM,
+	SPHERE,
+	SPIN,
+	WHIRL,
 	WINGS(false)
 
 	;

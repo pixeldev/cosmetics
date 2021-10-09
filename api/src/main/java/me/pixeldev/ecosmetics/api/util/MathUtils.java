@@ -22,4 +22,8 @@ public final class MathUtils {
 			(RANDOM.nextDouble() * (max - min) + min);
 	}
 
+	public static double randomDouble() {
+		return RANDOM.nextDouble();
+	}
+
 }

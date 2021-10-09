@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 
 public class FeetEffectAnimation extends AbstractEffectCosmeticAnimation {
 
-	private static final double FEET_OFFSET = -0.25;
+	private static final double FEET_OFFSET = 0.1;
 	private static final float PARTICLE_SPREAD_X = 0.4F;
 	private static final float PARTICLE_SPREAD_Y = 0F;
 	private static final float PARTICLE_SPREAD_Z = 0.4F;

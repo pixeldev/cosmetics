@@ -22,10 +22,10 @@ public class ChainsEffectAnimation
 	@Override
 	protected void runAnimation(Player player) {
 		for (double n = -0.2; n < 0.6; n += 0.8 / PARTICLE_AMOUNT) {
-			Location first = player.getLocation().add(1 - n, n - 1.1, 1 - n);
-			Location second = player.getLocation().add(1 - n, n - 1.1, -1 + n);
-			Location third = player.getLocation().add(-1 + n, n - 1.1, 1 - n);
-			Location fourth = player.getLocation().add(-1 + n, n - 1.1, -1 + n);
+			Location first = player.getLocation().add(1 - n, n - 0.5, 1 - n);
+			Location second = player.getLocation().add(1 - n, n - 0.5, -1 + n);
+			Location third = player.getLocation().add(-1 + n, n - 0.5, 1 - n);
+			Location fourth = player.getLocation().add(-1 + n, n - 0.5, -1 + n);
 
 			spectators.consumeAsPlayers(spectator -> {
 				effect.display(first, spectator);
