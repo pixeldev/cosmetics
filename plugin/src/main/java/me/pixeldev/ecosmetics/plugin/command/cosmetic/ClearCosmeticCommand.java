@@ -28,7 +28,7 @@ public class ClearCosmeticCommand implements CommandClass {
 			return;
 		}
 
-		if (cosmeticHandler.unequipCosmetic(user)) {
+		if (cosmeticHandler.unequipCosmetic(user, true)) {
 			messageHandler.sendIn(user.getPlayer(), SendingModes.SUCCESS, "cosmetic.handler.success-cleared");
 		}
 	}

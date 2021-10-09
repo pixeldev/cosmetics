@@ -38,17 +38,22 @@ public class GetCosmeticCommand implements CommandClass {
 		}
 
 		if (cosmeticHandler.hasAlreadyEquipedCosmetic(user, cosmeticType)) {
-			messageHandler.sendIn(sender, SendingModes.ERROR, "cosmetic.handler.already-equiped");
+			messageHandler.sendIn(sender, SendingModes.ERROR, "cosmetic.handler.already-equipped");
+			return;
+		}
+
+		if (!cosmeticHandler.canBeEquipped(sender)) {
+			messageHandler.sendIn(sender, SendingModes.ERROR, "cosmetic.handler.can-not-be-equipped");
 			return;
 		}
 
 		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
 
 		if (currentCosmetic != null) {
-			cosmeticHandler.unequipCosmetic(user);
+			cosmeticHandler.unequipCosmetic(user, true);
 		}
 
-		Cosmetic<?> cosmetic = cosmeticHandler.create(category, sender, cosmeticType);
+		Cosmetic<?> cosmetic = cosmeticHandler.create(user, category, cosmeticType);
 
 		if (cosmetic == null) {
 			return;
