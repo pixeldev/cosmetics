@@ -39,13 +39,13 @@ public class PlayerChangedWorldListener
 		if (category != null) {
 			String typeKey = user.getCurrentTypeKey();
 
-			cosmeticHandler.unequipCosmetic(user);
+			cosmeticHandler.unequipCosmetic(user, true);
 
 			CosmeticType cosmeticType = cosmeticTypeRegistry.getCosmeticType(
 				category, typeKey
 			);
 
-			Cosmetic<?> cosmetic = cosmeticHandler.create(category, player, cosmeticType);
+			Cosmetic<?> cosmetic = cosmeticHandler.create(user, category, cosmeticType);
 			cosmeticHandler.equipCosmetic(user, cosmetic);
 		}
 	}
