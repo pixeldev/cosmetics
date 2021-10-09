@@ -6,9 +6,9 @@ import me.pixeldev.alya.storage.universal.internal.meta.Cached;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.lang.ref.WeakReference;
 import java.util.UUID;
 
 @Cached
@@ -21,11 +21,13 @@ public final class CosmeticUser implements Model {
 	private CosmeticCategory currentCategory;
 	private String currentTypeKey;
 
+	private transient WeakReference<Player> playerReference;
 	private transient Cosmetic<?> currentCosmetic;
 
-	private CosmeticUser(UUID uuid, String username) {
-		this.uuid = uuid;
-		this.username = username;
+	private CosmeticUser(Player player) {
+		this.uuid = player.getUniqueId();
+		this.username = player.getName();
+		this.playerReference = new WeakReference<>(player);
 	}
 
 	@Override
@@ -34,7 +36,15 @@ public final class CosmeticUser implements Model {
 	}
 
 	public Player getPlayer() {
-		return Bukkit.getPlayer(uuid);
+		return playerReference.get();
+	}
+
+	public WeakReference<Player> getPlayerReference() {
+		return playerReference;
+	}
+
+	public void setPlayerReference(Player player) {
+		this.playerReference = new WeakReference<>(player);
 	}
 
 	public UUID getUuid() {
@@ -54,12 +64,11 @@ public final class CosmeticUser implements Model {
 			this.currentCosmetic = null;
 			this.currentCategory = null;
 			this.currentTypeKey = null;
-			return;
+		} else {
+			this.currentCosmetic = currentCosmetic;
+			this.currentCategory = currentCosmetic.getCategory();
+			this.currentTypeKey = currentCosmetic.getType().getIdentifier();
 		}
-
-		this.currentCosmetic = currentCosmetic;
-		this.currentCategory = currentCosmetic.getCategory();
-		this.currentTypeKey = currentCosmetic.getType().getIdentifier();
 	}
 
 	public CosmeticCategory getCurrentCategory() {
@@ -88,8 +97,8 @@ public final class CosmeticUser implements Model {
 			'}';
 	}
 
-	public static CosmeticUser of(Player player) {
-		return new CosmeticUser(player.getUniqueId(), player.getName());
+	public static CosmeticUser create(Player player) {
+		return new CosmeticUser(player);
 	}
 
 }

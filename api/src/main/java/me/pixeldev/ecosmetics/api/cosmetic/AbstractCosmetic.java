@@ -2,7 +2,6 @@ package me.pixeldev.ecosmetics.api.cosmetic;
 
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.lang.ref.WeakReference;
@@ -13,12 +12,16 @@ public abstract class AbstractCosmetic<T extends CosmeticType>
 
 	protected final WeakReference<Player> ownerReference;
 	protected String worldName;
+	protected boolean equipped;
 	protected final UUID ownerId;
 	protected final T type;
 
-	protected AbstractCosmetic(Player owner, T type) {
-		this.ownerReference = new WeakReference<>(owner);
+	protected AbstractCosmetic(WeakReference<Player> ownerReference, T type) {
+		this.ownerReference = ownerReference;
+
+		Player owner = ownerReference.get();
 		this.worldName = owner.getWorld().getName();
+		this.equipped = true;
 		this.ownerId = owner.getUniqueId();
 		this.type = type;
 	}
@@ -44,8 +47,13 @@ public abstract class AbstractCosmetic<T extends CosmeticType>
 	}
 
 	@Override
-	public void setWorlName(Location newLocation) {
-		this.worldName = newLocation.getWorld().getName();
+	public boolean isEquipped() {
+		return equipped;
+	}
+
+	@Override
+	public void setEquipped(boolean equipped) {
+		this.equipped = equipped;
 	}
 
 }

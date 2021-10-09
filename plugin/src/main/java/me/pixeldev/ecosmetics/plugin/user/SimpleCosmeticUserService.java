@@ -55,7 +55,7 @@ public class SimpleCosmeticUserService implements CosmeticUserService {
 		}
 
 		if (cosmeticUser == null) {
-			cosmeticUser = CosmeticUser.of(player);
+			cosmeticUser = CosmeticUser.create(player);
 
 			try {
 				uploadService.uploadSync(cosmeticUser, false);
