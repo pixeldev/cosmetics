@@ -30,26 +30,27 @@ public class CosmeticAnimationListener implements Listener {
 
 		for (CosmeticUser cosmeticUser : userService.getAllCachedUsers()) {
 			Cosmetic<?> cosmetic = cosmeticUser.getCurrentCosmetic();
+			CosmeticCategory category = cosmeticUser.getCurrentCategory();
 
 			if (cosmetic == null) {
 				continue;
 			}
 
-			CosmeticCategory category = cosmetic.getCategory();
+			if (cosmetic.isEquipped()) {
+				switch (category) {
+					case MINIATURES: {
+						PetCosmetic petCosmetic = (PetCosmetic) cosmetic;
 
-			switch (category) {
-				case MINIATURES: {
-					PetCosmetic petCosmetic = (PetCosmetic) cosmetic;
+						petCosmetic.run();
+						petEntityHandler.displayAnimation(petCosmetic);
+						break;
+					}
+					case EFFECTS: {
+						EffectCosmetic effectCosmetic = (EffectCosmetic) cosmetic;
 
-					petCosmetic.run();
-					petEntityHandler.displayAnimation(petCosmetic);
-					break;
-				}
-				case EFFECTS: {
-					EffectCosmetic effectCosmetic = (EffectCosmetic) cosmetic;
-
-					effectCosmetic.run();
-					break;
+						effectCosmetic.run();
+						break;
+					}
 				}
 			}
 		}
