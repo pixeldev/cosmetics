@@ -16,20 +16,20 @@ public class CompanionEffectAnimation
 	extends AbstractEffectCosmeticAnimation {
 
 	private static final int PARTICLES = 150;
-	private static final int PARTICLES_PER_ITERATION = 5;
-	private static final double SIZE = 1.25;
+	private static final int PARTICLES_PER_ITERATION = 3;
+	private static final double SIZE = 0.75;
 	private static final double X_FACTOR = 1;
-	private static final double Y_FACTOR = 1.5;
+	private static final double Y_FACTOR = 1.25;
 	private static final double Z_FACTOR = 1;
 	private static final double X_OFFSET = 0;
-	private static final double Y_OFFSET = -0.75;
+	private static final double Y_OFFSET = -1.5;
 	private static final double Z_OFFSET = 0;
 
 	private int step;
 
 	public CompanionEffectAnimation(WeakReference<Player> ownerReference,
 																	CosmeticSpectators spectators, ParticleEffect effect) {
-		super(ownerReference, spectators, effect, 1);
+		super(ownerReference, spectators, effect, 0);
 	}
 
 	@Override

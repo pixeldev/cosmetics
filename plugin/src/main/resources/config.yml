@@ -1,7 +1,7 @@
 cosmetics:
   permission-format: "cosmetics.%category%.%identifier%"
   denied-regions:
-    - "world"
+    - "test"
 
 morphs:
   type: "MORPHS"
@@ -138,7 +138,7 @@ effects:
     animations:
       1:
         animation: "PULSE"
-        effect: "FIREWORKS_SPARK"
+        effect: "FLAME"
   flamequad:
     icon: "BLAZE_ROD"
     name: "&bÓrbita de fuego"
@@ -173,7 +173,7 @@ effects:
     animations:
       1:
         animation: "WHIRL"
-        effect: "FIREWORKS_SPARK"
+        effect: "FLAME"
 
 miniatures:
   type: "MINIATURES"
