@@ -16,6 +16,7 @@ subprojects {
 		maven { url 'https://repo.unnamed.team/repository/unnamed-public/' }
 		maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 		maven { url 'https://repo.md-5.net/content/groups/public/' }
+		maven { url 'https://maven.enginehub.org/repo/' }
 		mavenCentral()
 	}
 }
