@@ -12,6 +12,8 @@ import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import java.lang.ref.WeakReference;
+
 public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 	implements Runnable {
 
@@ -20,16 +22,16 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 	// used to assign the corresponding entity id.
 	private int entityId;
 
-	private Location actualLocation;
+	private final Location actualLocation;
 
 	private final PlayerFollowerPetAnimation followerPetAnimation;
 	private final CosmeticPetParticleAnimation particleAnimation;
 	private final CosmeticPetAnimation movementAnimation;
 
-	public PetCosmetic(Player owner, PetCosmeticType type) {
-		super(owner, type);
+	public PetCosmetic(WeakReference<Player> ownerReference, PetCosmeticType type) {
+		super(ownerReference, type);
 		spectators = new CosmeticSpectators();
-		actualLocation = owner.getLocation().add(0, 1.5, 0);
+		actualLocation = ownerReference.get().getLocation().add(0, 1.5, 0);
 		entityId = -1;
 
 		followerPetAnimation = new PlayerFollowerPetAnimation(ownerReference, actualLocation);
@@ -58,15 +60,12 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 		return actualLocation;
 	}
 
-	public void setActualLocation(Location location) {
-		actualLocation = location;
-		followerPetAnimation.changeBaseLocation(location);
-		particleAnimation.changeBaseLocation(location);
-		movementAnimation.changeBaseLocation(location);
-	}
-
 	@Override
 	public void run() {
+		if (!equipped) {
+			return;
+		}
+
 		movementAnimation.run();
 		followerPetAnimation.run();
 		particleAnimation.run();

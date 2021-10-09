@@ -9,10 +9,12 @@ public interface CosmeticHandler {
 
 	void equipCosmetic(CosmeticUser user, Cosmetic<?> cosmetic);
 
-	boolean unequipCosmetic(CosmeticUser user);
+	boolean unequipCosmetic(CosmeticUser user, boolean removeFromUser);
 
 	boolean hasAlreadyEquipedCosmetic(CosmeticUser user, CosmeticType cosmeticType);
 
-	Cosmetic<?> create(CosmeticCategory category, Player owner, CosmeticType cosmeticType);
+	boolean canBeEquipped(Player player);
+
+	Cosmetic<?> create(CosmeticUser owner, CosmeticCategory category, CosmeticType cosmeticType);
 
 }
