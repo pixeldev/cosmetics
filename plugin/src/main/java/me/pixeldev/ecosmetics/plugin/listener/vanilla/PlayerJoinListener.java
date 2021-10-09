@@ -34,6 +34,8 @@ public class PlayerJoinListener implements Listener {
 					return;
 				}
 
+				cosmeticUser.setPlayerReference(player);
+
 				CosmeticCategory cosmeticCategory = cosmeticUser.getCurrentCategory();
 
 				if (cosmeticCategory == null) {
@@ -51,7 +53,7 @@ public class PlayerJoinListener implements Listener {
 				}
 
 				Cosmetic<?> cosmetic = cosmeticHandler.create(
-					cosmeticCategory, player, cosmeticType
+					cosmeticUser, cosmeticCategory, cosmeticType
 				);
 
 				cosmeticHandler.equipCosmetic(cosmeticUser, cosmetic);
