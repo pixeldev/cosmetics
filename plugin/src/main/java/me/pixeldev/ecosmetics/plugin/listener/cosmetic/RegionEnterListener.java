@@ -8,6 +8,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
+import me.yushust.message.MessageHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,7 @@ public class RegionEnterListener
 	implements Listener {
 
 	@Inject private CosmeticHandler cosmeticHandler;
+	@Inject private MessageHandler messageHandler;
 	@Inject private CosmeticUserService userService;
 
 	@EventHandler
@@ -40,11 +42,13 @@ public class RegionEnterListener
 				if (cosmetic.isEquipped()) {
 					cosmeticHandler.unequipCosmetic(cosmeticUser, false);
 					cosmetic.setEquipped(false);
+					messageHandler.send(player, "cosmetic.handler.success-unequip-region");
 				}
 			} else {
 				if (!cosmetic.isEquipped()) {
 					cosmeticHandler.equipCosmetic(cosmeticUser, cosmetic);
 					cosmetic.setEquipped(true);
+					messageHandler.send(player, "cosmetic.handler.success-equip-region");
 				}
 			}
 		}

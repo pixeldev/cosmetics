@@ -28,3 +28,5 @@ cosmetic:
     no-cosmetic-equipped: "&cNo tienes ningún cosmético equipado."
     success-cleared: "&e¡Tu cosmético ha sido removido correctamente!"
     can-not-be-equipped: "&cNo puedes equipar un cosmético en esta zona."
+    success-unequip-region: "&e¡Tu cosmético ha sido removido porque entraste a una zona no permitida!"
+    success-equip-region: "&e¡Tu cosmético ha sido puesto de vuelta!"
