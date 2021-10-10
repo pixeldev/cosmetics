@@ -5,6 +5,7 @@ import me.pixeldev.alya.bukkit.menu.AbstractGUICreator;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+
 import team.unnamed.gui.abstraction.item.ItemClickable;
 import team.unnamed.gui.core.gui.type.GUIBuilder;
 
@@ -16,10 +17,10 @@ public class CosmeticMainMenu extends AbstractGUICreator {
 
 	@Override
 	public Inventory create(Player issuer, Object... extraData) {
-		return GUIBuilder.builderStringLayout(getTitle(issuer))
+		return GUIBuilder.builderStringLayout(getTitle(issuer), 3)
 			.setLayoutLines(
 				"xxxxxxxxx",
-				"xxaxbxcxx",
+				"xxaxxxbxx",
 				"xxxxdxxxx"
 			)
 			.setLayoutItem('d', ItemClickable.builder()
@@ -36,6 +37,14 @@ public class CosmeticMainMenu extends AbstractGUICreator {
 					return true;
 				})
 				.setItemStack(createItem(issuer, Material.ARMOR_STAND, "miniatures").build())
+				.build()
+			)
+			.setLayoutItem('b', ItemClickable.builder()
+				.setAction(event -> {
+					//TODO: Open effects menu.
+					return true;
+				})
+				.setItemStack(createItem(issuer, Material.EMERALD, "effects").build())
 				.build()
 			)
 			.build();
