@@ -15,7 +15,7 @@ import java.util.Map;
 public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 
 	private static final String[] KNOWN_SECTIONS = {
-		"miniatures", "effects", "morphs"
+		"miniatures", "effects"
 	};
 
 	private final Map<CosmeticCategory, Map<String, CosmeticType>> registeredTypes

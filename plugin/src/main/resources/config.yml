@@ -3,14 +3,6 @@ cosmetics:
   denied-regions:
     - "test"
 
-morphs:
-  type: "MORPHS"
-  enderman:
-    icon: "ENDERMAN_EGG"
-    name: "&dEnderman"
-    entity: "ENDERMAN"
-    hand: "GRASS_BLOCK"
-
 effects:
   type: "EFFECTS"
   wings:
