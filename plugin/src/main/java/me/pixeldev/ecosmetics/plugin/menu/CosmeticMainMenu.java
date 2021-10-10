@@ -2,6 +2,7 @@ package me.pixeldev.ecosmetics.plugin.menu;
 
 import me.pixeldev.alya.bukkit.menu.AbstractGUICreator;
 
+import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -9,7 +10,11 @@ import org.bukkit.inventory.Inventory;
 import team.unnamed.gui.abstraction.item.ItemClickable;
 import team.unnamed.gui.core.gui.type.GUIBuilder;
 
+import javax.inject.Inject;
+
 public class CosmeticMainMenu extends AbstractGUICreator {
+
+	@Inject private CosmeticMiniaturesMenu miniaturesMenu;
 
 	public CosmeticMainMenu() {
 		super("main");
@@ -33,7 +38,7 @@ public class CosmeticMainMenu extends AbstractGUICreator {
 			)
 			.setLayoutItem('a', ItemClickable.builder()
 				.setAction(event -> {
-					//TODO: Open miniatures menu.
+					issuer.openInventory(miniaturesMenu.create(issuer, extraData));
 					return true;
 				})
 				.setItemStack(createItem(issuer, Material.ARMOR_STAND, "miniatures").build())

@@ -35,7 +35,7 @@ cosmetic:
   handler:
     success-equip: "&e¡Se ha equipado correctamente el cosmético!"
     success-unequip: "&e¡Has desequipado correctamente tu cosmético!"
-    already-equiped: "&c¡Ya tienes equipado este cosmético!"
+    already-equipped: "&c¡Ya tienes equipado este cosmético!"
     no-cosmetic-equipped: "&cNo tienes ningún cosmético equipado."
     success-cleared: "&e¡Tu cosmético ha sido removido correctamente!"
     can-not-be-equipped: "&cNo puedes equipar un cosmético en esta zona."
@@ -43,6 +43,32 @@ cosmetic:
     success-equip-region: "&e¡Tu cosmético ha sido puesto de vuelta!"
 
 menu:
+  next-page-item:
+    name: "&aSiguiente página"
+    lore:
+      - "&ePágina %page%"
+  previous-page-item:
+    name: "&aPágina anterior"
+    lore:
+      - "&ePágina %page%"
+  clear-cosmetic-item:
+    name: "&cRemover cosmético actual"
+    lore:
+      - "&7Haz clic aquí para remover el cosmético"
+      - "&7que tienes equipado actualmente."
+
+  no-permission-message: "&cNo puedes equipar este cosmético, apoya al servidor donando en &c&nhttps://tienda.electronmc.us/&c."
+
+  click-to-equip-lore:
+    - ""
+    - "&e¡Clic derecho para equipar!"
+  already-equipped-lore:
+    - ""
+    - "&e¡Ya tienes equipado este cosmético!"
+  no-permission-lore:
+    - ""
+    - "&7Desbloquéalo en &etienda.electronmc.us"
+
   main:
     title: "&6Cosméticos"
     items:
@@ -68,3 +94,27 @@ menu:
         name: "&cSalir"
         lore:
           - "&7Cerrar el menú."
+  miniatures:
+    title: "&6Miniaturas"
+    items:
+      no-cosmetics:
+        name: "&e¡No hay cosméticos disponibles!"
+        lore:
+          - "&7Al parecer no hay cosméticos disponibles"
+          - "&7para esta categoría, o quizás se trate de"
+          - "&7algún error, informa a un administrador."
+      astronaut:
+        name: "&6Austronauta"
+        lore:
+          - "&7Un viajero del espacio, así es, ese lugar"
+          - "&7tan misterioso que pocos conocen..."
+          - "&7Tendrás la dicha de poder tener como amigo"
+          - "&7a una de las pocas personas que se atrevieron"
+          - "&7a viajar a la luna, ¿estás listo?"
+      minime:
+        name: "&6Mini tú"
+        lore:
+          - "&7¿Será este un universo paralelo?"
+          - "&7Mmmm... la respuesta es un tanto curiosa"
+          - "&7pero tenemos que decirte que puedes tener"
+          - "&7un clon de ti pero en miniatura, ¡qué loco!"

@@ -10,6 +10,7 @@ import me.pixeldev.alya.api.yaml.YamlFileConfiguration;
 import me.pixeldev.alya.bukkit.menu.GUICreator;
 import me.pixeldev.alya.bukkit.translation.sender.SendingModes;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
+import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.plugin.command.arg.ReloadType;
 import me.pixeldev.ecosmetics.plugin.command.cosmetic.ClearCosmeticCommand;
 import me.pixeldev.ecosmetics.plugin.command.cosmetic.GetCosmeticCommand;
@@ -32,8 +33,9 @@ public class CosmeticCommands implements CommandClass {
 	@Inject @Named("main") private GUICreator mainMenu;
 
 	@Command(names = "")
-	public void run(@Sender Player sender) {
-		sender.openInventory(mainMenu.create(sender));
+	public void run(@Sender CosmeticUser user) {
+		Player sender = user.getPlayer();
+		sender.openInventory(mainMenu.create(sender, user));
 	}
 
 	@Command(names = {"help", "?"})

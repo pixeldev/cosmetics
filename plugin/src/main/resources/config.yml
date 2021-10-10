@@ -5,9 +5,8 @@ cosmetics:
 
 effects:
   type: "EFFECTS"
-  wings:
-    icon: "REDSTONE"
-    name: "&cAlas de hielo"
+  icewings:
+    icon: "FEATHER"
     animations:
       1:
         animation: "WINGS"
@@ -15,162 +14,10 @@ effects:
           first: "CYAN"
           second: "WHITE"
           third: "DARK_BLUE"
-  love:
-    icon: "REDSTONE"
-    name: "&cEnamorado"
-    animations:
-      1:
-        animation: "LOVE"
-  music:
-    icon: "NOTE_BLOCK"
-    name: "&dMusica"
-    animations:
-      1:
-        animation: "MUSIC"
-  enderaura:
-    icon: "ENDER_PORTAL_FRAME"
-    name: "&9Aura del End"
-    animations:
-      1:
-        animation: "ENDER_AURA"
-  rings:
-    icon: "BLAZE_ROD"
-    name: "&6Anillos de fuego"
-    animations:
-      1:
-        animation: "RINGS"
-        effect: "FLAME"
-  flamewaves:
-    icon: "LAVA_BUCKET"
-    name: "&bOlas de fuego"
-    animations:
-      1:
-        animation: "WAVES"
-        effect: "FLAME"
-  greensparks:
-    icon: "LAVA_BUCKET"
-    name: "&bOlas de fuego"
-    animations:
-      1:
-        animation: "AROUND"
-        effect: "VILLAGER_HAPPY"
-  flamecompanion:
-    icon: "BLAZE_ROD"
-    name: "&bFlamas acompañantes"
-    animations:
-      1:
-        animation: "COMPANION"
-        effect: "FLAME"
-  flamebean:
-    icon: "BLAZE_ROD"
-    name: "&bFlama beam"
-    animations:
-      1:
-        animation: "BEAM"
-        effect: "FLAME"
-  flamechains:
-    icon: "BLAZE_ROD"
-    name: "&bCadenas de fuego"
-    animations:
-      1:
-        animation: "CHAINS"
-        effect: "FLAME"
-  flamefeet:
-    icon: "BLAZE_ROD"
-    name: "&bPies de fuego"
-    animations:
-      1:
-        animation: "FEET"
-        effect: "FLAME"
-  flamehalo:
-    icon: "BLAZE_ROD"
-    name: "&bHalo de fuego"
-    animations:
-      1:
-        animation: "HALO"
-        effect: "FLAME"
-  flameorbit:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "ORBIT"
-        effect: "FLAME"
-  flameoverhead:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "OVERHEAD"
-        effect: "FLAME"
-  flamepoint:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "POINT"
-        effect: "FLAME"
-  flamepopper:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "POPPER"
-        effect: "FLAME"
-  flamenormal:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "NORMAL"
-        effect: "FLAME"
-  flamepulse:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "PULSE"
-        effect: "FLAME"
-  flamequad:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "QUAD_HELIX"
-        effect: "FLAME"
-  flameatom:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "ATOM"
-        effect: "FLAME"
-  flamesphere:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "SPHERE"
-        effect: "FLAME"
-  flamespin:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "SPIN"
-        effect: "FLAME"
-  flamewhirl:
-    icon: "BLAZE_ROD"
-    name: "&bÓrbita de fuego"
-    animations:
-      1:
-        animation: "WHIRL"
-        effect: "FLAME"
 
 miniatures:
   type: "MINIATURES"
   astronaut:
-    name: "&3Astronauta"
     skin: "URL"
     skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
     particle-animation:
@@ -195,7 +42,6 @@ miniatures:
         type: "LEATHER_BOOTS"
         color: "LIGHT_GRAY"
   minime:
-    name: "&eMini yo"
     skin: "PLAYER"
     skin-value: "%owner_name%"
     particle-animation:

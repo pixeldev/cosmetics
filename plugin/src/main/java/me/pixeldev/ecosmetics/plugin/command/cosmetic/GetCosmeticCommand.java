@@ -6,7 +6,6 @@ import me.fixeddev.commandflow.bukkit.annotation.Sender;
 import me.fixeddev.commandflow.exception.NoPermissionsException;
 
 import me.pixeldev.alya.bukkit.translation.sender.SendingModes;
-import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.properties.PetCosmeticAuthorizer;
@@ -42,25 +41,7 @@ public class GetCosmeticCommand implements CommandClass {
 			return;
 		}
 
-		if (!cosmeticHandler.canBeEquipped(sender)) {
-			messageHandler.sendIn(sender, SendingModes.ERROR, "cosmetic.handler.can-not-be-equipped");
-			return;
-		}
-
-		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
-
-		if (currentCosmetic != null) {
-			cosmeticHandler.unequipCosmetic(user, true);
-		}
-
-		Cosmetic<?> cosmetic = cosmeticHandler.create(user, category, cosmeticType);
-
-		if (cosmetic == null) {
-			return;
-		}
-
-		cosmeticHandler.equipCosmetic(user, cosmetic);
-		messageHandler.sendIn(sender, SendingModes.SUCCESS, "cosmetic.handler.success-equip");
+		cosmeticHandler.assignAndEquipCosmetic(sender, user, category, cosmeticType);
 	}
 
 }

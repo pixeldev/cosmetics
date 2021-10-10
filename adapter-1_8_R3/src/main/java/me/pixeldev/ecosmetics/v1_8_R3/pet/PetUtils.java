@@ -68,18 +68,8 @@ public final class PetUtils {
 
 		packets.add(new PacketPlayOutSpawnEntityLiving(armorStand));
 
-		ItemStack headSkin;
-		SkinProvider headSkinProvider = type.getSkinProvider();
-		String skinRawValue = headSkinProvider.getRawValue();
-
-		if (headSkinProvider.getType() == SkinProviderType.PLAYER) {
-			headSkinProvider = SkinProvider.playerProvider(skinRawValue.replace(
-				"%owner_name%", owner.getName()
-			));
-		}
-
 		packets.add(createEquipmentPacket(
-			entityId, 4, headSkinProvider.getSkin(viewer)
+			entityId, 4, petCosmetic.getSkin(viewer)
 		));
 
 		Material materialInHand = type.getMaterialInHand();

@@ -5,6 +5,7 @@ import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 import me.pixeldev.alya.api.yaml.YamlFileConfiguration;
+import me.pixeldev.alya.bukkit.translation.sender.SendingModes;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
@@ -17,6 +18,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 
+import me.yushust.message.MessageHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -29,8 +31,33 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 
 	@Inject private Plugin plugin;
 	@Inject private YamlFileConfiguration config;
+	@Inject private MessageHandler messageHandler;
 	@Inject private PetEntityHandler petEntityHandler;
 	@Inject private EffectHandler effectHandler;
+
+	@Override
+	public void assignAndEquipCosmetic(Player player, CosmeticUser user,
+																		 CosmeticCategory category, CosmeticType cosmeticType) {
+		if (!canBeEquipped(player)) {
+			messageHandler.sendIn(player, SendingModes.ERROR, "cosmetic.handler.can-not-be-equipped");
+			return;
+		}
+
+		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
+
+		if (currentCosmetic != null) {
+			unequipCosmetic(user, true);
+		}
+
+		Cosmetic<?> cosmetic = create(user, category, cosmeticType);
+
+		if (cosmetic == null) {
+			return;
+		}
+
+		equipCosmetic(user, cosmetic);
+		messageHandler.sendIn(player, SendingModes.SUCCESS, "cosmetic.handler.success-equip");
+	}
 
 	@Override
 	public void equipCosmetic(CosmeticUser user, Cosmetic<?> cosmetic) {
@@ -57,7 +84,7 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 	}
 
 	@Override
-	public boolean unequipCosmetic(CosmeticUser user, boolean removeFromUser) {
+	public void unequipCosmetic(CosmeticUser user, boolean removeFromUser) {
 		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
 		Runnable runnable = null;
 
@@ -73,7 +100,7 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 		}
 
 		if (runnable == null) {
-			return false;
+			return;
 		}
 
 		if (removeFromUser) {
@@ -81,7 +108,19 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 		}
 
 		Bukkit.getScheduler().runTaskLater(plugin, runnable, 1);
-		return true;
+	}
+
+	@Override
+	public void clearCosmetic(Player player, CosmeticUser user) {
+		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
+
+		if (currentCosmetic == null) {
+			messageHandler.sendIn(user.getPlayer(), SendingModes.ERROR, "cosmetic.handler.no-cosmetic-equipped");
+			return;
+		}
+
+		unequipCosmetic(user, true);
+		messageHandler.sendIn(user.getPlayer(), SendingModes.SUCCESS, "cosmetic.handler.success-cleared");
 	}
 
 	@Override
@@ -125,7 +164,8 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 			case EFFECTS: {
 				return new EffectCosmetic(owner.getPlayerReference(), (EffectCosmeticType) cosmeticType);
 			}
-			default: return null;
+			default:
+				return null;
 		}
 	}
 

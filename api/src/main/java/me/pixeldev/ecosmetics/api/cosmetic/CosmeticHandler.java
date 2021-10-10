@@ -7,9 +7,14 @@ import org.bukkit.entity.Player;
 
 public interface CosmeticHandler {
 
+	void assignAndEquipCosmetic(Player player, CosmeticUser user,
+															CosmeticCategory category, CosmeticType cosmeticType);
+
 	void equipCosmetic(CosmeticUser user, Cosmetic<?> cosmetic);
 
-	boolean unequipCosmetic(CosmeticUser user, boolean removeFromUser);
+	void unequipCosmetic(CosmeticUser user, boolean removeFromUser);
+
+	void clearCosmetic(Player player, CosmeticUser user);
 
 	boolean hasAlreadyEquipedCosmetic(CosmeticUser user, CosmeticType cosmeticType);
 

@@ -7,10 +7,13 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.CosmeticPetAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.PlayerFollowerPetAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.DefaultMovementAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.CosmeticPetParticleAnimation;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.lang.ref.WeakReference;
 
@@ -44,6 +47,10 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 		return CosmeticCategory.MINIATURES;
 	}
 
+	public ItemStack getSkin(Player viewer) {
+		return getSkin(getType().getSkinProvider(), getPlayer(), viewer);
+	}
+
 	public CosmeticSpectators getSpectators() {
 		return spectators;
 	}
@@ -69,6 +76,18 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 		movementAnimation.run();
 		followerPetAnimation.run();
 		particleAnimation.run();
+	}
+
+	public static ItemStack getSkin(SkinProvider skinProvider, Player owner, Player viewer) {
+		String skinRawValue = skinProvider.getRawValue();
+
+		if (skinProvider.getType() == SkinProviderType.PLAYER) {
+			skinProvider = SkinProvider.playerProvider(skinRawValue.replace(
+				"%owner_name%", owner.getName()
+			));
+		}
+
+		return skinProvider.getSkin(viewer);
 	}
 
 }
