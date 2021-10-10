@@ -196,7 +196,8 @@ miniatures:
         color: "LIGHT_GRAY"
   minime:
     name: "&eMini yo"
-    skin: "VIEWER"
+    skin: "PLAYER"
+    skin-value: "%owner_name%"
     particle-animation:
       type: "CIRCLE"
       effect: "FLAME"

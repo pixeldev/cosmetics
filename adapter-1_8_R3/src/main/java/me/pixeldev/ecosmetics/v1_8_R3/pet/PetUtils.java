@@ -3,6 +3,8 @@ package me.pixeldev.ecosmetics.v1_8_R3.pet;
 import me.pixeldev.alya.versions.v1_8_R3.packet.Packets;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
 
 import net.minecraft.server.v1_8_R3.*;
@@ -40,6 +42,7 @@ public final class PetUtils {
 			return;
 		}
 
+		Player owner = petCosmetic.getPlayer();
 		Location baseLocation = petCosmetic.getActualLocation();
 		EntityArmorStand armorStand = new EntityArmorStand(
 			((CraftWorld) baseLocation.getWorld()).getHandle()
@@ -65,8 +68,18 @@ public final class PetUtils {
 
 		packets.add(new PacketPlayOutSpawnEntityLiving(armorStand));
 
+		ItemStack headSkin;
+		SkinProvider headSkinProvider = type.getSkinProvider();
+		String skinRawValue = headSkinProvider.getRawValue();
+
+		if (headSkinProvider.getType() == SkinProviderType.PLAYER) {
+			headSkinProvider = SkinProvider.playerProvider(skinRawValue.replace(
+				"%owner_name%", owner.getName()
+			));
+		}
+
 		packets.add(createEquipmentPacket(
-			entityId, 4, type.getSkinProvider().getSkin(viewer)
+			entityId, 4, headSkinProvider.getSkin(viewer)
 		));
 
 		Material materialInHand = type.getMaterialInHand();

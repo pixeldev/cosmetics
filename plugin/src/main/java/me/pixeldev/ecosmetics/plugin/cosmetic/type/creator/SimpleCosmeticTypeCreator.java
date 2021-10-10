@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.plugin.cosmetic.type.creator;
 
 import com.google.common.collect.ImmutableMap;
+
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
@@ -14,7 +15,6 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
-import me.pixeldev.ecosmetics.api.util.ColorUtils;
 import me.pixeldev.ecosmetics.plugin.util.Enums;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType;
