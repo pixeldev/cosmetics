@@ -1,11 +1,13 @@
 package me.pixeldev.ecosmetics.v1_8_R3.pet;
 
+import me.pixeldev.ecosmetics.api.cosmetic.event.PreAddCosmeticSpectatorEvent;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.v1_8_R3.track.AbstractEntityTrackerEntry;
 
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -26,6 +28,17 @@ public class PetEntityTrackerEntry
 	@Override
 	protected void show(EntityPlayer player) {
 		Player viewer = player.getBukkitEntity();
+
+		PreAddCosmeticSpectatorEvent event = new PreAddCosmeticSpectatorEvent(
+			viewer, petCosmetic
+		);
+
+		Bukkit.getPluginManager().callEvent(event);
+
+		if (event.isCancelled()) {
+			return;
+		}
+
 		PetUtils.spawn(petCosmetic, viewer);
 	}
 

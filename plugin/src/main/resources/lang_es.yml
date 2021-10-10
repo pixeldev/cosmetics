@@ -10,6 +10,14 @@ commands:
     success: "&eSe recargó correctamente el archivo &6%type%"
     error: "&cOcurrió un problema al recargar el archivo &c&n%type%&c, revisa la consola."
 
+  toggle-cosmetics:
+    success-enabled:
+      - "&eHas habilitado los cosméticos, ¡ahora podrás observar los cosméticos equipados de los demás!"
+      - "&eDeberás salir y entrar de la modalidad para que se reflejen los cambios."
+    success-disabled:
+      - "&eLos cosméticos han sido deshabilitados, solo podrás ver el que tengas equipado."
+      - "&eDeberás salir y entrar de la modalidad para que se reflejen los cambios."
+
   translation:
     usage: "&cUso correcto: &e"
     argument:

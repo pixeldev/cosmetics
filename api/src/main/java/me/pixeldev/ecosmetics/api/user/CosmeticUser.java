@@ -18,6 +18,7 @@ public final class CosmeticUser implements Model {
 	private final UUID uuid;
 	private final String username;
 
+	private boolean cosmeticsEnabled;
 	private CosmeticCategory currentCategory;
 	private String currentTypeKey;
 
@@ -27,6 +28,7 @@ public final class CosmeticUser implements Model {
 	private CosmeticUser(Player player) {
 		this.uuid = player.getUniqueId();
 		this.username = player.getName();
+		this.cosmeticsEnabled = true;
 		this.playerReference = new WeakReference<>(player);
 	}
 
@@ -53,6 +55,14 @@ public final class CosmeticUser implements Model {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public boolean hasCosmeticsEnabled() {
+		return cosmeticsEnabled;
+	}
+
+	public void setCosmeticsEnabled(boolean cosmeticsEnabled) {
+		this.cosmeticsEnabled = cosmeticsEnabled;
 	}
 
 	public Cosmetic<?> getCurrentCosmetic() {
