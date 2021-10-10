@@ -50,7 +50,6 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 																				String sectionKey,
 																				YamlConfigurationSection section,
 																				StringBuilder details) {
-		String name = section.getString("name");
 		String permission = permissionFormatter.format(category, sectionKey);
 		Material menuIcon = Material.getMaterial(section.getString("icon"));
 
@@ -167,7 +166,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				int goalTicks = particleAnimationSection.getInt("ticks");
 
 				return new PetCosmeticType(
-					name, permission, sectionKey, menuIcon, category,
+					permission, sectionKey, menuIcon, category,
 					equipment, skinProvider,
 					Material.getMaterial(equipmentSection.getString("hand")),
 					invisible, arms,
@@ -268,7 +267,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				}
 
 				return new EffectCosmeticType(
-					name, permission, sectionKey, menuIcon, category,
+					permission, sectionKey, menuIcon, category,
 					animationTypes
 				);
 			}
@@ -280,7 +279,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				}
 
 				return new MorphCosmeticType(
-					name, permission, sectionKey, menuIcon, category,
+					permission, sectionKey, menuIcon, category,
 					DisguiseType.getType(entityType),
 					Material.getMaterial(section.getString("hand"))
 				);

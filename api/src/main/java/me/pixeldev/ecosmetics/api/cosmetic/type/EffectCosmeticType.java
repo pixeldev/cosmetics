@@ -14,11 +14,11 @@ public class EffectCosmeticType extends AbstractCosmeticType {
 
 	private final Set<Data> animationTypes;
 
-	public EffectCosmeticType(String name, String permission,
+	public EffectCosmeticType(String permission,
 														String configurationIdentifier,
 														Material menuIcon, CosmeticCategory category,
 														Set<Data> animationTypes) {
-		super(name, permission, configurationIdentifier, menuIcon, category);
+		super(permission, configurationIdentifier, menuIcon, category);
 		this.animationTypes = animationTypes;
 	}
 

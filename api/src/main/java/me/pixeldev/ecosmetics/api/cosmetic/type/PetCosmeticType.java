@@ -26,7 +26,7 @@ public class PetCosmeticType extends AbstractCosmeticType {
 	private final float incrementZ;
 	private final int goalTicks;
 
-	public PetCosmeticType(String name, String permission,
+	public PetCosmeticType(String permission,
 												 String configurationIdentifier,
 												 Material menuIcon, CosmeticCategory category,
 												 Map<Integer, ItemStack> armorContent, SkinProvider skinProvider,
@@ -35,7 +35,7 @@ public class PetCosmeticType extends AbstractCosmeticType {
 												 PetParticleAnimationType animationType,
 												 float incrementX, float incrementY, float incrementZ,
 												 int goalTicks) {
-		super(name, permission, configurationIdentifier, menuIcon, category);
+		super(permission, configurationIdentifier, menuIcon, category);
 		this.armorContent = armorContent;
 		this.skinProvider = skinProvider;
 		this.materialInHand = materialInHand;

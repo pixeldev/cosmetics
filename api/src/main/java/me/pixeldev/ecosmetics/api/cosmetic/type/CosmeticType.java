@@ -6,8 +6,6 @@ import org.bukkit.Material;
 
 public interface CosmeticType {
 
-	String getName();
-
 	String getPermission();
 
 	String getIdentifier();
