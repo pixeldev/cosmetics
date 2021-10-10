@@ -10,6 +10,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
+import me.pixeldev.ecosmetics.plugin.command.arg.ReloadType;
 
 import javax.inject.Inject;
 
@@ -25,6 +26,7 @@ public class CosmeticPartModule extends BukkitModule {
 		bindFactory(CosmeticCategory.class, new EnumPartFactory(CosmeticCategory.class));
 		bindFactory(new Key(CosmeticUser.class, Sender.class), new CosmeticUserPartFactory(userService, true));
 		bindFactory(CosmeticUser.class, new CosmeticUserPartFactory(userService, false));
+		bindFactory(ReloadType.class, new EnumPartFactory(ReloadType.class));
 	}
 
 }

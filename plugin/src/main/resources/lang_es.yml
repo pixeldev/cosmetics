@@ -1,4 +1,15 @@
 commands:
+  help:
+    - "&6-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+    - "&7* &e/cosmetics get <category> <type> &7- &7Obtener un cosmético manualmente."
+    - "&7* &e/cosmetics clear &7- Remueve el cosmético actúal que tengas."
+    - "&7* &e/cosmetics reload <file (config | lang)> &7- Recarga el archivo indicado."
+    - "&6-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+
+  reload:
+    success: "&eSe recargó correctamente el archivo &6%type%"
+    error: "&cOcurrió un problema al recargar el archivo &c&n%type%&c, revisa la consola."
+
   translation:
     usage: "&cUso correcto: &e"
     argument:
@@ -30,3 +41,30 @@ cosmetic:
     can-not-be-equipped: "&cNo puedes equipar un cosmético en esta zona."
     success-unequip-region: "&e¡Tu cosmético ha sido removido porque entraste a una zona no permitida!"
     success-equip-region: "&e¡Tu cosmético ha sido puesto de vuelta!"
+
+menu:
+  main:
+    title: "&6Cosméticos"
+    items:
+      effects:
+        name: "&eEfectos"
+        lore:
+          - "&7¿Te gustaría que todos te volteen a ver?"
+          - "&7Tenemos lo ideal para ti, los mejores"
+          - "&7efectos para que todos queden asombrados"
+          - "&7al verte, serás el mejor del barrio."
+          - ""
+          - "&e¡Clic izquierdo!"
+      miniatures:
+        name: "&eMiniaturas"
+        lore:
+          - "&7¿Deseas un compañero en tus aventuras?"
+          - "&7Entonces tener una miniatura es lo ideal"
+          - "&7para ti, adéntrate y descubre la variedad"
+          - "&7que hay disponible."
+          - ""
+          - "&e¡Clic izquierdo!"
+      exit:
+        name: "&cSalir"
+        lore:
+          - "&7Cerrar el menú."
