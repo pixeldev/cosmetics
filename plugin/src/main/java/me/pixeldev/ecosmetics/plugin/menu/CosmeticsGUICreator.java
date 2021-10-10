@@ -1,6 +1,7 @@
 package me.pixeldev.ecosmetics.plugin.menu;
 
 import me.pixeldev.alya.bukkit.menu.AbstractGUICreator;
+import me.pixeldev.alya.bukkit.menu.GUICreator;
 import me.pixeldev.alya.bukkit.translation.sender.SendingModes;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
@@ -13,11 +14,15 @@ import team.unnamed.gui.abstraction.item.ItemClickable;
 import team.unnamed.gui.core.item.type.ItemBuilder;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
 public abstract class CosmeticsGUICreator
 	extends AbstractGUICreator {
 
+	@Inject
+	@Named("main")
+	private GUICreator mainMenu;
 	@Inject protected CosmeticHandler cosmeticHandler;
 
 	public CosmeticsGUICreator(String menuKey) {
@@ -36,6 +41,16 @@ public abstract class CosmeticsGUICreator
 			.build();
 	}
 
+	public ItemClickable createItemIfNoCosmetics(Player issuer) {
+		return ItemClickable.builderCancellingEvent(22)
+			.setItemStack(ItemBuilder.newBuilder(Material.GLASS_BOTTLE)
+				.setName(messageHandler.get(issuer, "menu.no-cosmetics-item.name"))
+				.setLore(messageHandler.getMany(issuer, "menu.no-cosmetics-item.lore"))
+				.build()
+			)
+			.build();
+	}
+
 	public ItemClickable createClearCosmeticItem(Player issuer, CosmeticUser user) {
 		return ItemClickable.builder(49)
 			.setItemStack(ItemBuilder.newBuilder(Material.BARRIER)
@@ -48,6 +63,18 @@ public abstract class CosmeticsGUICreator
 				return true;
 			})
 			.build();
+	}
+
+	public ItemClickable createBackToMainMenuItem(Player issuer, Object... extraData) {
+		return createBackItem(
+			issuer, 53,
+			ItemBuilder.newBuilder(Material.ARROW)
+				.setName(messageHandler.get(issuer, "menu.back-main-menu-item.name"))
+				.setLore(messageHandler.getMany(issuer, "menu.back-main-menu-item.lore"))
+				.build(),
+			() -> mainMenu,
+			extraData
+		);
 	}
 
 	public ItemClickable createItemIfNoPermission(Player issuer, String identifier, List<String> lore) {

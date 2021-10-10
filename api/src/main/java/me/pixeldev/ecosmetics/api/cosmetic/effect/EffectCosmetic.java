@@ -4,9 +4,12 @@ import me.pixeldev.ecosmetics.api.cosmetic.AbstractCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectCosmeticAnimation;
+import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.lang.ref.WeakReference;
 import java.util.Set;
@@ -41,6 +44,10 @@ public class EffectCosmetic
 		}
 
 		animations.forEach(EffectCosmeticAnimation::run);
+	}
+
+	public static ItemStack getMenuIcon(CosmeticType cosmeticType) {
+		return new ItemStack(cosmeticType.getMenuIcon());
 	}
 
 }

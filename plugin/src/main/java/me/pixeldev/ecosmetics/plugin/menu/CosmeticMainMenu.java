@@ -2,7 +2,6 @@ package me.pixeldev.ecosmetics.plugin.menu;
 
 import me.pixeldev.alya.bukkit.menu.AbstractGUICreator;
 
-import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,6 +14,7 @@ import javax.inject.Inject;
 public class CosmeticMainMenu extends AbstractGUICreator {
 
 	@Inject private CosmeticMiniaturesMenu miniaturesMenu;
+	@Inject private CosmeticEffectsMenu effectsMenu;
 
 	public CosmeticMainMenu() {
 		super("main");
@@ -46,7 +46,7 @@ public class CosmeticMainMenu extends AbstractGUICreator {
 			)
 			.setLayoutItem('b', ItemClickable.builder()
 				.setAction(event -> {
-					//TODO: Open effects menu.
+					issuer.openInventory(effectsMenu.create(issuer, extraData));
 					return true;
 				})
 				.setItemStack(createItem(issuer, Material.EMERALD, "effects").build())

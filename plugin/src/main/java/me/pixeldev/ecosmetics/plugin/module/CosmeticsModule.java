@@ -12,8 +12,10 @@ import me.pixeldev.ecosmetics.plugin.cosmetic.permission.SimpleCosmeticPermissio
 import me.pixeldev.ecosmetics.plugin.cosmetic.type.creator.SimpleCosmeticTypeCreator;
 import me.pixeldev.ecosmetics.plugin.cosmetic.type.SimpleCosmeticTypeRegistry;
 import me.pixeldev.ecosmetics.plugin.item.SimpleItemParser;
+import me.pixeldev.ecosmetics.plugin.menu.CosmeticEffectsMenu;
 import me.pixeldev.ecosmetics.plugin.menu.CosmeticMainMenu;
 import me.pixeldev.ecosmetics.plugin.menu.CosmeticMiniaturesMenu;
+import me.pixeldev.ecosmetics.plugin.menu.CosmeticTypesMenu;
 import me.pixeldev.ecosmetics.plugin.user.SimpleCosmeticUserService;
 
 import me.yushust.inject.AbstractModule;
@@ -30,7 +32,6 @@ public final class CosmeticsModule extends AbstractModule {
 		bind(CosmeticHandler.class).to(SimpleCosmeticHandler.class).singleton();
 
 		bind(GUICreator.class).named("main").to(CosmeticMainMenu.class).singleton();
-		bind(GUICreator.class).named("miniatures").to(CosmeticMiniaturesMenu.class).singleton();
 	}
 
 }

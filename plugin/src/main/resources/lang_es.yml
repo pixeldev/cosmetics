@@ -43,6 +43,10 @@ cosmetic:
     success-equip-region: "&e¡Tu cosmético ha sido puesto de vuelta!"
 
 menu:
+  back-main-menu-item:
+    name: "&aMenú principal"
+    lore:
+      - "&7Haz clic aquí para volver al menú principal."
   next-page-item:
     name: "&aSiguiente página"
     lore:
@@ -56,6 +60,12 @@ menu:
     lore:
       - "&7Haz clic aquí para remover el cosmético"
       - "&7que tienes equipado actualmente."
+  no-cosmetics-item:
+    name: "&e¡No hay cosméticos disponibles!"
+    lore:
+      - "&7Al parecer no hay cosméticos disponibles"
+      - "&7para esta categoría, o quizás se trate de"
+      - "&7algún error, informa a un administrador."
 
   no-permission-message: "&cNo puedes equipar este cosmético, apoya al servidor donando en &c&nhttps://tienda.electronmc.us/&c."
 
@@ -97,12 +107,6 @@ menu:
   miniatures:
     title: "&6Miniaturas"
     items:
-      no-cosmetics:
-        name: "&e¡No hay cosméticos disponibles!"
-        lore:
-          - "&7Al parecer no hay cosméticos disponibles"
-          - "&7para esta categoría, o quizás se trate de"
-          - "&7algún error, informa a un administrador."
       astronaut:
         name: "&6Austronauta"
         lore:
@@ -118,3 +122,13 @@ menu:
           - "&7Mmmm... la respuesta es un tanto curiosa"
           - "&7pero tenemos que decirte que puedes tener"
           - "&7un clon de ti pero en miniatura, ¡qué loco!"
+  effects:
+    title: "&6Efectos"
+    items:
+      icewings:
+        name: "&bAlas de hielo"
+        lore:
+          - "&7¿Eres un amante del hielo? Entonces te"
+          - "&7haremos sentir como un auténtico rey"
+          - "&7del hielo, con estas increíbles alas obtendrás"
+          - "&7poderes, quizás puedas congelar todo a tu paso..."
