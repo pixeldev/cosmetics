@@ -1,0 +1,14 @@
+me/pixeldev/ecosmetics/v1_8_R3/pet/PetEntityTrackerEntry.java
+ me.pixeldev.ecosmetics.v1_8_R3.pet.PetEntityTrackerEntry
+me/pixeldev/ecosmetics/v1_8_R3/effect/EffectEntityTrackerEntry.java
+ me.pixeldev.ecosmetics.v1_8_R3.effect.EffectEntityTrackerEntry
+me/pixeldev/ecosmetics/v1_8_R3/effect/SimpleEffectHandler.java
+ me.pixeldev.ecosmetics.v1_8_R3.effect.SimpleEffectHandler
+me/pixeldev/ecosmetics/v1_8_R3/AdapterModule.java
+ me.pixeldev.ecosmetics.v1_8_R3.AdapterModule
+ me.pixeldev.ecosmetics.v1_8_R3.AdapterModule$1
+ me.pixeldev.ecosmetics.v1_8_R3.AdapterModule$2
+me/pixeldev/ecosmetics/v1_8_R3/track/AbstractEntityTrackerEntry.java
+ me.pixeldev.ecosmetics.v1_8_R3.track.AbstractEntityTrackerEntry
+me/pixeldev/ecosmetics/v1_8_R3/track/EntityTrackerManager.java
+ me.pixeldev.ecosmetics.v1_8_R3.track.EntityTrackerManager

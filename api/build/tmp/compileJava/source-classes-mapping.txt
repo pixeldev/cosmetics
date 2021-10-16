@@ -1,0 +1,161 @@
+me/pixeldev/ecosmetics/api/cosmetic/effect/EffectCosmetic.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.EffectCosmetic
+me/pixeldev/ecosmetics/api/cosmetic/pet/equipment/EquipmentIterator.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentIterator
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/QuadHelixEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.QuadHelixEffectAnimation
+me/pixeldev/ecosmetics/api/user/CosmeticUser.java
+ me.pixeldev.ecosmetics.api.user.CosmeticUser
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/CompanionEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.CompanionEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/HaloEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.HaloEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/type/pet/PetCosmeticType.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/particle/NormalPetParticleAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.NormalPetParticleAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/PointEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.PointEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/equipment/LoopingEquipmentIterator.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.LoopingEquipmentIterator
+me/pixeldev/ecosmetics/api/cosmetic/pet/equipment/EquipmentFrame.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentFrame
+ me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentFrame$Data
+me/pixeldev/ecosmetics/api/cosmetic/event/PreAddCosmeticSpectatorEvent.java
+ me.pixeldev.ecosmetics.api.cosmetic.event.PreAddCosmeticSpectatorEvent
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/RingsEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.RingsEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/WavesEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.WavesEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/FeetEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.FeetEffectAnimation
+me/pixeldev/ecosmetics/api/util/ColorUtils.java
+ me.pixeldev.ecosmetics.api.util.ColorUtils
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/MusicEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.MusicEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/properties/PetCosmeticAuthorizer.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.properties.PetCosmeticAuthorizer
+me/pixeldev/ecosmetics/api/cosmetic/pet/equipment/EquipmentFrameFinishStrategy.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentFrameFinishStrategy
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/NormalEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.NormalEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/AbstractEffectCosmeticAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.AbstractEffectCosmeticAnimation
+me/pixeldev/ecosmetics/api/cosmetic/type/AbstractCosmeticType.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.AbstractCosmeticType
+me/pixeldev/ecosmetics/api/cosmetic/pet/skin/UrlSkinProvider.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.UrlSkinProvider
+me/pixeldev/ecosmetics/api/cosmetic/CosmeticSpectators.java
+ me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators
+me/pixeldev/ecosmetics/api/cosmetic/CosmeticHandler.java
+ me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/AtomEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.AtomEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/CosmeticCategory.java
+ me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/AroundEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.AroundEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/skin/ViewerSkinProvider.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.ViewerSkinProvider
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/OrbitEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.OrbitEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/PetCosmetic.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic
+me/pixeldev/ecosmetics/api/cosmetic/effect/EffectHandler.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.EffectHandler
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/LoveEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.LoveEffectAnimation
+me/pixeldev/ecosmetics/api/user/CosmeticUserService.java
+ me.pixeldev.ecosmetics.api.user.CosmeticUserService
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/particle/PetParticleAnimationType.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/EffectCosmeticAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectCosmeticAnimation
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectCosmeticAnimation$1
+me/pixeldev/ecosmetics/api/cosmetic/type/CosmeticType.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/SpinEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.SpinEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/WhirlEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.WhirlEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/animation/CosmeticAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.animation.CosmeticAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/PulseEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.PulseEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/particle/CosmeticPetParticleAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.CosmeticPetParticleAnimation
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.CosmeticPetParticleAnimation$1
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/EffectAnimationType.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectAnimationType
+me/pixeldev/ecosmetics/api/cosmetic/pet/skin/PlayerSkinProvider.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.PlayerSkinProvider
+me/pixeldev/ecosmetics/api/cosmetic/type/EffectCosmeticType.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType
+ me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType$Data
+ me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType$WingsData
+me/pixeldev/ecosmetics/api/item/ItemParser.java
+ me.pixeldev.ecosmetics.api.item.ItemParser
+me/pixeldev/ecosmetics/api/cosmetic/pet/equipment/EquipmentFrameParser.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentFrameParser
+me/pixeldev/ecosmetics/api/util/EffectUtils.java
+ me.pixeldev.ecosmetics.api.util.EffectUtils
+ me.pixeldev.ecosmetics.api.util.EffectUtils$1
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/PopperEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.PopperEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/type/creator/CosmeticTypeCreator.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator
+me/pixeldev/ecosmetics/api/cosmetic/Cosmetic.java
+ me.pixeldev.ecosmetics.api.cosmetic.Cosmetic
+me/pixeldev/ecosmetics/api/util/LoggerUtil.java
+ me.pixeldev.ecosmetics.api.util.LoggerUtil
+me/pixeldev/ecosmetics/api/cosmetic/permission/CosmeticPermissionFormatter.java
+ me.pixeldev.ecosmetics.api.cosmetic.permission.CosmeticPermissionFormatter
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/particle/CirclePetParticleAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.CirclePetParticleAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/movement/PlayerFollowerPetAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.PlayerFollowerPetAnimation
+me/pixeldev/ecosmetics/api/cosmetic/type/pet/AnimatedPetCosmeticType.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.pet.AnimatedPetCosmeticType
+me/pixeldev/ecosmetics/api/cosmetic/pet/skin/SkinProvider.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/WingsEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.WingsEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/particle/AbstractPetParticleAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.AbstractPetParticleAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/OverheadEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.OverheadEffectAnimation
+me/pixeldev/ecosmetics/api/util/MathUtils.java
+ me.pixeldev.ecosmetics.api.util.MathUtils
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/CosmeticPetAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.CosmeticPetAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/SphereEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.SphereEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/AbstractCosmeticPetAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.AbstractCosmeticPetAnimation
+me/pixeldev/ecosmetics/api/cosmetic/animation/DelayableCosmeticAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.animation.DelayableCosmeticAnimation
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/ChainsEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.ChainsEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/particle/AroundPetParticleAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.AroundPetParticleAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/animation/movement/DefaultMovementAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.DefaultMovementAnimation
+me/pixeldev/ecosmetics/api/cosmetic/type/MorphCosmeticType.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType
+me/pixeldev/ecosmetics/api/cosmetic/pet/entity/PetEntityHandler.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/EnderAuraEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EnderAuraEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/pet/skin/SkinProviderType.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType
+me/pixeldev/ecosmetics/api/util/VectorUtils.java
+ me.pixeldev.ecosmetics.api.util.VectorUtils
+me/pixeldev/ecosmetics/api/cosmetic/effect/animation/BeamEffectAnimation.java
+ me.pixeldev.ecosmetics.api.cosmetic.effect.animation.BeamEffectAnimation
+me/pixeldev/ecosmetics/api/cosmetic/type/CosmeticTypeRegistry.java
+ me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry
+me/pixeldev/ecosmetics/api/cosmetic/pet/skin/SkinProviderCreator.java
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderCreator
+ me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderCreator$1
+me/pixeldev/ecosmetics/api/cosmetic/AbstractCosmetic.java
+ me.pixeldev.ecosmetics.api.cosmetic.AbstractCosmetic

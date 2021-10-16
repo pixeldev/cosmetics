@@ -21,66 +21,58 @@ miniatures:
     frames:
       1:
         color: "LIGHT_RED"
+        ticks: 20
       2:
         color: "ORANGE"
+        ticks: 20
       3:
         color: "YELLOW"
+        ticks: 20
       4:
         color: "LIME"
+        ticks: 20
       5:
         color: "CYAN"
+        ticks: 20
       6:
         color: "DARK_BLUE"
+        ticks: 20
       7:
         color: "PINK"
+        ticks: 20
 
   wool-rainbow-animation:
     frames:
       1:
         type: "WOOL"
         color: "RED"
+        ticks: 20
       2:
         type: "WOOL"
         color: "ORANGE"
+        ticks: 20
       3:
         type: "WOOL"
         color: "YELLOW"
+        ticks: 20
       4:
         type: "WOOL"
         color: "LIME"
+        ticks: 20
       5:
         type: "WOOL"
         color: "CYAN"
+        ticks: 20
       6:
         type: "WOOL"
         color: "BLUE"
+        ticks: 20
       7:
         type: "WOOL"
         color: "MAGENTA"
+        ticks: 20
   happysad:
     animated: true
-    frames:
-      1:
-        delay: 20
-        skin:
-          type: "URL"
-          value: "01b9def55876c41c17c815f88115f02c95f89620fbed6a6cb2d38d46fe05"
-        hand:
-          type: "PAPER"
-        chestplate:
-          type: "LEATHER_CHESTPLATE"
-          color: "WHITE"
-        leggings:
-          type: "LEATHER_LEGGINGS"
-          color: "WHITE"
-        boots:
-          type: "LEATHER_BOOTS"
-          color: "WHITE"
-      2:
-        skin:
-          type: "URL"
-          value: "14968ac5af3146826fa2b0d4dd114fda197f8b28f4750553f3f88836a21fac9"
-          ticks: 20
     particle-animation:
       type: "NORMAL"
       effect: "VILLAGER_HAPPY"
@@ -88,6 +80,28 @@ miniatures:
     properties:
       invisible: true
       arms: false
+    equipment:
+      skin:
+        frames:
+          1:
+            type: "URL"
+            value: "01b9def55876c41c17c815f88115f02c95f89620fbed6a6cb2d38d46fe05"
+            ticks: 20
+          2:
+            type: "URL"
+            value: "14968ac5af3146826fa2b0d4dd114fda197f8b28f4750553f3f88836a21fac9"
+            ticks: 20
+      hand:
+        type: "PAPER"
+      chestplate:
+        type: "LEATHER_CHESTPLATE"
+        color: "WHITE"
+      leggings:
+        type: "LEATHER_LEGGINGS"
+        color: "WHITE"
+      boots:
+        type: "LEATHER_BOOTS"
+        color: "WHITE"
   nyancat:
     skin: "URL"
     skin-value: "d2c5a479f7162aa4cf1b34fe42afc4683a419994f68544e71f5342ae2c1a1c"
