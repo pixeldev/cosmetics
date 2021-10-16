@@ -4,3 +4,7 @@
 # ide files
 .idea
 *.iml
+
+adapter-1_8_R3/build/
+api/build/
+plugin/build/
