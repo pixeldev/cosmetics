@@ -2,7 +2,7 @@ package me.pixeldev.ecosmetics.api.cosmetic.type.pet;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
-import me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentFrame;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.frame.EquipmentFrame;
 
 import org.bukkit.Material;
 

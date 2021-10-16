@@ -1,6 +1,6 @@
 dependencies {
 	['bukkit', 'gson', 'bukkit-abstraction'].forEach {
-		api "me.pixeldev.alya:$it:1.4.0-SNAPSHOT"
+		api "me.pixeldev.alya:$it:1.4.2-SNAPSHOT"
 	}
 
 	api ('LibsDisguises:LibsDisguises:9.5.2') {

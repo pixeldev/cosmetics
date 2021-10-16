@@ -38,7 +38,7 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 
 		Map<String, CosmeticType> parsedTypes = new HashMap<>();
 		for (String sectionKey : section.getKeys(false)) {
-			if (sectionKey.equals("type")) {
+			if (sectionKey.equals("type") || sectionKey.contains("rainbow-animation")) {
 				continue;
 			}
 

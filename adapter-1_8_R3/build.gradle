@@ -1,5 +1,5 @@
 dependencies {
-	implementation 'me.pixeldev.alya:v1_8_R3:1.4.0-SNAPSHOT'
+	implementation 'me.pixeldev.alya:v1_8_R3:1.4.2-SNAPSHOT'
 	compileOnly 'io.papermc.paper:paper:1.8.8-R0.1-SNAPSHOT'
 	compileOnly project(':electron-cosmetics-api')
 }

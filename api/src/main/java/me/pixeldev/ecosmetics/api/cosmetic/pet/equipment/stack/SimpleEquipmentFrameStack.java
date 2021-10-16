@@ -1,4 +1,6 @@
-package me.pixeldev.ecosmetics.api.cosmetic.pet.equipment;
+package me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.stack;
+
+import me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.frame.EquipmentFrame;
 
 import java.util.List;
 

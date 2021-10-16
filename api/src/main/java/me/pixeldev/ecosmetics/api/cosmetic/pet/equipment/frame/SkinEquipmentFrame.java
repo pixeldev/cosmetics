@@ -1,4 +1,4 @@
-package me.pixeldev.ecosmetics.api.cosmetic.pet.equipment;
+package me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.frame;
 
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
 
@@ -13,6 +13,10 @@ public class SkinEquipmentFrame implements EquipmentFrame {
 	public SkinEquipmentFrame(SkinProvider skinProvider, int delay) {
 		this.skinProvider = skinProvider;
 		this.delay = delay;
+	}
+
+	public SkinProvider getSkinProvider() {
+		return skinProvider;
 	}
 
 	@Override

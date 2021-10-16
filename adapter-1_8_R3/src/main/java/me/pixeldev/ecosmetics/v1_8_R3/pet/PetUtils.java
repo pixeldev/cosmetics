@@ -2,7 +2,9 @@ package me.pixeldev.ecosmetics.v1_8_R3.pet;
 
 import me.pixeldev.alya.versions.v1_8_R3.packet.Packets;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.AnimatedPetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.AnimatedPetCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 
 import net.minecraft.server.v1_8_R3.*;
@@ -40,7 +42,6 @@ public final class PetUtils {
 			return;
 		}
 
-		Player owner = petCosmetic.getPlayer();
 		Location baseLocation = petCosmetic.getActualLocation();
 		EntityArmorStand armorStand = new EntityArmorStand(
 			((CraftWorld) baseLocation.getWorld()).getHandle()
@@ -66,22 +67,20 @@ public final class PetUtils {
 
 		packets.add(new PacketPlayOutSpawnEntityLiving(armorStand));
 
-		packets.add(createEquipmentPacket(
-			entityId, 4, petCosmetic.getSkin(viewer)
-		));
-
-		Material materialInHand = type.getMaterialInHand();
-
-		if (materialInHand != null) {
+		if (type instanceof AnimatedPetCosmeticType) {
+			packets.addAll(getCurrentEquipmentPackets(
+				entityId, viewer, (AnimatedPetCosmetic) petCosmetic)
+			);
+		} else {
 			packets.add(createEquipmentPacket(
-				entityId, 0, new ItemStack(materialInHand)
+				entityId, 4, petCosmetic.getSkin(viewer)
 			));
-		}
 
-		for (Map.Entry<Integer, ItemStack> equipmentEntry : type.getArmorContent().entrySet()) {
-			packets.add(createEquipmentPacket(
-				entityId, equipmentEntry.getKey(), equipmentEntry.getValue()
-			));
+			for (Map.Entry<Integer, ItemStack> equipmentEntry : type.getArmorContent().entrySet()) {
+				packets.add(createEquipmentPacket(
+					entityId, equipmentEntry.getKey(), equipmentEntry.getValue()
+				));
+			}
 		}
 
 		if (spectators.addSpectator(viewer)) {
@@ -102,6 +101,27 @@ public final class PetUtils {
 		return new PacketPlayOutEntityEquipment(
 			entityId, equipmentSlot, CraftItemStack.asNMSCopy(itemStack)
 		);
+	}
+
+	public static List<Packet<?>> getCurrentEquipmentPackets(int entityId, Player viewer,
+																													 AnimatedPetCosmetic animatedPetCosmetic) {
+		List<Packet<?>> packets = new ArrayList<>();
+		packets.add(createEquipmentPacket(
+			entityId, 0, animatedPetCosmetic.getHandFrameStack().current().getItem(viewer)
+		));
+		packets.add(createEquipmentPacket(
+			entityId, 1, animatedPetCosmetic.getChestFrameStack().current().getItem(viewer)
+		));
+		packets.add(createEquipmentPacket(
+			entityId, 2, animatedPetCosmetic.getLeggingsFrameStack().current().getItem(viewer)
+		));
+		packets.add(createEquipmentPacket(
+			entityId, 3, animatedPetCosmetic.getBootsFrameStack().current().getItem(viewer)
+		));
+		packets.add(createEquipmentPacket(
+			entityId, 4, animatedPetCosmetic.getSkinFrameStack().current().getItem(viewer)
+		));
+		return packets;
 	}
 
 }

@@ -115,6 +115,28 @@ menu:
   miniatures:
     title: "&6Miniaturas"
     items:
+      ice-fire-dragon:
+        name: "&6Dragon de hielo y fuego"
+        lore:
+          - "&7¿Te gusta el fuego pero a la vez el hielo?"
+          - "&7¿Te gustaría tener un amigo que pueda ser"
+          - "&7ambas dualidades al mismo tiempo?"
+          - "&7¡Tenemos para ti el dragón que puede cambiar"
+          - "&7de fuego a hielo en un instante!"
+      happysad:
+        name: "&6Bipolar"
+        lore:
+          - "&7Esta mascota es bipolar, estará feliz y"
+          - "&7triste a la vez, es muy buena para sorprender"
+          - "&7a tus amigos, o incluso podría ser tu acompañante"
+          - "&7en ese mal momento de tristeza o lo contrario."
+      nyancat:
+        name: "&6Nyancat"
+        lore:
+          - "&7¿Te gustaría tener al auténtico nyan cat"
+          - "&7como compañero de viaje en tus aventuras?"
+          - "&7Tenemos para ti en exclusiva a ese compañero"
+          - "&7¡disfruta y viaja a la velocidad de la luz con él!"
       astronaut:
         name: "&6Austronauta"
         lore:

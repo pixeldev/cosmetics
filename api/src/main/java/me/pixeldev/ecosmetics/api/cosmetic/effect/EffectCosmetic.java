@@ -39,10 +39,6 @@ public class EffectCosmetic
 
 	@Override
 	public void run() {
-		if (!equipped) {
-			return;
-		}
-
 		animations.forEach(EffectCosmeticAnimation::run);
 	}
 

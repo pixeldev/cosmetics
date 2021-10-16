@@ -12,6 +12,8 @@ import java.util.Set;
  */
 public interface ItemParser {
 
+	ItemStack parseUsingColors(Material baseMaterial, String color);
+
 	/**
 	 * Creates an {@link ItemStack} from the given {@link YamlConfigurationSection}.
 	 * @param section Section to get all the properties of the {@link ItemStack}.

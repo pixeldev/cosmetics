@@ -1,4 +1,4 @@
-package me.pixeldev.ecosmetics.api.cosmetic.pet.equipment;
+package me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.frame;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

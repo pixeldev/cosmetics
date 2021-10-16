@@ -11,10 +11,13 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.EffectCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.EffectHandler;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.AnimatedPetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.parse.EquipmentFrameStackParser;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.AnimatedPetCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 
@@ -34,6 +37,7 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 	@Inject private MessageHandler messageHandler;
 	@Inject private PetEntityHandler petEntityHandler;
 	@Inject private EffectHandler effectHandler;
+	@Inject private EquipmentFrameStackParser stackParser;
 
 	@Override
 	public void assignAndEquipCosmetic(Player player, CosmeticUser user,
@@ -156,10 +160,19 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 	public Cosmetic<?> create(CosmeticUser owner, CosmeticCategory category, CosmeticType cosmeticType) {
 		switch (category) {
 			case MINIATURES: {
-				return new PetCosmetic(owner.getPlayerReference(), (PetCosmeticType) cosmeticType);
-			}
-			case MORPHS: {
-
+				if (cosmeticType instanceof AnimatedPetCosmeticType) {
+					AnimatedPetCosmeticType animatedPetCosmeticType = (AnimatedPetCosmeticType) cosmeticType;
+					return new AnimatedPetCosmetic(
+						owner.getPlayerReference(), animatedPetCosmeticType,
+						stackParser.parse(animatedPetCosmeticType.getSkinFrames()),
+						stackParser.parse(animatedPetCosmeticType.getHandFrames()),
+						stackParser.parse(animatedPetCosmeticType.getChestFrames()),
+						stackParser.parse(animatedPetCosmeticType.getLeggingsFrames()),
+						stackParser.parse(animatedPetCosmeticType.getBootsFrames())
+					);
+				} else {
+					return new PetCosmetic(owner.getPlayerReference(), (PetCosmeticType) cosmeticType);
+				}
 			}
 			case EFFECTS: {
 				return new EffectCosmetic(owner.getPlayerReference(), (EffectCosmeticType) cosmeticType);

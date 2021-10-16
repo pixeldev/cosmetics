@@ -6,14 +6,35 @@ import me.pixeldev.ecosmetics.api.util.ColorUtils;
 import me.pixeldev.ecosmetics.api.util.LoggerUtil;
 
 import org.bukkit.Color;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import team.unnamed.gui.core.item.type.ItemBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class SimpleItemParser implements ItemParser {
+	@Override
+	public ItemStack parseUsingColors(Material baseMaterial, String color) {
+		ItemStack itemStack = new ItemStack(baseMaterial);
+		ItemMeta itemMeta = itemStack.getItemMeta();
+		if (itemMeta instanceof LeatherArmorMeta) {
+			LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) itemStack.getItemMeta();
+			Color parsedColor = ColorUtils.parseFromString(color);
+			leatherArmorMeta.setColor(parsedColor);
+			itemStack.setItemMeta(leatherArmorMeta);
+			return itemStack;
+		} else if (baseMaterial == Material.WOOL) {
+			return ItemBuilder.newDyeItemBuilder("WOOL", DyeColor.valueOf(color))
+				.build();
+		} else {
+			return itemStack;
+		}
+	}
+
 	@Override
 	public ItemStack parseFromSection(YamlConfigurationSection section) {
 		String materialKey = section.getString("type");
@@ -24,22 +45,13 @@ public class SimpleItemParser implements ItemParser {
 			return null;
 		}
 
-		ItemStack itemStack = new ItemStack(material);
-
 		String colorKey = section.getString("color");
 
 		if (colorKey != null) {
-			LeatherArmorMeta armorMeta = (LeatherArmorMeta) itemStack.getItemMeta();
-			Color color = ColorUtils.parseFromString(colorKey);
-
-			if (color != null) {
-				armorMeta.setColor(color);
-			}
-
-			itemStack.setItemMeta(armorMeta);
+			return parseUsingColors(material, colorKey);
 		}
 
-		return itemStack;
+		return new ItemStack(material);
 	}
 
 	@Override

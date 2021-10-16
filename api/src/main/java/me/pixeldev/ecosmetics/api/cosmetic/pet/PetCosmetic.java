@@ -69,10 +69,6 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 
 	@Override
 	public void run() {
-		if (!equipped) {
-			return;
-		}
-
 		movementAnimation.run();
 		followerPetAnimation.run();
 		particleAnimation.run();
