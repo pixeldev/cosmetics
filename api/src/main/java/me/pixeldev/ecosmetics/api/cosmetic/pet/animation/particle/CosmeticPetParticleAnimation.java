@@ -2,7 +2,7 @@ package me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticSpectators;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.CosmeticPetAnimation;
-import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 
 import org.bukkit.Location;
 

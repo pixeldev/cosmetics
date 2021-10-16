@@ -15,7 +15,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.entity.PetEntityHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
-import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 
 import me.yushust.message.MessageHandler;

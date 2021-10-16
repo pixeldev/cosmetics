@@ -17,6 +17,97 @@ effects:
 
 miniatures:
   type: "MINIATURES"
+  armor-rainbow-animation:
+    frames:
+      1:
+        color: "LIGHT_RED"
+      2:
+        color: "ORANGE"
+      3:
+        color: "YELLOW"
+      4:
+        color: "LIME"
+      5:
+        color: "CYAN"
+      6:
+        color: "DARK_BLUE"
+      7:
+        color: "PINK"
+
+  wool-rainbow-animation:
+    frames:
+      1:
+        type: "WOOL"
+        color: "RED"
+      2:
+        type: "WOOL"
+        color: "ORANGE"
+      3:
+        type: "WOOL"
+        color: "YELLOW"
+      4:
+        type: "WOOL"
+        color: "LIME"
+      5:
+        type: "WOOL"
+        color: "CYAN"
+      6:
+        type: "WOOL"
+        color: "BLUE"
+      7:
+        type: "WOOL"
+        color: "MAGENTA"
+  happysad:
+    animated: true
+    frames:
+      1:
+        delay: 20
+        skin:
+          type: "URL"
+          value: "01b9def55876c41c17c815f88115f02c95f89620fbed6a6cb2d38d46fe05"
+        hand:
+          type: "PAPER"
+        chestplate:
+          type: "LEATHER_CHESTPLATE"
+          color: "WHITE"
+        leggings:
+          type: "LEATHER_LEGGINGS"
+          color: "WHITE"
+        boots:
+          type: "LEATHER_BOOTS"
+          color: "WHITE"
+      2:
+        skin:
+          type: "URL"
+          value: "14968ac5af3146826fa2b0d4dd114fda197f8b28f4750553f3f88836a21fac9"
+          ticks: 20
+    particle-animation:
+      type: "NORMAL"
+      effect: "VILLAGER_HAPPY"
+      ticks: 10
+    properties:
+      invisible: true
+      arms: false
+  nyancat:
+    skin: "URL"
+    skin-value: "d2c5a479f7162aa4cf1b34fe42afc4683a419994f68544e71f5342ae2c1a1c"
+    particle-animation:
+      type: "AROUND"
+      effect: "CLOUD"
+      ticks: 10
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    properties:
+      invisible: true
+      arms: false
+    equipment:
+      hand:
+        animation:
+          type: "wool-rainbow-animation"
+      armor:
+        animation:
+          type: "armor-rainbow-animation"
   astronaut:
     skin: "URL"
     skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
@@ -31,7 +122,8 @@ miniatures:
       invisible: false
       arms: true
     equipment:
-      hand: "NETHER_STAR"
+      hand:
+        type: "NETHER_STAR"
       chestplate:
         type: "LEATHER_CHESTPLATE"
         color: "LIGHT_GRAY"

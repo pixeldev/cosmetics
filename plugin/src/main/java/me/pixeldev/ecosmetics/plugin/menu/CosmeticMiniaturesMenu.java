@@ -2,7 +2,7 @@ package me.pixeldev.ecosmetics.plugin.menu;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
-import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 
 public class CosmeticMiniaturesMenu
 	extends CosmeticTypesMenu {

@@ -1,8 +1,9 @@
-package me.pixeldev.ecosmetics.api.cosmetic.type;
+package me.pixeldev.ecosmetics.api.cosmetic.type.pet;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
+import me.pixeldev.ecosmetics.api.cosmetic.type.AbstractCosmeticType;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +16,6 @@ public class PetCosmeticType extends AbstractCosmeticType {
 
 	private final Map<Integer, ItemStack> armorContent;
 	private final SkinProvider skinProvider;
-	private final Material materialInHand;
 	private final boolean invisible;
 	private final boolean arms;
 
@@ -30,7 +30,7 @@ public class PetCosmeticType extends AbstractCosmeticType {
 												 String configurationIdentifier,
 												 Material menuIcon, CosmeticCategory category,
 												 Map<Integer, ItemStack> armorContent, SkinProvider skinProvider,
-												 Material materialInHand, boolean invisible, boolean arms,
+												 boolean invisible, boolean arms,
 												 ParticleEffect particleEffect,
 												 PetParticleAnimationType animationType,
 												 float incrementX, float incrementY, float incrementZ,
@@ -38,7 +38,6 @@ public class PetCosmeticType extends AbstractCosmeticType {
 		super(permission, configurationIdentifier, menuIcon, category);
 		this.armorContent = armorContent;
 		this.skinProvider = skinProvider;
-		this.materialInHand = materialInHand;
 		this.invisible = invisible;
 		this.arms = arms;
 		this.particleEffect = particleEffect;
@@ -55,10 +54,6 @@ public class PetCosmeticType extends AbstractCosmeticType {
 
 	public SkinProvider getSkinProvider() {
 		return skinProvider;
-	}
-
-	public Material getMaterialInHand() {
-		return materialInHand;
 	}
 
 	public boolean isInvisible() {

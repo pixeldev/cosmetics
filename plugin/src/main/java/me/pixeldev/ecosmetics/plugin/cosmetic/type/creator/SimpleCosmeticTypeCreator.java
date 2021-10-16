@@ -9,6 +9,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.permission.CosmeticPermissionFormatter;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.EquipmentFrame;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderCreator;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
@@ -18,7 +19,7 @@ import me.pixeldev.ecosmetics.api.item.ItemParser;
 import me.pixeldev.ecosmetics.plugin.util.Enums;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType;
-import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -39,6 +40,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 		.put("chestplate", 3)
 		.put("leggings", 2)
 		.put("boots", 1)
+		.put("hand", 0)
 		.build();
 
 	@Inject private SkinProviderCreator skinProviderCreator;
@@ -62,10 +64,10 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 
 		switch (category) {
 			case MINIATURES: {
-				SkinProviderType skinProviderType = SkinProviderType.getByName(
-					section.getString("skin")
-				);
+				boolean animated = section.getBoolean("animated");
+				String skinProviderTypeKey = section.getString("skin");
 
+				SkinProviderType skinProviderType = SkinProviderType.getByName(skinProviderTypeKey);
 				SkinProvider skinProvider;
 
 				if (skinProviderType == null) {
@@ -80,6 +82,63 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					skinProvider = skinProviderCreator.create(
 						skinProviderType, section.getString("skin-value")
 					);
+				}
+
+				if (animated) {
+					List<EquipmentFrame> frames = new ArrayList<>();
+					YamlConfigurationSection framesSection = section.getSection("frames");
+
+					for (String frameKey : framesSection.getKeys(false)) {
+						YamlConfigurationSection currentFrameSection = framesSection.getSection(frameKey);
+						YamlConfigurationSection skinFrameSection = currentFrameSection.getSection("skin");
+						YamlConfigurationSection handFrameSection = currentFrameSection.getSection("hand");
+						YamlConfigurationSection chestPlateFrameSection = currentFrameSection.getSection("chestplate");
+						YamlConfigurationSection leggingsFrameSection = currentFrameSection.getSection("leggings");
+						YamlConfigurationSection bootsFrameSection = currentFrameSection.getSection("boots");
+
+						if (frameKey.equals("1")) {
+							if (skinFrameSection == null) {
+								details.append("Cannot found skin section in first frame for '")
+									.append(sectionKey).append("'\n");
+								return null;
+							}
+						}
+					}
+
+//					if (skinProvider == null) {
+//						YamlConfigurationSection animatedSkinSection = section.getSection("skin-animation");
+//
+//						if (animatedSkinSection == null) {
+//							details.append("Cannot found a valid skin for '").append(sectionKey).append("'.");
+//							return null;
+//						}
+//
+//						YamlConfigurationSection framesSkinSection = animatedSkinSection.getSection("frames");
+//
+//						if (framesSkinSection == null) {
+//							details.append("Cannot found skin frames for '").append(sectionKey).append("'");
+//							return null;
+//						}
+//
+//						for (String frameKey : framesSkinSection.getKeys(false)) {
+//							YamlConfigurationSection currentFrameSection = framesSkinSection.getSection(frameKey);
+//							SkinProviderType frameSkinType = SkinProviderType.getByName(
+//								currentFrameSection.getString("type")
+//							);
+//
+//							if (frameSkinType == null) {
+//								continue;
+//							}
+//
+//							SkinProvider frameSkinProvider = skinProviderCreator.create(
+//								frameSkinType, currentFrameSection.getString("value")
+//							);
+//
+//							framesData.add(new )
+//						}
+//					} else {
+//						framesData.add(new EquipmentFrame.SkinData(skinProvider));
+//					}
 				}
 
 				YamlConfigurationSection equipmentSection = section.getSection("equipment");
@@ -168,7 +227,6 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				return new PetCosmeticType(
 					permission, sectionKey, menuIcon, category,
 					equipment, skinProvider,
-					Material.getMaterial(equipmentSection.getString("hand")),
 					invisible, arms,
 					particleEffect, animationType,
 					incrementX, incrementY, incrementZ,

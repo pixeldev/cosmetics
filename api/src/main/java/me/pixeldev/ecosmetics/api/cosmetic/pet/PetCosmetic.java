@@ -9,7 +9,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.movement.DefaultMovemen
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.CosmeticPetParticleAnimation;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
-import me.pixeldev.ecosmetics.api.cosmetic.type.PetCosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
