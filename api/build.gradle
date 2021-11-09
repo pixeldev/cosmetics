@@ -1,6 +1,12 @@
 dependencies {
 	['bukkit', 'gson', 'bukkit-abstraction'].forEach {
-		api "me.pixeldev.alya:$it:1.4.2-SNAPSHOT"
+		if (it == 'bukkit') {
+			api("me.pixeldev.alya:$it:1.4.3-SNAPSHOT") {
+				exclude group: 'team.unnamed.gui'
+			}
+		} else {
+			api "me.pixeldev.alya:$it:1.4.3-SNAPSHOT"
+		}
 	}
 
 	api ('LibsDisguises:LibsDisguises:9.5.2') {
@@ -8,6 +14,7 @@ dependencies {
 		exclude group: 'com.comphenix.protocol'
 	}
 
+	compileOnly 'team.unnamed.gui:core:2.3.2-SNAPSHOT'
 	compileOnly 'com.sk89q.worldguard:worldguard-legacy:6.2'
 	api 'xyz.xenondevs:particle:1.6.5'
 
