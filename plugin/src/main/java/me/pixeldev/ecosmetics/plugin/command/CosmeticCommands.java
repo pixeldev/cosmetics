@@ -28,7 +28,7 @@ import javax.inject.Named;
 	GetCosmeticCommand.class, ClearCosmeticCommand.class,
 	ToggleCosmeticCommand.class
 })
-@Command(names = {"cosmetics", "ecosmetics", "cosmetic"})
+@Command(names = {"cosmetics", "ecosmetics", "cosmetic", "cosmeticos"})
 public class CosmeticCommands implements CommandClass {
 
 	@Inject private MessageHandler messageHandler;
