@@ -14,7 +14,7 @@ public interface CosmeticHandler {
 
 	void unequipCosmetic(CosmeticUser user, boolean removeFromUser);
 
-	void clearCosmetic(Player player, CosmeticUser user);
+	boolean clearCosmetic(CosmeticUser user);
 
 	boolean hasAlreadyEquipedCosmetic(CosmeticUser user, CosmeticType cosmeticType);
 

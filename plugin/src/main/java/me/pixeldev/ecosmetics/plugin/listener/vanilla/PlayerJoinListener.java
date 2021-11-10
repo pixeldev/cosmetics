@@ -6,6 +6,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
+import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
@@ -46,6 +47,11 @@ public class PlayerJoinListener implements Listener {
 					cosmeticCategory, cosmeticUser.getCurrentTypeKey()
 				);
 
+				if (cosmeticCategory == CosmeticCategory.EFFECTS) {
+					cosmeticType = ((EffectCosmeticType) cosmeticType)
+						.cloneWithOtherData(cosmeticUser.getAnimationTypes());
+				}
+
 				if (cosmeticType == null) {
 					cosmeticUser.setCurrentCategory(null);
 					cosmeticUser.setCurrentTypeKey(null);
@@ -57,6 +63,7 @@ public class PlayerJoinListener implements Listener {
 				);
 
 				cosmeticHandler.equipCosmetic(cosmeticUser, cosmetic);
+				cosmeticUser.setCurrentCosmetic(cosmetic, cosmeticType);
 			});
 	}
 

@@ -59,13 +59,13 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 			return;
 		}
 
+		user.setCurrentCosmetic(cosmetic, cosmeticType);
 		equipCosmetic(user, cosmetic);
 		messageHandler.sendIn(player, SendingModes.SUCCESS, "cosmetic.handler.success-equip");
 	}
 
 	@Override
 	public void equipCosmetic(CosmeticUser user, Cosmetic<?> cosmetic) {
-		user.setCurrentCosmetic(cosmetic);
 		Runnable runnable = null;
 
 		switch (cosmetic.getCategory()) {
@@ -108,23 +108,22 @@ public class SimpleCosmeticHandler implements CosmeticHandler {
 		}
 
 		if (removeFromUser) {
-			user.setCurrentCosmetic(null);
+			user.setCurrentCosmetic(null, null);
 		}
 
 		Bukkit.getScheduler().runTaskLater(plugin, runnable, 1);
 	}
 
 	@Override
-	public void clearCosmetic(Player player, CosmeticUser user) {
+	public boolean clearCosmetic(CosmeticUser user) {
 		Cosmetic<?> currentCosmetic = user.getCurrentCosmetic();
 
 		if (currentCosmetic == null) {
-			messageHandler.sendIn(user.getPlayer(), SendingModes.ERROR, "cosmetic.handler.no-cosmetic-equipped");
-			return;
+			return false;
 		}
 
 		unequipCosmetic(user, true);
-		messageHandler.sendIn(user.getPlayer(), SendingModes.SUCCESS, "cosmetic.handler.success-cleared");
+		return true;
 	}
 
 	@Override

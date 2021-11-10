@@ -38,7 +38,7 @@ public enum EffectAnimationType {
 		this(true);
 	}
 
-	public boolean isCustomEffect() {
+	public boolean hasCustomEffect() {
 		return customEffect;
 	}
 

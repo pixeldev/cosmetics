@@ -1,11 +1,8 @@
 package me.pixeldev.ecosmetics.plugin.listener.vanilla;
 
 import me.pixeldev.alya.api.auto.listener.AutoListener;
-import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
-import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
-import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
@@ -20,7 +17,6 @@ import javax.inject.Inject;
 public class PlayerChangedWorldListener
 	implements Listener {
 
-	@Inject private CosmeticTypeRegistry cosmeticTypeRegistry;
 	@Inject private CosmeticUserService userService;
 	@Inject private CosmeticHandler cosmeticHandler;
 
@@ -35,18 +31,9 @@ public class PlayerChangedWorldListener
 
 		CosmeticCategory category = user.getCurrentCategory();
 
-
 		if (category != null) {
-			String typeKey = user.getCurrentTypeKey();
-
-			cosmeticHandler.unequipCosmetic(user, true);
-
-			CosmeticType cosmeticType = cosmeticTypeRegistry.getCosmeticType(
-				category, typeKey
-			);
-
-			Cosmetic<?> cosmetic = cosmeticHandler.create(user, category, cosmeticType);
-			cosmeticHandler.equipCosmetic(user, cosmetic);
+			cosmeticHandler.unequipCosmetic(user, false);
+			cosmeticHandler.equipCosmetic(user, user.getCurrentCosmetic());
 		}
 	}
 

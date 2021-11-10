@@ -8,53 +8,79 @@ import org.bukkit.Material;
 
 import xyz.xenondevs.particle.ParticleEffect;
 
-import java.util.Set;
+import java.util.List;
 
 public class EffectCosmeticType extends AbstractCosmeticType {
 
-	private final Set<Data> animationTypes;
+	private final List<Data> animationTypes;
 
 	public EffectCosmeticType(String permission,
 														String configurationIdentifier,
 														Material menuIcon, CosmeticCategory category,
-														Set<Data> animationTypes) {
+														List<Data> animationTypes) {
 		super(permission, configurationIdentifier, menuIcon, category);
 		this.animationTypes = animationTypes;
 	}
 
-	public Set<Data> getAnimationTypes() {
+	public List<Data> getAnimationTypes() {
 		return animationTypes;
 	}
 
-	public static class Data {
+	public EffectCosmeticType cloneWithOtherData(List<Data> data) {
+		return new EffectCosmeticType(
+			getPermission(), getIdentifier(), getMenuIcon(), getCategory(), data
+		);
+	}
 
-		private final ParticleEffect effect;
+	public interface Data {
+
+		EffectAnimationType getAnimationType();
+
+		default CustomData toCustomData(ParticleEffect effect) {
+			return new CustomData(getAnimationType(), effect);
+		}
+
+	}
+
+	public static class DefaultData implements Data {
+
 		private final EffectAnimationType animationType;
 
-		public Data(ParticleEffect effect, EffectAnimationType animationType) {
-			this.effect = effect;
+		public DefaultData(EffectAnimationType animationType) {
 			this.animationType = animationType;
 		}
 
-		public ParticleEffect getEffect() {
-			return effect;
-		}
-
+		@Override
 		public EffectAnimationType getAnimationType() {
 			return animationType;
 		}
 
 	}
 
-	public static class WingsData extends Data {
+	public static class CustomData extends DefaultData {
+
+		private final ParticleEffect effect;
+
+		public CustomData(EffectAnimationType animationType, ParticleEffect effect) {
+			super(animationType);
+			this.effect = effect;
+		}
+
+		public ParticleEffect getEffect() {
+			return effect;
+		}
+
+	}
+
+	public static class WingsData extends DefaultData {
 
 		private final Color firstColor;
 		private final Color secondColor;
 		private final Color thirdColor;
 
-		public WingsData(ParticleEffect effect, EffectAnimationType animationType,
+		public WingsData(EffectAnimationType animationType,
 										 Color firstColor, Color secondColor, Color thirdColor) {
-			super(effect, animationType);
+			super(animationType);
 			this.firstColor = firstColor;
 			this.secondColor = secondColor;
 			this.thirdColor = thirdColor;

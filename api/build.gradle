@@ -9,11 +9,6 @@ dependencies {
 		}
 	}
 
-	api ('LibsDisguises:LibsDisguises:9.5.2') {
-		exclude group: 'org.spigotmc'
-		exclude group: 'com.comphenix.protocol'
-	}
-
 	compileOnly 'team.unnamed.gui:core:2.3.2-SNAPSHOT'
 	compileOnly 'com.sk89q.worldguard:worldguard-legacy:6.2'
 	api 'xyz.xenondevs:particle:1.6.5'

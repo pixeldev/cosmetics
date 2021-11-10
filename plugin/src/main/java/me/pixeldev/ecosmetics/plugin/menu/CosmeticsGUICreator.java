@@ -59,7 +59,14 @@ public abstract class CosmeticsGUICreator
 				.build()
 			)
 			.setAction(event -> {
-				cosmeticHandler.clearCosmetic(issuer, user);
+				issuer.closeInventory();
+
+				if (cosmeticHandler.clearCosmetic(user)) {
+					messageHandler.sendIn(user.getPlayer(), SendingModes.SUCCESS, "cosmetic.handler.success-cleared");
+				} else {
+					messageHandler.sendIn(user.getPlayer(), SendingModes.ERROR, "cosmetic.handler.no-cosmetic-equipped");
+				}
+
 				return true;
 			})
 			.build();

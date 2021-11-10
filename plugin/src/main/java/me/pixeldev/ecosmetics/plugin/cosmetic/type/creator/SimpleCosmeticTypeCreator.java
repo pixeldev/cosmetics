@@ -2,8 +2,6 @@ package me.pixeldev.ecosmetics.plugin.cosmetic.type.creator;
 
 import com.google.common.collect.ImmutableMap;
 
-import me.libraryaddict.disguise.disguisetypes.DisguiseType;
-
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectAnimationType;
@@ -21,7 +19,6 @@ import me.pixeldev.ecosmetics.api.cosmetic.type.pet.AnimatedPetCosmeticType;
 import me.pixeldev.ecosmetics.api.item.ItemParser;
 import me.pixeldev.ecosmetics.plugin.util.Enums;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
-import me.pixeldev.ecosmetics.api.cosmetic.type.MorphCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
 
 import org.bukkit.Color;
@@ -272,7 +269,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				}
 
 				Set<String> animationKeys = animationsSection.getKeys(false);
-				Set<EffectCosmeticType.Data> animationTypes = new HashSet<>();
+				List<EffectCosmeticType.Data> animationTypes = new ArrayList<>();
 
 				for (String animationKey : animationKeys) {
 					YamlConfigurationSection animationSection = animationsSection.getSection(animationKey);
@@ -297,27 +294,6 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 						continue;
 					}
 
-					ParticleEffect effectType = null;
-					if (animationType.isCustomEffect()) {
-						String effectTypeKey = animationSection.getString("effect");
-
-						if (effectTypeKey == null) {
-							details.append("Effect type in '").append(sectionKey)
-								.append("' animation: '").append(animationKey).append("' cannot be null.")
-								.append("\n");
-							continue;
-						}
-
-						effectType = Enums.valueOf(ParticleEffect.class, effectTypeKey);
-
-						if (effectType == null) {
-							details.append("Cannot parse effect for '").append(sectionKey)
-								.append("' given value: '").append(animationTypeKey).append("'")
-								.append("\n");
-							continue;
-						}
-					}
-
 					if (animationType == EffectAnimationType.WINGS) {
 						YamlConfigurationSection colorsSection = animationSection.getSection("colors");
 
@@ -330,9 +306,9 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 
 						Color firstColor = parseFromString(colorsSection.getString("first"));
 						Color secondColor = parseFromString(colorsSection.getString("second"));
-						Color thirColor = parseFromString(colorsSection.getString("third"));
+						Color thirdColor = parseFromString(colorsSection.getString("third"));
 
-						if (firstColor == null || secondColor == null || thirColor == null) {
+						if (firstColor == null || secondColor == null || thirdColor == null) {
 							details.append("Cannot parse any of colors for '").append(sectionKey)
 								.append("' in wings animation, check values and try again.")
 								.append("\n");
@@ -340,11 +316,10 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 						}
 
 						animationTypes.add(new EffectCosmeticType.WingsData(
-							effectType, animationType,
-							firstColor, secondColor, thirColor
+							animationType, firstColor, secondColor, thirdColor
 						));
 					} else {
-						animationTypes.add(new EffectCosmeticType.Data(effectType, animationType));
+						animationTypes.add(new EffectCosmeticType.DefaultData(animationType));
 					}
 				}
 
@@ -355,19 +330,6 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				return new EffectCosmeticType(
 					permission, sectionKey, menuIcon, category,
 					animationTypes
-				);
-			}
-			case MORPHS: {
-				EntityType entityType = Enums.valueOf(EntityType.class, section.getString("entity"));
-
-				if (entityType == null) {
-					return null;
-				}
-
-				return new MorphCosmeticType(
-					permission, sectionKey, menuIcon, category,
-					DisguiseType.getType(entityType),
-					Material.getMaterial(section.getString("hand"))
 				);
 			}
 			default:

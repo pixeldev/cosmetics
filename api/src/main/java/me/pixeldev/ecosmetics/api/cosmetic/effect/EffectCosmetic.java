@@ -39,7 +39,7 @@ public class EffectCosmetic
 
 	@Override
 	public void run() {
-		animations.forEach(EffectCosmeticAnimation::run);
+		animations.forEach(Runnable::run);
 	}
 
 	public static ItemStack getMenuIcon(CosmeticType cosmeticType) {

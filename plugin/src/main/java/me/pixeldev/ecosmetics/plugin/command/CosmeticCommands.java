@@ -13,6 +13,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.plugin.command.arg.ReloadType;
 import me.pixeldev.ecosmetics.plugin.command.cosmetic.ClearCosmeticCommand;
+import me.pixeldev.ecosmetics.plugin.command.cosmetic.RemoveCosmeticCommand;
 import me.pixeldev.ecosmetics.plugin.command.cosmetic.ToggleCosmeticCommand;
 import me.pixeldev.ecosmetics.plugin.command.cosmetic.GetCosmeticCommand;
 
@@ -26,7 +27,7 @@ import javax.inject.Named;
 @AutoCommand
 @SubCommandClasses({
 	GetCosmeticCommand.class, ClearCosmeticCommand.class,
-	ToggleCosmeticCommand.class
+	ToggleCosmeticCommand.class, RemoveCosmeticCommand.class
 })
 @Command(names = {"cosmetics", "ecosmetics", "cosmetic", "cosmeticos"})
 public class CosmeticCommands implements CommandClass {

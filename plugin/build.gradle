@@ -23,7 +23,7 @@ dependencies {
 		runtimeOnly project(":electron-cosmetics-adapter-$it")
 	}
 
-	compileOnly 'team.unnamed.gui:core:2.3.2-SNAPSHOT'
+	compileOnly 'team.unnamed.gui:core:2.3.3-SNAPSHOT'
 	compileOnly 'com.sk89q.worldguard:worldguard-legacy:6.2'
 	compileOnly 'com.sk89q.worldedit:worldedit-core:6.1.4-SNAPSHOT'
 	annotationProcessor 'me.pixeldev.alya:bukkit:1.4.3-SNAPSHOT'

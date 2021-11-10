@@ -14,6 +14,22 @@ effects:
           first: "CYAN"
           second: "WHITE"
           third: "DARK_BLUE"
+  test:
+    icon: "TNT"
+    animations:
+      1:
+        animation: "ENDER_AURA"
+      2:
+        animation: "LOVE"
+  test2:
+    icon: "TNT"
+    animations:
+      1:
+        animation: "ENDER_AURA"
+      2:
+        animation: "LOVE"
+      3:
+        animation: "BEAM"
 
 miniatures:
   type: "MINIATURES"

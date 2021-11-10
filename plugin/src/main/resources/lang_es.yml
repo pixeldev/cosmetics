@@ -17,6 +17,9 @@ commands:
     success-disabled:
       - "&eLos cosméticos han sido deshabilitados, solo podrás ver el que tengas equipado."
       - "&eDeberás salir y entrar de la modalidad para que se reflejen los cambios."
+  remove:
+    success: "&eSe removió correctamente el cosmético de &6%player%"
+    no-equipped: "&cEl jugador no tiene un cosmético equipado."
 
   translation:
     usage: "&cUso correcto: &e"
@@ -79,7 +82,7 @@ menu:
 
   click-to-equip-lore:
     - ""
-    - "&e¡Clic derecho para equipar!"
+    - "&e¡Clic izquierdo para equipar!"
   already-equipped-lore:
     - ""
     - "&e¡Ya tienes equipado este cosmético!"
@@ -162,3 +165,18 @@ menu:
           - "&7haremos sentir como un auténtico rey"
           - "&7del hielo, con estas increíbles alas obtendrás"
           - "&7poderes, quizás puedas congelar todo a tu paso..."
+      test:
+        name: "&bTest"
+        lore:
+          - "&7Test 1"
+      test2:
+        name: "&bTest2"
+        lore:
+          - "&7Test 2"
+  particle-selector:
+    title: "&6Animación - %effectanimation_type%"
+    items:
+      particles:
+        name: "&6%particle_type%"
+        lore:
+          - "&e¡Clic izquierdo para equipar!"

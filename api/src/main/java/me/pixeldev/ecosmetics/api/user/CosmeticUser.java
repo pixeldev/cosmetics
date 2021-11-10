@@ -5,10 +5,13 @@ import me.pixeldev.alya.storage.universal.Model;
 import me.pixeldev.alya.storage.universal.internal.meta.Cached;
 import me.pixeldev.ecosmetics.api.cosmetic.Cosmetic;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
+import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 
 import org.bukkit.entity.Player;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 import java.util.UUID;
 
 @Cached
@@ -21,6 +24,7 @@ public final class CosmeticUser implements Model {
 	private boolean cosmeticsEnabled;
 	private CosmeticCategory currentCategory;
 	private String currentTypeKey;
+	private List<EffectCosmeticType.Data> animationTypes;
 
 	private transient WeakReference<Player> playerReference;
 	private transient Cosmetic<?> currentCosmetic;
@@ -53,10 +57,6 @@ public final class CosmeticUser implements Model {
 		return uuid;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
 	public boolean hasCosmeticsEnabled() {
 		return cosmeticsEnabled;
 	}
@@ -65,19 +65,28 @@ public final class CosmeticUser implements Model {
 		this.cosmeticsEnabled = cosmeticsEnabled;
 	}
 
+	public List<EffectCosmeticType.Data> getAnimationTypes() {
+		return animationTypes;
+	}
+
 	public Cosmetic<?> getCurrentCosmetic() {
 		return currentCosmetic;
 	}
 
-	public void setCurrentCosmetic(Cosmetic<?> currentCosmetic) {
+	public void setCurrentCosmetic(Cosmetic<?> currentCosmetic, CosmeticType cosmeticType) {
 		if (currentCosmetic == null) {
 			this.currentCosmetic = null;
 			this.currentCategory = null;
 			this.currentTypeKey = null;
+			animationTypes = null;
 		} else {
 			this.currentCosmetic = currentCosmetic;
 			this.currentCategory = currentCosmetic.getCategory();
 			this.currentTypeKey = currentCosmetic.getType().getIdentifier();
+
+			if (currentCategory == CosmeticCategory.EFFECTS) {
+				animationTypes = ((EffectCosmeticType) cosmeticType).getAnimationTypes();
+			}
 		}
 	}
 

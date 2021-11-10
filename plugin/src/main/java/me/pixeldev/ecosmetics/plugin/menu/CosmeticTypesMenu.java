@@ -5,18 +5,18 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.properties.PetCosmeticAuthorizer;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticTypeRegistry;
+import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
 import team.unnamed.gui.abstraction.item.ItemClickable;
 import team.unnamed.gui.core.gui.type.GUIBuilder;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -26,6 +26,7 @@ public class CosmeticTypesMenu extends CosmeticsGUICreator {
 
 	@Inject private CosmeticTypeRegistry cosmeticTypeRegistry;
 	@Inject private PetCosmeticAuthorizer petCosmeticAuthorizer;
+	@Inject private ParticleSelectorMenu particleSelectorMenu;
 
 	private final CosmeticCategory category;
 	private final BiFunction<Player, CosmeticType, ItemStack> skinProvider;
@@ -68,12 +69,46 @@ public class CosmeticTypesMenu extends CosmeticsGUICreator {
 					} else {
 						lore.addAll(messageHandler.getMany(issuer, "menu.click-to-equip-lore"));
 						action = event -> {
-							issuer.closeInventory();
+							if (category == CosmeticCategory.EFFECTS) {
+								EffectCosmeticType effectCosmeticType = (EffectCosmeticType) cosmeticType;
+								List<EffectCosmeticType.Data> animationTypes = effectCosmeticType.getAnimationTypes();
+								List<EffectCosmeticType.Data> customData = new ArrayList<>();
+								int maxSize = animationTypes.size();
+								int currentAnimationIndex = 0;
+								EffectCosmeticType.Data currentData = animationTypes.get(currentAnimationIndex);
+								boolean canSelectParticles = true;
 
-							cosmeticHandler.assignAndEquipCosmetic(
-								issuer, cosmeticUser,
-								category, cosmeticType
-							);
+								while (!currentData.getAnimationType().hasCustomEffect()) {
+									if (currentAnimationIndex++ >= maxSize - 1) {
+										canSelectParticles = false;
+										break;
+									}
+
+									customData.add(currentData);
+									currentData = animationTypes.get(currentAnimationIndex);
+								}
+
+								if (!canSelectParticles) {
+									issuer.closeInventory();
+									cosmeticHandler.assignAndEquipCosmetic(
+										issuer, cosmeticUser,
+										category, cosmeticType
+									);
+								} else {
+									issuer.openInventory(particleSelectorMenu.create(
+										issuer,
+										cosmeticUser, cosmeticType,
+										customData, currentAnimationIndex
+									));
+								}
+							} else {
+								issuer.closeInventory();
+								cosmeticHandler.assignAndEquipCosmetic(
+									issuer, cosmeticUser,
+									category, cosmeticType
+								);
+							}
+
 							return true;
 						};
 					}
