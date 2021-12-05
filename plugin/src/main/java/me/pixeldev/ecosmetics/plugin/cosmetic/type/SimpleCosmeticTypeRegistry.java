@@ -10,6 +10,7 @@ import me.pixeldev.ecosmetics.api.util.LoggerUtil;
 
 import javax.inject.Inject;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
@@ -36,7 +37,7 @@ public class SimpleCosmeticTypeRegistry implements CosmeticTypeRegistry {
 			return;
 		}
 
-		Map<String, CosmeticType> parsedTypes = new HashMap<>();
+		Map<String, CosmeticType> parsedTypes = new LinkedHashMap<>();
 		for (String sectionKey : section.getKeys(false)) {
 			if (sectionKey.equals("type") || sectionKey.contains("rainbow-animation")) {
 				continue;
