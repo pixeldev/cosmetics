@@ -7,7 +7,7 @@ import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectCosmeticAnimat
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 
-import org.bukkit.Material;
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -43,7 +43,8 @@ public class EffectCosmetic
 	}
 
 	public static ItemStack getMenuIcon(CosmeticType cosmeticType) {
-		return new ItemStack(cosmeticType.getMenuIcon());
+		MenuIconData menuIconData = cosmeticType.getMenuIcon();
+		return new ItemStack(menuIconData.getMaterial(), 1, menuIconData.getData());
 	}
 
 }

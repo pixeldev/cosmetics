@@ -165,14 +165,13 @@ menu:
           - "&7haremos sentir como un auténtico rey"
           - "&7del hielo, con estas increíbles alas obtendrás"
           - "&7poderes, quizás puedas congelar todo a tu paso..."
-      test:
-        name: "&bTest"
+      firewings:
+        name: "&bAlas de hielo"
         lore:
-          - "&7Test 1"
-      test2:
-        name: "&bTest2"
-        lore:
-          - "&7Test 2"
+          - "&7¿Eres un amante del hielo? Entonces te"
+          - "&7haremos sentir como un auténtico rey"
+          - "&7del hielo, con estas increíbles alas obtendrás"
+          - "&7poderes, quizás puedas congelar todo a tu paso..."
   particle-selector:
     title: "&6Animación - %effectanimation_type%"
     items:

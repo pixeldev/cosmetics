@@ -1,5 +1,6 @@
 dependencies {
 	implementation 'me.pixeldev.alya:v1_8_R3:1.4.3-SNAPSHOT'
 	compileOnly 'io.papermc.paper:paper:1.8.8-R0.1-SNAPSHOT'
+	compileOnly 'net.md-5:bungeecord-api:1.17-R0.1-SNAPSHOT'
 	compileOnly project(':electron-cosmetics-api')
 }

@@ -2,10 +2,8 @@ package me.pixeldev.ecosmetics.api.cosmetic.type;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectAnimationType;
-
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
 import org.bukkit.Color;
-import org.bukkit.Material;
-
 import xyz.xenondevs.particle.ParticleEffect;
 
 import java.util.List;
@@ -16,7 +14,7 @@ public class EffectCosmeticType extends AbstractCosmeticType {
 
 	public EffectCosmeticType(String permission,
 														String configurationIdentifier,
-														Material menuIcon, CosmeticCategory category,
+														MenuIconData menuIcon, CosmeticCategory category,
 														List<Data> animationTypes) {
 		super(permission, configurationIdentifier, menuIcon, category);
 		this.animationTypes = animationTypes;

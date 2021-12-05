@@ -4,10 +4,8 @@ import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
 import me.pixeldev.ecosmetics.api.cosmetic.type.AbstractCosmeticType;
-
-import org.bukkit.Material;
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
 import org.bukkit.inventory.ItemStack;
-
 import xyz.xenondevs.particle.ParticleEffect;
 
 import java.util.Map;
@@ -28,7 +26,7 @@ public class PetCosmeticType extends AbstractCosmeticType {
 
 	public PetCosmeticType(String permission,
 												 String configurationIdentifier,
-												 Material menuIcon, CosmeticCategory category,
+												 MenuIconData menuIcon, CosmeticCategory category,
 												 Map<Integer, ItemStack> armorContent, SkinProvider skinProvider,
 												 boolean invisible, boolean arms,
 												 ParticleEffect particleEffect,

@@ -1,7 +1,6 @@
 package me.pixeldev.ecosmetics.plugin.cosmetic.type.creator;
 
 import com.google.common.collect.ImmutableMap;
-
 import me.pixeldev.alya.api.yaml.YamlConfigurationSection;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.effect.animation.EffectAnimationType;
@@ -14,18 +13,16 @@ import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProvider;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderCreator;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.skin.SkinProviderType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.CosmeticType;
+import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.creator.CosmeticTypeCreator;
 import me.pixeldev.ecosmetics.api.cosmetic.type.pet.AnimatedPetCosmeticType;
-import me.pixeldev.ecosmetics.api.item.ItemParser;
-import me.pixeldev.ecosmetics.plugin.util.Enums;
-import me.pixeldev.ecosmetics.api.cosmetic.type.EffectCosmeticType;
 import me.pixeldev.ecosmetics.api.cosmetic.type.pet.PetCosmeticType;
-
+import me.pixeldev.ecosmetics.api.item.ItemParser;
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
+import me.pixeldev.ecosmetics.plugin.util.Enums;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
-
 import xyz.xenondevs.particle.ParticleEffect;
 
 import javax.inject.Inject;
@@ -55,13 +52,32 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 																				YamlConfigurationSection section,
 																				StringBuilder details) {
 		String permission = permissionFormatter.format(category, sectionKey);
-		Material menuIcon = Material.getMaterial(section.getString("icon"));
+		String iconKey = section.getString("icon");
+		MenuIconData menuIconData = null;
 
-		if (menuIcon == null && category != CosmeticCategory.MINIATURES) {
-			details.append("Cannot parse cosmetic type '")
-				.append(sectionKey).append("' because hasn't been set the menu icon.")
-				.append("\n");
-			return null;
+		if (iconKey == null) {
+			if (category != CosmeticCategory.MINIATURES) {
+				details.append("Cannot parse cosmetic type '")
+					.append(sectionKey).append("' because hasn't been set the menu icon.")
+					.append("\n");
+				return null;
+			}
+		} else {
+			String[] menuIconDataKey = iconKey.split(":");
+			Material material = Material.getMaterial(menuIconDataKey[0]);
+
+			if (material == null) {
+				details.append("Cannot parse icon for '")
+					.append(sectionKey).append("' check material type and try again.")
+					.append("\n");
+				return null;
+			}
+
+			if (menuIconDataKey.length == 1) {
+				menuIconData = new MenuIconData(material, (short) 0);
+			} else {
+				menuIconData = new MenuIconData(material, Short.parseShort(menuIconDataKey[1]));
+			}
 		}
 
 		switch (category) {
@@ -201,7 +217,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					}
 
 					return new AnimatedPetCosmeticType(
-						permission, sectionKey, menuIcon, category,
+						permission, sectionKey, menuIconData, category,
 						invisible, arms,
 						particleEffect, animationType,
 						incrementX, incrementY, incrementZ, goalTicks,
@@ -233,7 +249,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 						String equipmentSectionKey = equipmentEntry.getKey();
 
 						if (equipmentSectionKey.equals("skin")) {
-							 continue;
+							continue;
 						}
 
 						int equipmentSlot = equipmentEntry.getValue();
@@ -249,7 +265,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 					}
 
 					return new PetCosmeticType(
-						permission, sectionKey, menuIcon, category,
+						permission, sectionKey, menuIconData, category,
 						equipment, skinProvider,
 						invisible, arms,
 						particleEffect, animationType,
@@ -328,7 +344,7 @@ public class SimpleCosmeticTypeCreator implements CosmeticTypeCreator {
 				}
 
 				return new EffectCosmeticType(
-					permission, sectionKey, menuIcon, category,
+					permission, sectionKey, menuIconData, category,
 					animationTypes
 				);
 			}

@@ -3,9 +3,7 @@ package me.pixeldev.ecosmetics.api.cosmetic.type.pet;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.animation.particle.PetParticleAnimationType;
 import me.pixeldev.ecosmetics.api.cosmetic.pet.equipment.frame.EquipmentFrame;
-
-import org.bukkit.Material;
-
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
 import xyz.xenondevs.particle.ParticleEffect;
 
 import java.util.List;
@@ -19,7 +17,7 @@ public class AnimatedPetCosmeticType extends PetCosmeticType {
 	private final List<EquipmentFrame> bootsFrames;
 
 	public AnimatedPetCosmeticType(String permission, String configurationIdentifier,
-																 Material menuIcon, CosmeticCategory category,
+																 MenuIconData menuIcon, CosmeticCategory category,
 																 boolean invisible, boolean arms,
 																 ParticleEffect particleEffect,
 																 PetParticleAnimationType animationType,

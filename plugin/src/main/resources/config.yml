@@ -14,22 +14,15 @@ effects:
           first: "CYAN"
           second: "WHITE"
           third: "DARK_BLUE"
-  test:
-    icon: "TNT"
+  firewings:
+    icon: "BLAZE_ROD"
     animations:
       1:
-        animation: "ENDER_AURA"
-      2:
-        animation: "LOVE"
-  test2:
-    icon: "TNT"
-    animations:
-      1:
-        animation: "ENDER_AURA"
-      2:
-        animation: "LOVE"
-      3:
-        animation: "BEAM"
+        animation: "WINGS"
+        colors:
+          first: "YELLOW"
+          second: "ORANGE"
+          third: "LIGHT_RED"
 
 miniatures:
   type: "MINIATURES"

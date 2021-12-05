@@ -1,8 +1,7 @@
 package me.pixeldev.ecosmetics.api.cosmetic.type;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
-
-import org.bukkit.Material;
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
 
 public interface CosmeticType {
 
@@ -10,7 +9,7 @@ public interface CosmeticType {
 
 	String getIdentifier();
 
-	Material getMenuIcon();
+	MenuIconData getMenuIcon();
 
 	CosmeticCategory getCategory();
 

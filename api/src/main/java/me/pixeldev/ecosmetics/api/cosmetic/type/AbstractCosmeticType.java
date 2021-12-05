@@ -1,20 +1,19 @@
 package me.pixeldev.ecosmetics.api.cosmetic.type;
 
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
-
-import org.bukkit.Material;
+import me.pixeldev.ecosmetics.api.item.MenuIconData;
 
 public abstract class AbstractCosmeticType
 	implements CosmeticType {
 
 	private final String permission;
 	private final String identifier;
-	private final Material menuIcon;
+	private final MenuIconData menuIcon;
 	private final CosmeticCategory category;
 
 	public AbstractCosmeticType(String permission,
 															String identifier,
-															Material menuIcon, CosmeticCategory category) {
+															MenuIconData menuIcon, CosmeticCategory category) {
 		this.permission = permission;
 		this.identifier = identifier;
 		this.menuIcon = menuIcon;
@@ -32,7 +31,7 @@ public abstract class AbstractCosmeticType
 	}
 
 	@Override
-	public Material getMenuIcon() {
+	public MenuIconData getMenuIcon() {
 		return menuIcon;
 	}
 
