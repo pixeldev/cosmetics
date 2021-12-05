@@ -3,6 +3,7 @@ package me.pixeldev.ecosmetics.plugin.listener.vanilla;
 import me.pixeldev.alya.api.auto.listener.AutoListener;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticCategory;
 import me.pixeldev.ecosmetics.api.cosmetic.CosmeticHandler;
+import me.pixeldev.ecosmetics.api.cosmetic.pet.PetCosmetic;
 import me.pixeldev.ecosmetics.api.user.CosmeticUser;
 import me.pixeldev.ecosmetics.api.user.CosmeticUserService;
 
@@ -33,6 +34,11 @@ public class PlayerChangedWorldListener
 
 		if (category != null) {
 			cosmeticHandler.unequipCosmetic(user, false);
+
+			if (category == CosmeticCategory.MINIATURES) {
+				((PetCosmetic) user.getCurrentCosmetic()).setLocation(player.getLocation());
+			}
+
 			cosmeticHandler.equipCosmetic(user, user.getCurrentCosmetic());
 		}
 	}

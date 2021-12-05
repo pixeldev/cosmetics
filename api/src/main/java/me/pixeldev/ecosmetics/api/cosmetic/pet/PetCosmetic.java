@@ -67,6 +67,15 @@ public class PetCosmetic extends AbstractCosmetic<PetCosmeticType>
 		return actualLocation;
 	}
 
+	public void setLocation(Location location) {
+		actualLocation.setWorld(location.getWorld());
+		actualLocation.setX(location.getX());
+		actualLocation.setY(location.getY());
+		actualLocation.setZ(location.getZ());
+		actualLocation.setYaw(location.getYaw());
+		actualLocation.setPitch(location.getPitch());
+	}
+
 	@Override
 	public void run() {
 		movementAnimation.run();
