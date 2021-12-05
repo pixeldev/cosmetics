@@ -18,7 +18,7 @@ public class RemoveCosmeticCommand implements CommandClass {
 	@Inject private MessageHandler messageHandler;
 	@Inject private CosmeticHandler cosmeticHandler;
 
-	@Command(names = "remove")
+	@Command(names = "remove", permission = "cosmetics.*")
 	public void run(@Sender Player issuer, CosmeticUser target) {
 		if (cosmeticHandler.clearCosmetic(target)) {
 			messageHandler.sendReplacingIn(
