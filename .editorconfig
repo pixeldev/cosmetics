@@ -3,9 +3,10 @@ root = true
 [*]
 charset = utf-8
 end_of_line = lf
-indent_style = tab
-indent_size = 2
+indent_size = 4
+indent_style = space
+insert_final_newline = false
 
-# Intellij
-ij_continuation_indent_size = 2
+ij_continuation_indent_size = 8
 ij_java_do_not_wrap_after_single_annotation = true
+ij_java_class_count_to_use_import_on_demand = 10
