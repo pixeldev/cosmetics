@@ -15,7 +15,7 @@ public abstract class AbstractEntityTrackerEntry
 		boolean isPaper;
 
 		try {
-			Class.forName("org.github.paperspigot.Title");
+			Class.forName("com.destroystokyo.paper.Title");
 			isPaper = true;
 		} catch (ClassNotFoundException e) {
 			isPaper = false;
