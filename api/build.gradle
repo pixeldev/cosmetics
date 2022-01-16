@@ -1,17 +1,11 @@
 dependencies {
-	['bukkit', 'gson', 'bukkit-abstraction'].forEach {
-		if (it == 'bukkit') {
-			api("me.pixeldev.alya:$it:1.4.3-SNAPSHOT") {
-				exclude group: 'team.unnamed.gui'
-			}
-		} else {
-			api "me.pixeldev.alya:$it:1.4.3-SNAPSHOT"
-		}
-	}
+    ['bukkit', 'gson', 'bukkit-abstraction'].forEach {
+        api "me.pixeldev.alya:$it:1.4.3-SNAPSHOT"
+    }
 
-	compileOnly 'team.unnamed.gui:core:2.3.2-SNAPSHOT'
-	compileOnly 'com.sk89q.worldguard:worldguard-legacy:6.2'
-	api 'xyz.xenondevs:particle:1.6.5'
+    compileOnly 'team.unnamed.gui:core:2.3.2-SNAPSHOT'
+    compileOnly 'com.sk89q.worldguard:worldguard-legacy:6.2'
+    api 'xyz.xenondevs:particle:1.6.5'
 
-	compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
 }
