@@ -1,237 +1,237 @@
 cosmetics:
-  permission-format: "cosmetics.%category%.%identifier%"
-  denied-regions:
-    - "test"
+    permission-format: "cosmetics.%category%.%identifier%"
+    denied-regions:
+        - "test"
 
 effects:
-  type: "EFFECTS"
-  icewings:
-    icon: "FEATHER"
-    animations:
-      1:
-        animation: "WINGS"
-        colors:
-          first: "CYAN"
-          second: "WHITE"
-          third: "DARK_BLUE"
-  firewings:
-    icon: "BLAZE_ROD"
-    animations:
-      1:
-        animation: "WINGS"
-        colors:
-          first: "YELLOW"
-          second: "ORANGE"
-          third: "LIGHT_RED"
+    type: "EFFECTS"
+    icewings:
+        icon: "FEATHER"
+        animations:
+            1:
+                animation: "WINGS"
+                colors:
+                    first: "CYAN"
+                    second: "WHITE"
+                    third: "DARK_BLUE"
+    firewings:
+        icon: "BLAZE_ROD"
+        animations:
+            1:
+                animation: "WINGS"
+                colors:
+                    first: "YELLOW"
+                    second: "ORANGE"
+                    third: "LIGHT_RED"
 
 miniatures:
-  type: "MINIATURES"
-  armor-rainbow-animation:
-    frames:
-      1:
-        color: "LIGHT_RED"
-        delay: 20
-      2:
-        color: "ORANGE"
-        delay: 20
-      3:
-        color: "YELLOW"
-        delay: 20
-      4:
-        color: "LIME"
-        delay: 20
-      5:
-        color: "CYAN"
-        delay: 20
-      6:
-        color: "DARK_BLUE"
-        delay: 20
-      7:
-        color: "PINK"
-        delay: 20
-  wool-rainbow-animation:
-    frames:
-      1:
-        color: "RED"
-        delay: 20
-      2:
-        color: "ORANGE"
-        delay: 20
-      3:
-        color: "YELLOW"
-        delay: 20
-      4:
-        color: "LIME"
-        delay: 20
-      5:
-        color: "CYAN"
-        delay: 20
-      6:
-        color: "BLUE"
-        delay: 20
-      7:
-        color: "PINK"
-        delay: 20
+    type: "MINIATURES"
+    armor-rainbow-animation:
+        frames:
+            1:
+                color: "LIGHT_RED"
+                delay: 20
+            2:
+                color: "ORANGE"
+                delay: 20
+            3:
+                color: "YELLOW"
+                delay: 20
+            4:
+                color: "LIME"
+                delay: 20
+            5:
+                color: "CYAN"
+                delay: 20
+            6:
+                color: "DARK_BLUE"
+                delay: 20
+            7:
+                color: "PINK"
+                delay: 20
+    wool-rainbow-animation:
+        frames:
+            1:
+                color: "RED"
+                delay: 20
+            2:
+                color: "ORANGE"
+                delay: 20
+            3:
+                color: "YELLOW"
+                delay: 20
+            4:
+                color: "LIME"
+                delay: 20
+            5:
+                color: "CYAN"
+                delay: 20
+            6:
+                color: "BLUE"
+                delay: 20
+            7:
+                color: "PINK"
+                delay: 20
 
-  ice-fire-dragon:
-    animated: true
-    particle-animation:
-      type: "NORMAL"
-      effect: "CLOUD"
-      ticks: 10
-    properties:
-      invisible: false
-      arms: true
-    equipment:
-      skin:
-        frames:
-          1:
-            type: "URL"
-            value: "21ffbda92442873d54051e4e17ea47278cb3b747d798070ba83bc4a9de58dd"
-            delay: 40
-          2:
-            type: "URL"
-            value: "17bec29fb90aa4d9b10d176bc6822628b1f8ecae1e54a9aaca913db4a69a2aa"
-            delay: 40
-      hand:
-        frames:
-          1:
-            type: "ICE"
-            delay: 40
-          2:
-            type: "LAVA_BUCKET"
-            delay: 40
-      chestplate:
-        frames:
-          1:
-            type: "LEATHER_CHESTPLATE"
-            color: "LIGHT_BLUE"
-            delay: 40
-          2:
-            type: "LEATHER_CHESTPLATE"
-            color: "LIGHT_RED"
-            delay: 40
-      leggings:
-        frames:
-          1:
-            type: "LEATHER_CHESTPLATE"
-            color: "LIGHT_BLUE"
-            delay: 40
-          2:
-            type: "LEATHER_CHESTPLATE"
-            color: "LIGHT_RED"
-            delay: 40
-      boots:
-        frames:
-          1:
-            type: "LEATHER_CHESTPLATE"
-            color: "LIGHT_BLUE"
-            delay: 40
-          2:
-            type: "LEATHER_CHESTPLATE"
-            color: "LIGHT_RED"
-            delay: 40
-  happysad:
-    animated: true
-    particle-animation:
-      type: "NORMAL"
-      effect: "VILLAGER_HAPPY"
-      ticks: 10
-    properties:
-      invisible: false
-      arms: true
-    equipment:
-      skin:
-        frames:
-          1:
-            type: "URL"
-            value: "01b9def55876c41c17c815f88115f02c95f89620fbed6a6cb2d38d46fe05"
-            delay: 20
-          2:
-            type: "URL"
-            value: "14968ac5af3146826fa2b0d4dd114fda197f8b28f4750553f3f88836a21fac9"
-            delay: 20
-      hand:
-        type: "PAPER"
-      chestplate:
-        type: "LEATHER_CHESTPLATE"
-        color: "WHITE"
-      leggings:
-        type: "LEATHER_LEGGINGS"
-        color: "WHITE"
-      boots:
-        type: "LEATHER_BOOTS"
-        color: "WHITE"
-  nyancat:
-    animated: true
-    particle-animation:
-      type: "AROUND"
-      effect: "CLOUD"
-      ticks: 10
-      x: 0.0
-      y: 0.0
-      z: 0.0
-    properties:
-      invisible: false
-      arms: true
-    equipment:
-      skin:
-        type: "URL"
-        value: "d2c5a479f7162aa4cf1b34fe42afc4683a419994f68544e71f5342ae2c1a1c"
-      hand:
-        type: "wool-rainbow-animation"
-      chestplate:
-        type: "armor-rainbow-animation"
-      leggings:
-        type: "armor-rainbow-animation"
-      boots:
-        type: "armor-rainbow-animation"
-  astronaut:
-    skin: "URL"
-    skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
-    particle-animation:
-      type: "NORMAL"
-      effect: "CLOUD"
-      ticks: 10
-      x: 0.0
-      y: 0.0
-      z: 0.0
-    properties:
-      invisible: false
-      arms: true
-    equipment:
-      hand:
-        type: "NETHER_STAR"
-      chestplate:
-        type: "LEATHER_CHESTPLATE"
-        color: "LIGHT_GRAY"
-      leggings:
-        type: "LEATHER_LEGGINGS"
-        color: "LIGHT_GRAY"
-      boots:
-        type: "LEATHER_BOOTS"
-        color: "LIGHT_GRAY"
-  minime:
-    skin: "PLAYER"
-    skin-value: "%owner_name%"
-    particle-animation:
-      type: "CIRCLE"
-      effect: "FLAME"
-      ticks: 5
-      x: 0.0
-      y: 0.0
-      z: 0.0
-    properties:
-      invisible: false
-      arms: true
-    equipment:
-      hand: "BLAZE_ROD"
-      chestplate:
-        type: "LEATHER_CHESTPLATE"
-        color: "LIGHT_BLUE"
-      leggings:
-        type: "LEATHER_LEGGINGS"
-        color: "LIGHT_GRAY"
-      boots:
-        type: "LEATHER_BOOTS"
-        color: "LIGHT_GRAY"
+    ice-fire-dragon:
+        animated: true
+        particle-animation:
+            type: "NORMAL"
+            effect: "CLOUD"
+            ticks: 10
+        properties:
+            invisible: false
+            arms: true
+        equipment:
+            skin:
+                frames:
+                    1:
+                        type: "URL"
+                        value: "21ffbda92442873d54051e4e17ea47278cb3b747d798070ba83bc4a9de58dd"
+                        delay: 40
+                    2:
+                        type: "URL"
+                        value: "17bec29fb90aa4d9b10d176bc6822628b1f8ecae1e54a9aaca913db4a69a2aa"
+                        delay: 40
+            hand:
+                frames:
+                    1:
+                        type: "ICE"
+                        delay: 40
+                    2:
+                        type: "LAVA_BUCKET"
+                        delay: 40
+            chestplate:
+                frames:
+                    1:
+                        type: "LEATHER_CHESTPLATE"
+                        color: "LIGHT_BLUE"
+                        delay: 40
+                    2:
+                        type: "LEATHER_CHESTPLATE"
+                        color: "LIGHT_RED"
+                        delay: 40
+            leggings:
+                frames:
+                    1:
+                        type: "LEATHER_CHESTPLATE"
+                        color: "LIGHT_BLUE"
+                        delay: 40
+                    2:
+                        type: "LEATHER_CHESTPLATE"
+                        color: "LIGHT_RED"
+                        delay: 40
+            boots:
+                frames:
+                    1:
+                        type: "LEATHER_CHESTPLATE"
+                        color: "LIGHT_BLUE"
+                        delay: 40
+                    2:
+                        type: "LEATHER_CHESTPLATE"
+                        color: "LIGHT_RED"
+                        delay: 40
+    happysad:
+        animated: true
+        particle-animation:
+            type: "NORMAL"
+            effect: "VILLAGER_HAPPY"
+            ticks: 10
+        properties:
+            invisible: false
+            arms: true
+        equipment:
+            skin:
+                frames:
+                    1:
+                        type: "URL"
+                        value: "01b9def55876c41c17c815f88115f02c95f89620fbed6a6cb2d38d46fe05"
+                        delay: 20
+                    2:
+                        type: "URL"
+                        value: "14968ac5af3146826fa2b0d4dd114fda197f8b28f4750553f3f88836a21fac9"
+                        delay: 20
+            hand:
+                type: "PAPER"
+            chestplate:
+                type: "LEATHER_CHESTPLATE"
+                color: "WHITE"
+            leggings:
+                type: "LEATHER_LEGGINGS"
+                color: "WHITE"
+            boots:
+                type: "LEATHER_BOOTS"
+                color: "WHITE"
+    nyancat:
+        animated: true
+        particle-animation:
+            type: "AROUND"
+            effect: "CLOUD"
+            ticks: 10
+            x: 0.0
+            y: 0.0
+            z: 0.0
+        properties:
+            invisible: false
+            arms: true
+        equipment:
+            skin:
+                type: "URL"
+                value: "d2c5a479f7162aa4cf1b34fe42afc4683a419994f68544e71f5342ae2c1a1c"
+            hand:
+                type: "wool-rainbow-animation"
+            chestplate:
+                type: "armor-rainbow-animation"
+            leggings:
+                type: "armor-rainbow-animation"
+            boots:
+                type: "armor-rainbow-animation"
+    astronaut:
+        skin: "URL"
+        skin-value: "e5ec6575484b349b742831ee55d53b75db2a13af6425c8d55f26f8aaed87e4"
+        particle-animation:
+            type: "NORMAL"
+            effect: "CLOUD"
+            ticks: 10
+            x: 0.0
+            y: 0.0
+            z: 0.0
+        properties:
+            invisible: false
+            arms: true
+        equipment:
+            hand:
+                type: "NETHER_STAR"
+            chestplate:
+                type: "LEATHER_CHESTPLATE"
+                color: "LIGHT_GRAY"
+            leggings:
+                type: "LEATHER_LEGGINGS"
+                color: "LIGHT_GRAY"
+            boots:
+                type: "LEATHER_BOOTS"
+                color: "LIGHT_GRAY"
+    minime:
+        skin: "PLAYER"
+        skin-value: "%owner_name%"
+        particle-animation:
+            type: "CIRCLE"
+            effect: "FLAME"
+            ticks: 5
+            x: 0.0
+            y: 0.0
+            z: 0.0
+        properties:
+            invisible: false
+            arms: true
+        equipment:
+            hand: "BLAZE_ROD"
+            chestplate:
+                type: "LEATHER_CHESTPLATE"
+                color: "LIGHT_BLUE"
+            leggings:
+                type: "LEATHER_LEGGINGS"
+                color: "LIGHT_GRAY"
+            boots:
+                type: "LEATHER_BOOTS"
+                color: "LIGHT_GRAY"
